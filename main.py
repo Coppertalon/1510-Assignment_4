@@ -34,6 +34,47 @@ def move(player_pos):
     return player_pos
 
 
+def location_finder(player_pos, map_visual,  re_rolls, add, take_away):
+
+    if map_visual[player_pos[1]][player_pos[2]] == "O":
+        return location_start_back(map_visual)
+    if map_visual[player_pos[1]][player_pos[2]] == "X":
+        return loaction_end(player_pos, map_visual,  re_rolls, add, take_away)
+
+    if map_visual[player_pos[1]][player_pos[2]] == "b":
+        return location_easy(player_pos, map_visual,  re_rolls, add, take_away)
+    if map_visual[player_pos[1]][player_pos[2]] == "B":
+        return location_hard(player_pos, map_visual,  re_rolls, add, take_away)
+
+    if map_visual[player_pos[1]][player_pos[2]] == "d":
+        return location_easy(player_pos, map_visual,  re_rolls, add, take_away, 1)
+    if map_visual[player_pos[1]][player_pos[2]] == "D":
+        return location_hard(player_pos, map_visual,  re_rolls, add, take_away, 1)
+
+    if map_visual[player_pos[1]][player_pos[2]] == "_":
+        return location_none(player_pos, map_visual,  re_rolls, add, take_away)
+    if map_visual[player_pos[1]][player_pos[2]] == "E":
+        return location_none(player_pos, map_visual,  re_rolls, add, take_away ,1 )
+
+
+def location_none(player_pos, map_visual, re_rolls, add, take_away, done):
+    return map_visual, modify, gain
+
+
+def location_easy(player_pos, map_visual, re_rolls, add, take_away, done):
+    return map_visual, modify, gain
+
+
+def location_hard(player_pos, map_visual, re_rolls, add, take_away, done):
+    return map_visual, modify, gain
+
+
+def location_start(map_visual):
+    return map_visual, modify, gain
+
+
+def location_end(player_pos, map_visual, re_rolls, add, take_away):
+    return map_visual, modify, gain
 
 
 def player_health(modify, health):
