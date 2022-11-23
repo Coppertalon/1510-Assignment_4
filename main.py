@@ -39,7 +39,7 @@ def location_finder(player_pos, map_visual,  re_rolls, add, take_away):
     if map_visual[player_pos[1]][player_pos[2]] == "O":
         return location_start_back(map_visual)
     if map_visual[player_pos[1]][player_pos[2]] == "X":
-        return loaction_end(player_pos, map_visual,  re_rolls, add, take_away)
+        return location_end(player_pos, map_visual,  re_rolls, add, take_away)
 
     if map_visual[player_pos[1]][player_pos[2]] == "b":
         return location_easy(player_pos, map_visual,  re_rolls, add, take_away)
@@ -69,7 +69,11 @@ def location_hard(player_pos, map_visual, re_rolls, add, take_away, done):
     return map_visual, modify, gain
 
 
-def location_start(map_visual):
+def location_start():
+    return
+
+
+def location_start_back(map_visual):
     return map_visual, modify, gain
 
 
