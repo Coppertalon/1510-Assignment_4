@@ -34,39 +34,39 @@ def move(player_pos):
     return player_pos
 
 
-def location_finder(player_pos, map_visual,  re_rolls, add, take_away):
+def location_finder(player_pos, map_visual,  map_locations,  re_rolls, add, take_away):
 
     if map_visual[player_pos[1]][player_pos[2]] == "O":
         return location_start_back(map_visual)
     if map_visual[player_pos[1]][player_pos[2]] == "X":
-        return location_end(player_pos, map_visual,  re_rolls, add, take_away)
+        return location_end(player_pos, map_visual, map_locations,  re_rolls, add, take_away)
 
     if map_visual[player_pos[1]][player_pos[2]] == "b":
         return location_easy(player_pos, map_visual,  re_rolls, add, take_away)
     if map_visual[player_pos[1]][player_pos[2]] == "B":
-        return location_hard(player_pos, map_visual,  re_rolls, add, take_away)
+        return location_hard(player_pos, map_visual, map_locations,  re_rolls, add, take_away)
 
     if map_visual[player_pos[1]][player_pos[2]] == "d":
         return location_easy(player_pos, map_visual,  re_rolls, add, take_away, 1)
     if map_visual[player_pos[1]][player_pos[2]] == "D":
-        return location_hard(player_pos, map_visual,  re_rolls, add, take_away, 1)
+        return location_hard(player_pos, map_visual, map_locations, re_rolls, add, take_away, 1)
 
     if map_visual[player_pos[1]][player_pos[2]] == "_":
-        return location_none(player_pos, map_visual,  re_rolls, add, take_away)
+        return location_none(player_pos, map_visual, map_locations, re_rolls, add, take_away)
     if map_visual[player_pos[1]][player_pos[2]] == "E":
-        return location_none(player_pos, map_visual,  re_rolls, add, take_away ,1 )
+        return location_none(player_pos, map_visual, map_locations, re_rolls, add, take_away ,1 )
 
 
-def location_none(player_pos, map_visual, re_rolls, add, take_away, done):
+def location_none(player_pos, map_visual, map_locations, re_rolls, add, take_away, done):
     return map_visual, modify, gain
 
 
-def location_easy(player_pos, map_visual, re_rolls, add, take_away, done):
+def location_easy(player_pos, map_visual, map_locations, re_rolls, add, take_away, done):
     return map_visual, modify, gain
 
 
-def location_hard(player_pos, map_visual, re_rolls, add, take_away, done):
-    return map_visual, modify, gain
+def location_hard(player_pos, map_visual, map_locations, re_rolls, add, take_away, done):
+    return map_visual, map_locations, modify, gain, re_rolls, add, take_away,
 
 
 def location_start():
@@ -145,26 +145,16 @@ def win():
     return False
 
 
-def play():
-    map_visual = [["*", "*", "*", "*", "*"], ["*", "*", "*", "*", "*"], ["*", "*", "*", "*", "*"],
-                  ["*", "*", "*", "*", "*"], ["*", "*", "*", "*", "*"]]
-    player_pos = [0, 4]
-    health = 3
-    level = 1
-    exp = 0
-    stop = True
-    add = 0
-    take_away = 0
-    re_rolls = 1
-    location_start()
+def play(map_visual, map_locations, player_pos, health, level, exp, stop, add, take_away, re_rolls)
 
     while stop:
+
         map_display(player_pos, map_visual, health, level, exp, re_rolls, add, take_away)
 
         player_pos = move(player_pos, map_visual)
         map_display(player_pos, map_visual, health, level, exp, re_rolls, add, take_away)
 
-        map_visual, modify, gain,  = location_finder(player_pos, map_visual, re_rolls, add, take_away)
+        map_visual, map_locations, modify, gain, re_rolls, add, take_away  = location_finder(player_pos, map_visual, map_locations, re_rolls, add, take_away)
 
         health = player_health(modify, health)
         if health < 1:
@@ -174,15 +164,29 @@ def play():
             stop = win()
 
         level, exp, up = experience(gain, level, exp)
-
         if up:
             level_up(health, level, re_rolls, add, take_away)
-
     return
 
 
+def var():
+    map_visual = [["*", "*", "*", "*", "*"], ["*", "*", "*", "*", "*"], ["*", "*", "*", "*", "*"],
+                  ["*", "*", "*", "*", "*"], ["*", "*", "*", "*", "*"]]
+    map_locations = [["*", "*", "*", "*", "*"], ["*", "*", "*", "*", "*"], ["*", "*", "*", "*", "*"],
+                  ["*", "*", "*", "*", "*"], ["*", "*", "*", "*", "*"]]
+    player_pos = [0, 4]
+    health = 3
+    level = 1
+    exp = 0
+    stop = True
+    add = 0
+    take_away = 0
+    re_rolls = 1
+    play(map_visual, map_locations, player_pos, health, level, exp, stop, add, take_away, re_rolls)
+
+
 def main():
-    play()
+    var()
 
 
 if __name__ == '__main__':
