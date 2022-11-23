@@ -36,6 +36,23 @@ def move(player_pos):
 
 
 
+def player_health(modify, health):
+    if modify == 1:
+        health += 1
+        if health > 3:
+            health = 3
+        print(health)
+        return health
+
+    if modify == -1:
+        health -= 1
+        print(health)
+        return health
+
+    if modify == 0:
+        return health
+
+
 def experience(gain, level, exp):
     if gain == 0:
         return
@@ -70,6 +87,17 @@ def level_up(health, level, re_rolls, add, take_away):
     if re_rolls < level:
         take_away += 1
 
+
+def lose():
+    print("lose text")
+    stop = 1
+    return False
+
+
+def win():
+    print("win text")
+    stop = 1
+    return False
 
 
 def play():
