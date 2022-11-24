@@ -298,16 +298,10 @@ def var():
                      ["2", "2", "c", "3", "3"],
                      ["p", "2", "2", "c", "3"],
                      ["1", "p", "2", "c", "3"]]
-
-    player_pos = [0, 4]
-    health = 3
-    level = 1
-    exp = 0
     stop = True
-    add = 0
-    take_away = 0
-    re_rolls = 1
-    play(map_visual, map_locations, player_pos, health, level, exp, stop, add, take_away, re_rolls)
+
+    player_character = {"player_pos": [0, 4], "health": 3, "level":1, "exp": 0, "add": 0, "take_away": 0, "re_roll": 0}
+    play(map_visual, map_locations, stop, player_character)
 
 
 def main():
