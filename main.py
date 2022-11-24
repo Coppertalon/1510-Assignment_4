@@ -260,7 +260,6 @@ def location_none_yawning_3(player_pos, map_visual,  map_locations,  re_rolls, a
 def location_end(player_pos, map_visual,  map_locations,  re_rolls, add, take_away):
 
 def play(map_visual, map_locations, player_pos, health, level, exp, stop, add, take_away, re_rolls)
-
     while stop:
 
         map_display(player_pos, map_visual, health, level, exp, re_rolls, add, take_away)
