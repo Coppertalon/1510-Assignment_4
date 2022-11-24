@@ -4,12 +4,12 @@ import random
 def map_display(maps, player_character):
     for height in range(len(maps["map_visual"])):
         for width in range(len(maps["map_visual"])):
-            if width == player_character["player_pos"[0]] and height == player_character["player_pos"[1]]:
+            if width == player_character["player_pos"][0] and height == player_character["player_pos"][1]:
                 print("#", end="")
             else:
-                print(maps["map_visual"[width][height]], end="")
+                print(maps["map_visual"][width][height], end="")
         print("")
-    print("Legend:" + player_character)
+    print("Legend:")
     return
 
 
@@ -21,13 +21,13 @@ def move(player_character):
 
         if movement.lower() in valid_moves:
             if movement in valid_moves:
-                player_character["player_pos"[1]] += -1
+                player_character["player_pos"][1] += -1
             elif movement in valid_moves:
-                player_character["player_pos"[1]] += 1
+                player_character["player_pos"][1] += 1
             elif movement in valid_moves:
-                player_character["player_pos"[0]] -= 1
+                player_character["player_pos"][0] -= 1
             elif movement in valid_moves:
-                player_character["player_pos"[0]] += 1
+                player_character["player_pos"][0] += 1
             else:
                 print('"' + movement + '"' + " is an invalid movement. Please try again")
 
@@ -37,7 +37,7 @@ def move(player_character):
 
 
 def location_finder(maps, player_character):
-    location = maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]]
+    location = maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]]
     if location == 1:
         return location_start_back(maps, player_character)
     if location == 2:
@@ -57,26 +57,38 @@ def location_finder(maps, player_character):
 
 
 def location_port(maps, player_character):
-    return location()
+    random_location = random.randint(0, len(maps["locations"]["port"]))
+    location = maps["locations"]["port"][random_location]
+    return location(maps, player_character)
+
 
 def location_city(maps, player_character):
-    return location()
+    random_location = random.randint(0, len(maps["locations"]["city"]))
+    location = maps["locations"]["city"][random_location]
+    return location(maps, player_character)
+
 
 def location_yawning_portal(maps, player_character):
+    random_location = random.randint(0, len(maps["locations"]["yawn"]))
+    location = maps["locations"]["yawn"][random_location]
+    return location(maps, player_character)
 
-    return location()
 
 def location_easy(maps, player_character):
+    random_location = random.randint(0, len(maps["locations"]["easy"]))
+    location = maps["locations"]["easy"][random_location]
+    return location(maps, player_character)
 
-    return location()
 
 def location_hard(maps, player_character):
-    return location()
+    random_location = random.randint(0, len(maps["locations"]["hard"]))
+    location = maps["locations"]["hard"][random_location]
+    return location(maps, player_character)
 
 
 def beaten(maps, player_character, beat):
-    location = maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]]
-    return location()
+    location = maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]]
+    return location(maps, player_character, beat)
 
 
 def player_health(battle_health, player_character):
@@ -140,127 +152,225 @@ def win():
 
 def location_start():
     print("start tutorial")
+    return
 
 
 def location_start_back(maps, player_character):
-    return
+    print("start")
+    return maps, player_character
 
-def location_port_1(maps, player_character, found = None):
-    return
 
-def location_port_2(maps, player_character, found = None):
-    return
+def location_port_1(maps, player_character, beat=None):
+    print("port_1")
+    if beat:
+        print("return")
+    return maps, player_character
 
-def location_easy_1(maps, player_character, beat = None):
-    return
 
-def location_easy_2(maps, player_character, beat = None):
-    return
+def location_port_2(maps, player_character, beat=None):
+    print("port_2")
+    if beat:
+        print("return")
+    return maps, player_character
 
-def location_easy_3(maps, player_character, beat = None):
-    return
 
-def location_easy_4(maps, player_character, beat = None):
-    return
+def location_easy_1(maps, player_character, beat=None):
+    print("easy_1")
+    if beat:
+        print("return")
+    return maps, player_character
 
-def location_easy_5(maps, player_character, beat = None):
-    return
 
-def location_city_1(maps, player_character, found = None):
-    return
+def location_easy_2(maps, player_character, beat=None):
+    print("easy_2")
+    if beat:
+        print("return")
+    return maps, player_character
 
-def location_city_2(maps, player_character, found = None):
-    return
 
-def location_city_3(maps, player_character, found = None):
-    return
+def location_easy_3(maps, player_character, beat=None):
+    print("easy_3")
+    if beat:
+        print("return")
+    return maps, player_character
 
-def location_city_4(maps, player_character, found = None):
-    return
 
-def location_city_5(maps, player_character, found = None):
-    return
+def location_easy_4(maps, player_character, beat=None):
+    print("easy_4")
+    if beat:
+        print("return")
+    return maps, player_character
 
-def location_difficult_1(maps, player_character, beat = None):
-    return
 
-def location_difficult_2(maps, player_character, beat = None):
-    return
+def location_easy_5(maps, player_character, beat=None):
+    print("easy_5")
+    if beat:
+        print("return")
+    return maps, player_character
 
-def location_difficult_3(maps, player_character, beat = None):
-    return
 
-def location_difficult_4(maps, player_character, beat = None):
-    return
+def location_city_1(maps, player_character, beat=None):
+    print("city_1")
+    if beat:
+        print("return")
+    return maps, player_character
 
-def location_difficult_5(maps, player_character, beat = None):
-    return
 
-def location_difficult_6(maps, player_character, beat = None):
-    return
+def location_city_2(maps, player_character, beat=None):
+    print("city_2")
+    if beat:
+        print("return")
+    return maps, player_character
 
-def location_difficult_7(maps, player_character, beat = None):
-    return
 
-def location_difficult_8(maps, player_character, beat = None):
-    return
+def location_city_3(maps, player_character, beat=None):
+    print("city_3")
+    if beat:
+        print("return")
+    return maps, player_character
 
-def location_yawning_1(maps, player_character, found = None):
-    return
 
-def location_yawning_2(maps, player_character, found = None):
-    return
+def location_city_4(maps, player_character, beat=None):
+    print("city_4")
+    if beat:
+        print("return")
+    return maps, player_character
 
-def location_yawning_3(maps, player_character, found = None):
-    return
+
+def location_city_5(maps, player_character, beat=None):
+    print("city_5")
+    if beat:
+        print("return")
+    return maps, player_character
+
+
+def location_difficult_1(maps, player_character, beat=None):
+    print("difficult_1")
+    if beat:
+        print("return")
+    return maps, player_character
+
+
+def location_difficult_2(maps, player_character, beat=None):
+    print("difficult_2")
+    if beat:
+        print("return")
+    return maps, player_character
+
+
+def location_difficult_3(maps, player_character, beat=None):
+    print("difficult_3")
+    if beat:
+        print("return")
+    return maps, player_character
+
+
+def location_difficult_4(maps, player_character, beat=None):
+    print("difficult_4")
+    if beat:
+        print("return")
+    return maps, player_character
+
+
+def location_difficult_5(maps, player_character, beat=None):
+    print("difficult_5")
+    if beat:
+        print("return")
+    return maps, player_character
+
+
+def location_difficult_6(maps, player_character, beat=None):
+    print("difficult_6")
+    if beat:
+        print("return")
+    return maps, player_character
+
+
+def location_difficult_7(maps, player_character, beat=None):
+    print("difficult_7")
+    if beat:
+        print("return")
+    return maps, player_character
+
+
+def location_difficult_8(maps, player_character, beat=None):
+    print("difficult_8")
+    if beat:
+        print("return")
+    return maps, player_character
+
+
+def location_yawning_1(maps, player_character, beat=None):
+    print("yawn_2")
+    if beat:
+        print("return")
+    return maps, player_character
+
+
+def location_yawning_2(maps, player_character, beat=None):
+    print("yawn_2")
+    if beat:
+        print("return")
+    return maps, player_character
+
+
+def location_yawning_3(maps, player_character, beat=None):
+    print("yawn_3")
+    if beat:
+        print("return")
+    return maps, player_character
+
 
 def location_end(maps, player_character):
-    return
+    print("end")
+    return maps, player_character
 
 
 def play(maps, player_character, stop):
-    location_start()
+    # location_start()
     while stop:
         map_display(maps, player_character)
         player_character = move(player_character)
         map_display(maps, player_character)
 
-        maps, player_character, battle_health, battle_exp = location_finder(maps, player_character)
+        maps, player_character = location_finder(maps, player_character)
 
-        player_character = player_health(battle_health, player_character)
-
-        player_character, up = experience(battle_exp, player_character)
-        if up:
-            player_character = level_up(player_character)
-
-        if player_character["health"] < 1:
-            stop = lose()
-
-        if battle_exp == 2:
-            stop = win()
+        # battle_health, battle_exp
+        # player_character = player_health(battle_health, player_character)
+        #
+        # player_character, up = experience(battle_exp, player_character)
+        # if up:
+        #     player_character = level_up(player_character)
+        #
+        # if player_character["health"] < 1:
+        #     stop = lose()
+        #
+        # if battle_exp == 2:
+        #     stop = win()
     return
 
 
 def var():
-    use_locations = {"port": [location_port_1, location_port_2],
-    "easy": [location_easy_1, location_easy_2, location_easy_3, location_easy_4, location_easy_5],
-    "city": [location_city_1, location_city_2, location_city_3, location_city_4, location_city_5],
-    "difficult": [location_difficult_1, location_difficult_2, location_difficult_3, location_difficult_4,
-                  location_difficult_5, location_difficult_6, location_difficult_7, location_difficult_8]}
+    locations = {"port": [location_port_1, location_port_2],
+                 "easy": [location_easy_1, location_easy_2, location_easy_3, location_easy_4, location_easy_5],
+                 "city": [location_city_1, location_city_2, location_city_3, location_city_4, location_city_5],
+                 "difficult": [location_difficult_1, location_difficult_2, location_difficult_3, location_difficult_4,
+                               location_difficult_5, location_difficult_6, location_difficult_7, location_difficult_8],
+                 "yawn": [location_city_1, location_city_2, location_city_3, location_city_4, location_city_5]}
 
     maps = {"map_visual": [["*", "*", "*", "*", "*"],
-                  ["*", "*", "*", "*", "*"],
-                  ["*", "*", "*", "*", "*"],
-                  ["*", "*", "*", "*", "*"],
-                  ["*", "*", "*", "*", "*"]],
-            "map_locations" : [["3", "3", "3", "y", "4"],
-                     ["c", "c", "3", "y", "y"],
-                     ["2", "2", "c", "3", "3"],
-                     ["p", "2", "2", "c", "3"],
-                     ["1", "p", "2", "c", "3"]],
-            "location_arrays": use_locations}
+                           ["*", "*", "*", "*", "*"],
+                           ["*", "*", "*", "*", "*"],
+                           ["*", "*", "*", "*", "*"],
+                           ["*", "*", "*", "*", "*"]],
+            "map_locations": [["3", "3", "3", "y", "4"],
+                              ["c", "c", "3", "y", "y"],
+                              ["2", "2", "c", "3", "3"],
+                              ["p", "2", "2", "c", "3"],
+                              ["1", "p", "2", "c", "3"]],
+            "locations": locations}
 
-    player_character = {"player_pos": [0, 4], "health": 3, "level":1, "exp": 0, "add": 0, "take_away": 0, "re_roll": 0}
+    player_character = {"player_pos": [0, 4], "health": 3, "level": 1, "exp": 0, "add": 0, "take_away": 0, "re_roll": 0}
     play(maps, player_character, True)
 
 
