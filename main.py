@@ -35,7 +35,22 @@ def move(player_pos):
 
 
 def location_finder(player_pos, map_visual,  map_locations,  re_rolls, add, take_away):
-
+    if map_locations[player_pos[0]][player_pos[1]] == 1:
+        location_start_back()
+    if map_locations[player_pos[0]][player_pos[1]] == 2:
+        location_easy()
+    if map_locations[player_pos[0]][player_pos[1]] == 3:
+        location_hard()
+    if map_locations[player_pos[0]][player_pos[1]] == 4:
+        location_end()
+    if map_locations[player_pos[0]][player_pos[1]] == "p":
+        location_none_port()
+    if map_locations[player_pos[0]][player_pos[1]] == "c":
+        location_none_city()
+    if map_locations[player_pos[0]][player_pos[1]] == "y":
+        location_none_yawning_portal()
+    else:
+        beaten()
 
 def location_none_port(player_pos, map_visual, map_locations, re_rolls, add, take_away, done):
     return map_visual, modify, gain
@@ -53,6 +68,25 @@ def location_easy(player_pos, map_visual, map_locations, re_rolls, add, take_awa
 
 def location_hard(player_pos, map_visual, map_locations, re_rolls, add, take_away, done):
     return map_visual, map_locations, modify, gain, re_rolls, add, take_away,
+
+
+def beaten(player_pos, map_visual, map_locations):
+    if map_locations[player_pos[0]][player_pos[1]] == "easy1": location_easy_bar_1()
+    if map_locations[player_pos[0]][player_pos[1]] == "easy2": location_easy_bar_2()
+    if map_locations[player_pos[0]][player_pos[1]] == "easy3": location_easy_bar_3()
+    if map_locations[player_pos[0]][player_pos[1]] == "easy4": location_easy_bar_4()
+    if map_locations[player_pos[0]][player_pos[1]] == "easy5": location_easy_bar_5()
+    if map_locations[player_pos[0]][player_pos[1]] == "diff1": location_difficult_1()
+    if map_locations[player_pos[0]][player_pos[1]] == "diff2": location_difficult_2()
+    if map_locations[player_pos[0]][player_pos[1]] == "diff3": location_difficult_3()
+    if map_locations[player_pos[0]][player_pos[1]] == "diff4": location_difficult_4()
+    if map_locations[player_pos[0]][player_pos[1]] == "diff5": location_difficult_5()
+    if map_locations[player_pos[0]][player_pos[1]] == "diff6": location_difficult_6()
+    if map_locations[player_pos[0]][player_pos[1]] == "diff7": location_difficult_7()
+    if map_locations[player_pos[0]][player_pos[1]] == "diff8": location_difficult_8()
+
+
+
 
 
 def location_start():
@@ -196,7 +230,7 @@ def location_none_yawning_1():
 
 def location_none_yawning_2():
 
-def location_none_yawning_2():
+def location_none_yawning_3():
 
 def play(map_visual, map_locations, player_pos, health, level, exp, stop, add, take_away, re_rolls)
 
