@@ -1,5 +1,6 @@
 import random
 
+
 def map_display(maps, player_character):
     for height in range(len(maps["map_visual"])):
         for width in range(len(maps["map_visual"])):
@@ -36,95 +37,47 @@ def move(player_character):
 
 
 def location_finder(maps, player_character):
-    if maps["map_locations": [[player_character["player_pos"[0]]] [player_character["player_pos"[1]]]]] == 1:
+    location = maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]]
+    if location == 1:
         return location_start_back(maps, player_character)
-    if maps["map_locations": [[player_character["player_pos"[0]]] [player_character["player_pos"[1]]]]] == 2:
+    if location == 2:
         return location_easy(maps, player_character)
-    if maps["map_locations": [[player_character["player_pos"[0]]] [player_character["player_pos"[1]]]]] == 3:
+    if location == 3:
         return location_hard(maps, player_character)
-    if maps["map_locations": [[player_character["player_pos"[0]]] [player_character["player_pos"[1]]]]] == 4:
+    if location == 4:
         return location_end(maps, player_character)
-    if maps["map_locations": [[player_character["player_pos"[0]]] [player_character["player_pos"[1]]]]] == "p":
-        return location_none_port(maps, player_character)
-    if maps["map_locations": [[player_character["player_pos"[0]]] [player_character["player_pos"[1]]]]] == "c":
-        return location_none_city(maps, player_character)
-    if maps["map_locations": [[player_character["player_pos"[0]]] [player_character["player_pos"[1]]]]] == "y":
-        return location_none_yawning_portal(maps, player_character)
-    elif maps["map_locations": [[player_character["player_pos"[0]]] [player_character["player_pos"[1]]]]] \
-            in ["p1", "p2", "c1", "c2", "c3", "c4", "c5", "y1", "y2", "y3"]:
-        return explored(maps, player_character, True)
+    if location == "p":
+        return location_port(maps, player_character)
+    if location == "c":
+        return location_city(maps, player_character)
+    if location == "y":
+        return location_yawning_portal(maps, player_character)
     else:
         return beaten(maps, player_character, True)
 
 
-def location_none_port(maps, player_character):
-    location = random.randint(1, len(maps["port"]))
-    location()
-    return
+def location_port(maps, player_character):
+    return location()
 
-def location_none_city(maps, player_character):
-    return
+def location_city(maps, player_character):
+    return location()
 
-def location_none_yawning_portal(maps, player_character):
-    return
+def location_yawning_portal(maps, player_character):
+
+    return location()
 
 def location_easy(maps, player_character):
-    return
+
+    return location()
 
 def location_hard(maps, player_character):
-    return
+    return location()
 
 
 def beaten(maps, player_character, beat):
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "easy1":
-        location_easy_bar_1(maps, player_character, beat)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "easy2":
-        location_easy_bar_2(maps, player_character, beat)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "easy3":
-        location_easy_bar_3(maps, player_character, beat)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "easy4":
-        location_easy_bar_4(maps, player_character, beat)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "easy5":
-        location_easy_bar_5(maps, player_character, beat)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "diff1":
-        location_difficult_1(maps, player_character, beat)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "diff2":
-        location_difficult_2(maps, player_character, beat)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "diff3":
-        location_difficult_3(maps, player_character, beat)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "diff4":
-        location_difficult_4(maps, player_character, beat)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "diff5":
-        location_difficult_5(maps, player_character, beat)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "diff6":
-        location_difficult_6(maps, player_character, beat)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "diff7":
-        location_difficult_7(maps, player_character, beat)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "diff8":
-        location_difficult_8(maps, player_character, beat)
+    location = maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]]
 
-
-def explored(maps, player_character, found):
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "p1":
-        location_port_1(maps, player_character, found)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "p2":
-        location_none_port_2(maps, player_character, found)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "c1":
-        location_city_1(maps, player_character, found)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "c2":
-        location_city_2(maps, player_character, found)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "c3":
-        location_city_3(maps, player_character, found)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "c4":
-        location_city_4(maps, player_character, found)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "c5":
-        location_city_5(maps, player_character, found)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "y1":
-        location_yawning_1(maps, player_character, found)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "y2":
-        location_yawning_2(maps, player_character, found)
-    if maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]] == "y3":
-        location_yawning_3(maps, player_character, found)
+    return location()
 
 
 def player_health(battle_health, player_character):
@@ -196,22 +149,22 @@ def location_start_back(maps, player_character):
 def location_port_1(maps, player_character, found = None):
     return
 
-def location_none_port_2(maps, player_character, found = None):
+def location_port_2(maps, player_character, found = None):
     return
 
-def location_easy_bar_1(maps, player_character, beat = None):
+def location_easy_1(maps, player_character, beat = None):
     return
 
-def location_easy_bar_2(maps, player_character, beat = None):
+def location_easy_2(maps, player_character, beat = None):
     return
 
-def location_easy_bar_3(maps, player_character, beat = None):
+def location_easy_3(maps, player_character, beat = None):
     return
 
-def location_easy_bar_4(maps, player_character, beat = None):
+def location_easy_4(maps, player_character, beat = None):
     return
 
-def location_easy_bar_5(maps, player_character, beat = None):
+def location_easy_5(maps, player_character, beat = None):
     return
 
 def location_city_1(maps, player_character, found = None):
@@ -290,10 +243,11 @@ def play(maps, player_character, stop):
 
 
 def var():
-    use_locations = {"port": [location_port_1, location_none_port_2],
-    "easy": [location_easy_bar_1, location_easy_bar_2, location_easy_bar_3, location_easy_bar_4, location_easy_bar_5],
+    use_locations = {"port": [location_port_1, location_port_2],
+    "easy": [location_easy_1, location_easy_2, location_easy_3, location_easy_4, location_easy_5],
     "city": [location_city_1, location_city_2, location_city_3, location_city_4, location_city_5],
-    "difficult": [location_difficult_1, 2, 3, 4, 5, 6, 7, 8]}
+    "difficult": [location_difficult_1, location_difficult_2, location_difficult_3, location_difficult_4,
+                  location_difficult_5, location_difficult_6, location_difficult_7, location_difficult_8]}
 
     maps = {"map_visual": [["*", "*", "*", "*", "*"],
                   ["*", "*", "*", "*", "*"],
