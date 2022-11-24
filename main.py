@@ -6,7 +6,7 @@ def map_display(player_pos, map_visual, health, level, exp, re_rolls,  add, take
             else:
                 print(map_visual[width][height], end="")
         print("")
-    print("Legend:"+ health + level + exp)
+    print("Legend:"+ health + level + exp + re_rolls + add + take_away)
     return
 
 
@@ -70,56 +70,56 @@ def location_easy(player_pos, map_visual, map_locations, re_rolls, add, take_awa
 def location_hard(player_pos, map_visual, map_locations, re_rolls, add, take_away):
 
 
-def beaten(player_pos, map_visual, map_locations, beat):
+def beaten(player_pos, map_visual, map_locations, re_rolls, add, take_away, beat):
     if map_locations[player_pos[0]][player_pos[1]] == \
-            "easy1": location_easy_bar_1(player_pos, map_visual, map_locations, beat)
+            "easy1": location_easy_bar_1(player_pos, map_visual, map_locations, re_rolls, add, take_away, beat)
     if map_locations[player_pos[0]][player_pos[1]] == \
-            "easy2": location_easy_bar_2(player_pos, map_visual, map_locations, beat)
+            "easy2": location_easy_bar_2(player_pos, map_visual, map_locations, re_rolls, add, take_away, beat)
     if map_locations[player_pos[0]][player_pos[1]] == \
-            "easy3": location_easy_bar_3(player_pos, map_visual, map_locations, beat)
+            "easy3": location_easy_bar_3(player_pos, map_visual, map_locations, re_rolls, add, take_away, beat)
     if map_locations[player_pos[0]][player_pos[1]] == \
-            "easy4": location_easy_bar_4(player_pos, map_visual, map_locations, beat)
+            "easy4": location_easy_bar_4(player_pos, map_visual, map_locations, re_rolls, add, take_away, beat)
     if map_locations[player_pos[0]][player_pos[1]] == \
-            "easy5": location_easy_bar_5(player_pos, map_visual, map_locations, beat)
+            "easy5": location_easy_bar_5(player_pos, map_visual, map_locations, re_rolls, add, take_away, beat)
     if map_locations[player_pos[0]][player_pos[1]] == \
-            "diff1": location_difficult_1(player_pos, map_visual, map_locations, beat)
+            "diff1": location_difficult_1(player_pos, map_visual, map_locations, re_rolls, add, take_away, beat)
     if map_locations[player_pos[0]][player_pos[1]] == \
-            "diff2": location_difficult_2(player_pos, map_visual, map_locations, beat)
+            "diff2": location_difficult_2(player_pos, map_visual, map_locations, re_rolls, add, take_away, beat)
     if map_locations[player_pos[0]][player_pos[1]] == \
-            "diff3": location_difficult_3(player_pos, map_visual, map_locations, beat)
+            "diff3": location_difficult_3(player_pos, map_visual, map_locations, re_rolls, add, take_away, beat)
     if map_locations[player_pos[0]][player_pos[1]] == \
-            "diff4": location_difficult_4(player_pos, map_visual, map_locations, beat)
+            "diff4": location_difficult_4(player_pos, map_visual, map_locations, re_rolls, add, take_away, beat)
     if map_locations[player_pos[0]][player_pos[1]] == \
-            "diff5": location_difficult_5(player_pos, map_visual, map_locations, beat)
+            "diff5": location_difficult_5(player_pos, map_visual, map_locations, re_rolls, add, take_away, beat)
     if map_locations[player_pos[0]][player_pos[1]] == \
-            "diff6": location_difficult_6(player_pos, map_visual, map_locations, beat)
+            "diff6": location_difficult_6(player_pos, map_visual, map_locations, re_rolls, add, take_away, beat)
     if map_locations[player_pos[0]][player_pos[1]] == \
-            "diff7": location_difficult_7(player_pos, map_visual, map_locations, beat)
+            "diff7": location_difficult_7(player_pos, map_visual, map_locations, re_rolls, add, take_away, beat)
     if map_locations[player_pos[0]][player_pos[1]] == \
-            "diff8": location_difficult_8(player_pos, map_visual, map_locations, beat)
+            "diff8": location_difficult_8(player_pos, map_visual, map_locations, re_rolls, add, take_away, beat)
 
 
-def explored(player_pos, map_visual, map_locations, found):
+def explored(player_pos, map_visual, map_locations,re_rolls, add, take_away, found):
     if map_locations[player_pos[0]][player_pos[1]] == "p1":
-        location_none_port_1(player_pos, map_visual, map_locations, found)
+        location_none_port_1(player_pos, map_visual, map_locations, re_rolls, add, take_away, found)
     if map_locations[player_pos[0]][player_pos[1]] == "p2":
-        location_none_port_2(player_pos, map_visual, map_locations, found)
+        location_none_port_2(player_pos, map_visual, map_locations, re_rolls, add, take_away, found)
     if map_locations[player_pos[0]][player_pos[1]] == "c1":
-        location_none_city_1(player_pos, map_visual, map_locations, found)
+        location_none_city_1(player_pos, map_visual, map_locations, re_rolls, add, take_away, found)
     if map_locations[player_pos[0]][player_pos[1]] == "c2":
-        location_none_city_2(player_pos, map_visual, map_locations, found)
+        location_none_city_2(player_pos, map_visual, map_locations, re_rolls, add, take_away, found)
     if map_locations[player_pos[0]][player_pos[1]] == "c3":
-        location_none_city_3(player_pos, map_visual, map_locations, found)
+        location_none_city_3(player_pos, map_visual, map_locations, re_rolls, add, take_away, found)
     if map_locations[player_pos[0]][player_pos[1]] == "c4":
-        location_none_city_4(player_pos, map_visual, map_locations, found)
+        location_none_city_4(player_pos, map_visual, map_locations, re_rolls, add, take_away, found)
     if map_locations[player_pos[0]][player_pos[1]] == "c5":
-        location_none_city_5(player_pos, map_visual, map_locations, found)
+        location_none_city_5(player_pos, map_visual, map_locations, re_rolls, add, take_away, found)
     if map_locations[player_pos[0]][player_pos[1]] == "y1":
-        location_none_yawning_1(player_pos, map_visual, map_locations, found)
+        location_none_yawning_1(player_pos, map_visual, map_locations, re_rolls, add, take_away, found)
     if map_locations[player_pos[0]][player_pos[1]] == "y2":
-        location_none_yawning_2(player_pos, map_visual, map_locations, found)
+        location_none_yawning_2(player_pos, map_visual, map_locations, re_rolls, add, take_away, found)
     if map_locations[player_pos[0]][player_pos[1]] == "y3":
-        location_none_yawning_3(player_pos, map_visual, map_locations, found)
+        location_none_yawning_3(player_pos, map_visual, map_locations, re_rolls, add, take_away, found)
 
 
 def player_health(modify, health):
@@ -168,7 +168,7 @@ def level_up(health, level, re_rolls, add, take_away):
         add += 1
     if re_rolls < level:
         take_away += 1
-    return
+    return health, level, re_rolls, add, take_away
 
 
 def lose():
@@ -188,76 +188,78 @@ def location_start():
 def location_start_back(player_pos, map_visual,  map_locations,  re_rolls, add, take_away):
 
 
-def location_none_port_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None):
+def location_none_port_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None):
 
 
-def location_none_port_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None):
+def location_none_port_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None):
 
 
-def location_easy_bar_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
+def location_easy_bar_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
 
 
-def location_easy_bar_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
+def location_easy_bar_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
 
 
-def location_easy_bar_3(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
+def location_easy_bar_3(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
 
 
-def location_easy_bar_4(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
+def location_easy_bar_4(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
 
 
-def location_easy_bar_5(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
+def location_easy_bar_5(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
 
 
-def location_none_city_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None):
+def location_none_city_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None):
 
 
-def location_none_city_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None ):
+def location_none_city_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None ):
 
 
-def location_none_city_3(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None):
+def location_none_city_3(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None):
 
 
-def location_none_city_4(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None):
+def location_none_city_4(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None):
 
 
-def location_none_city_5(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None):
+def location_none_city_5(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None):
 
 
-def location_difficult_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
+def location_difficult_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
 
 
-def location_difficult_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
+def location_difficult_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
 
 
-def location_difficult_3(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
+def location_difficult_3(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
 
 
-def location_difficult_4(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
+def location_difficult_4(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
 
 
-def location_difficult_5(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
+def location_difficult_5(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
 
 
-def location_difficult_6(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
+def location_difficult_6(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
 
 
-def location_difficult_7(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
+def location_difficult_7(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
 
 
-def location_difficult_8(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
+def location_difficult_8(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
 
 
-def location_none_yawning_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None):
+def location_none_yawning_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None):
 
 
-def location_none_yawning_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None):
+def location_none_yawning_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None):
 
 
-def location_none_yawning_3(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None):
+def location_none_yawning_3(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None):
 
 
 def location_end(player_pos, map_visual,  map_locations,  re_rolls, add, take_away):
+
+
 
 def play(map_visual, map_locations, player_pos, health, level, exp, stop, add, take_away, re_rolls)
     location_start()
