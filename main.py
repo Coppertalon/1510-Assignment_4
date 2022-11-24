@@ -271,17 +271,16 @@ def play(map_visual, map_locations, player_pos, health, level, exp, stop, add, t
         map_visual, map_locations, modify, gain, re_rolls, add, take_away  = location_finder(player_pos, map_visual, map_locations, re_rolls, add, take_away)
 
         health = player_health(modify, health)
+
+        level, exp, up = experience(gain, level, exp)
+        if up:
+            health, level, re_rolls, add, take_away = level_up(health, level, re_rolls, add, take_away)
+
         if health < 1:
             stop = lose()
 
         if gain == 2:
             stop = win()
-
-        level, exp, up = experience(gain, level, exp)
-
-        if up:
-            health, level, re_rolls, add, take_away = level_up(health, level, re_rolls, add, take_away)
-
     return
 
 
