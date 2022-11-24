@@ -56,19 +56,19 @@ def location_finder(player_pos, map_visual,  map_locations,  re_rolls, add, take
 
 
 def location_none_port(player_pos, map_visual, map_locations, re_rolls, add, take_away):
-
+    return
 
 def location_none_city(player_pos, map_visual, map_locations, re_rolls, add, take_away):
-
+    return
 
 def location_none_yawning_portal(player_pos, map_visual, map_locations, re_rolls, add, take_away):
-
+    return
 
 def location_easy(player_pos, map_visual, map_locations, re_rolls, add, take_away):
-
+    return
 
 def location_hard(player_pos, map_visual, map_locations, re_rolls, add, take_away):
-
+    return
 
 def beaten(player_pos, map_visual, map_locations, re_rolls, add, take_away, beat):
     if map_locations[player_pos[0]][player_pos[1]] == \
@@ -261,12 +261,12 @@ def location_end(player_pos, map_visual,  map_locations,  re_rolls, add, take_aw
 
 
 
-def play(map_visual, map_locations, player_pos, health, level, exp, stop, add, take_away, re_rolls)
+def play(map_visual, map_locations, player_pos, health, level, exp, stop, add, take_away, re_rolls):
     location_start()
     while stop:
         map_display(player_pos, map_visual, health, level, exp, re_rolls, add, take_away)
 
-        player_pos = move(player_pos, map_visual)
+        player_pos = move(player_pos)
         map_display(player_pos, map_visual, health, level, exp, re_rolls, add, take_away)
 
         map_visual, map_locations, modify, gain, re_rolls, add, take_away  = location_finder(player_pos, map_visual, map_locations, re_rolls, add, take_away)
