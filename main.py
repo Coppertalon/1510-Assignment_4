@@ -36,23 +36,23 @@ def move(player_pos):
 
 def location_finder(player_pos, map_visual,  map_locations,  re_rolls, add, take_away):
     if map_locations[player_pos[0]][player_pos[1]] == 1:
-        location_start_back(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
+        return location_start_back(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
     if map_locations[player_pos[0]][player_pos[1]] == 2:
-        location_easy(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
+        return location_easy(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
     if map_locations[player_pos[0]][player_pos[1]] == 3:
-        location_hard(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
+        return location_hard(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
     if map_locations[player_pos[0]][player_pos[1]] == 4:
-        location_end(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
+        return location_end(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
     if map_locations[player_pos[0]][player_pos[1]] == "p":
-        location_none_port(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
+        return location_none_port(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
     if map_locations[player_pos[0]][player_pos[1]] == "c":
-        location_none_city(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
+        return location_none_city(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
     if map_locations[player_pos[0]][player_pos[1]] == "y":
-        location_none_yawning_portal(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
+        return location_none_yawning_portal(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
     elif map_locations[player_pos[0]][player_pos[1]] in ["p1", "p2", "c1", "c2", "c3", "c4", "c5", "y1", "y2", "y3"]:
-        explored(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, True)
+        return explored(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, True)
     else:
-        beaten(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, True)
+        return beaten(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, True)
 
 
 def location_none_port(player_pos, map_visual, map_locations, re_rolls, add, take_away):
