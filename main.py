@@ -196,6 +196,8 @@ def location_none_yawning_1():
 
 def location_none_yawning_2():
 
+def location_none_yawning_2():
+
 def play(map_visual, map_locations, player_pos, health, level, exp, stop, add, take_away, re_rolls)
 
     while stop:
@@ -223,8 +225,13 @@ def play(map_visual, map_locations, player_pos, health, level, exp, stop, add, t
 def var():
     map_visual = [["*", "*", "*", "*", "*"], ["*", "*", "*", "*", "*"], ["*", "*", "*", "*", "*"],
                   ["*", "*", "*", "*", "*"], ["*", "*", "*", "*", "*"]]
-    map_locations = [["*", "*", "*", "*", "*"], ["*", "*", "*", "*", "*"], ["*", "*", "*", "*", "*"],
-                  ["*", "*", "*", "*", "*"], ["*", "*", "*", "*", "*"]]
+
+
+    map_locations = [["3", "3", "3", "y", "4"],
+                     ["c", "c", "3", "y", "y"],
+                     ["2", "2", "c", "3", "3"],
+                     ["p", "2", "2", "c", "3"],
+                     ["1", "p", "2", "c", "3"]]
     player_pos = [0, 4]
     health = 3
     level = 1
