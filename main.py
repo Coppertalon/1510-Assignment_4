@@ -36,23 +36,23 @@ def move(player_pos):
 
 def location_finder(player_pos, map_visual,  map_locations,  re_rolls, add, take_away):
     if map_locations[player_pos[0]][player_pos[1]] == 1:
-        location_start_back()
+        location_start_back(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
     if map_locations[player_pos[0]][player_pos[1]] == 2:
-        location_easy()
+        location_easy(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
     if map_locations[player_pos[0]][player_pos[1]] == 3:
-        location_hard()
+        location_hard(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
     if map_locations[player_pos[0]][player_pos[1]] == 4:
-        location_end()
+        location_end(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
     if map_locations[player_pos[0]][player_pos[1]] == "p":
-        location_none_port()
+        location_none_port(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
     if map_locations[player_pos[0]][player_pos[1]] == "c":
-        location_none_city()
+        location_none_city(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
     if map_locations[player_pos[0]][player_pos[1]] == "y":
-        location_none_yawning_portal()
+        location_none_yawning_portal(player_pos, map_visual,  map_locations,  re_rolls, add, take_away)
     elif map_locations[player_pos[0]][player_pos[1]] in ["p1", "p2", "c1", "c2", "c3", "c4", "c5", "y1", "y2", "y3"]:
-        explored(player_pos, map_visual,  map_locations, True)
+        explored(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, True)
     else:
-        beaten(player_pos, map_visual,  map_locations, True)
+        beaten(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, True)
 
 
 def location_none_port(player_pos, map_visual, map_locations, re_rolls, add, take_away):
@@ -185,79 +185,79 @@ def location_start():
     return
 
 
-def location_start_back():
+def location_start_back(player_pos, map_visual,  map_locations,  re_rolls, add, take_away):
 
 
-def location_none_port_1():
+def location_none_port_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None):
 
 
-def location_none_port_2():
+def location_none_port_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None):
 
 
-def location_easy_bar_1():
+def location_easy_bar_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
 
 
-def location_easy_bar_2():
+def location_easy_bar_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
 
 
-def location_easy_bar_3():
+def location_easy_bar_3(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
 
 
-def location_easy_bar_4():
+def location_easy_bar_4(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
 
 
-def location_easy_bar_5():
+def location_easy_bar_5(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
 
 
-def location_none_city_1():
+def location_none_city_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None):
 
 
-def location_none_city_2():
+def location_none_city_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None ):
 
 
-def location_none_city_3():
+def location_none_city_3(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None):
 
 
-def location_none_city_4():
+def location_none_city_4(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None):
 
 
-def location_none_city_5():
+def location_none_city_5(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None):
 
 
-def location_difficult_1():
+def location_difficult_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
 
 
-def location_difficult_2():
+def location_difficult_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
 
 
-def location_difficult_3():
+def location_difficult_3(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
 
 
-def location_difficult_4():
+def location_difficult_4(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
 
 
-def location_difficult_5():
+def location_difficult_5(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
 
 
-def location_difficult_6():
+def location_difficult_6(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
 
 
-def location_difficult_7():
+def location_difficult_7(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
 
 
-def location_difficult_8():
+def location_difficult_8(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beaten = None):
 
 
-def location_none_yawning_1():
+def location_none_yawning_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None):
 
 
-def location_none_yawning_2():
+def location_none_yawning_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None):
 
 
-def location_none_yawning_3():
+def location_none_yawning_3(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, explored = None):
 
 
-def location_end():
+def location_end(player_pos, map_visual,  map_locations,  re_rolls, add, take_away):
 
 def play(map_visual, map_locations, player_pos, health, level, exp, stop, add, take_away, re_rolls)
 
