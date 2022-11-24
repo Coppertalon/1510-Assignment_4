@@ -49,8 +49,11 @@ def location_finder(player_pos, map_visual,  map_locations,  re_rolls, add, take
         location_none_city()
     if map_locations[player_pos[0]][player_pos[1]] == "y":
         location_none_yawning_portal()
+    elif map_locations[player_pos[0]][player_pos[1]] in ["p1", "p2", "c1", "c2", "c3", "c4", "c5", "y1", "y2", "y3"]:
+        explored()
     else:
         beaten()
+
 
 def location_none_port(player_pos, map_visual, map_locations, re_rolls, add, take_away, done):
     return map_visual, modify, gain
@@ -86,15 +89,30 @@ def beaten(player_pos, map_visual, map_locations):
     if map_locations[player_pos[0]][player_pos[1]] == "diff8": location_difficult_8()
 
 
+def explored(player_pos, map_visual, map_locations):
+    if map_locations[player_pos[0]][player_pos[1]] == "easy1": location_easy_bar_1()
+    if map_locations[player_pos[0]][player_pos[1]] == "easy2": location_easy_bar_2()
+    if map_locations[player_pos[0]][player_pos[1]] == "easy3": location_easy_bar_3()
+    if map_locations[player_pos[0]][player_pos[1]] == "easy4": location_easy_bar_4()
+    if map_locations[player_pos[0]][player_pos[1]] == "easy5": location_easy_bar_5()
+    if map_locations[player_pos[0]][player_pos[1]] == "diff1": location_difficult_1()
+    if map_locations[player_pos[0]][player_pos[1]] == "diff2": location_difficult_2()
+    if map_locations[player_pos[0]][player_pos[1]] == "diff3": location_difficult_3()
+    if map_locations[player_pos[0]][player_pos[1]] == "diff4": location_difficult_4()
+    if map_locations[player_pos[0]][player_pos[1]] == "diff5": location_difficult_5()
+    if map_locations[player_pos[0]][player_pos[1]] == "diff6": location_difficult_6()
+    if map_locations[player_pos[0]][player_pos[1]] == "diff7": location_difficult_7()
+    if map_locations[player_pos[0]][player_pos[1]] == "diff8": location_difficult_8()
 
 
-
-def location_start():
-    return
 
 
 def location_start_back(map_visual):
     return map_visual, modify, gain
+
+
+def location_start():
+    return
 
 
 def location_end(player_pos, map_visual, re_rolls, add, take_away):
