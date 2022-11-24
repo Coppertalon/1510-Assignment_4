@@ -50,9 +50,9 @@ def location_finder(player_pos, map_visual,  map_locations,  re_rolls, add, take
     if map_locations[player_pos[0]][player_pos[1]] == "y":
         location_none_yawning_portal()
     elif map_locations[player_pos[0]][player_pos[1]] in ["p1", "p2", "c1", "c2", "c3", "c4", "c5", "y1", "y2", "y3"]:
-        explored()
+        explored(player_pos, map_visual,  map_locations, True)
     else:
-        beaten()
+        beaten(player_pos, map_visual,  map_locations, True)
 
 
 def location_none_port(player_pos, map_visual, map_locations, re_rolls, add, take_away, done):
@@ -73,36 +73,56 @@ def location_hard(player_pos, map_visual, map_locations, re_rolls, add, take_awa
     return map_visual, map_locations, modify, gain, re_rolls, add, take_away,
 
 
-def beaten(player_pos, map_visual, map_locations):
-    if map_locations[player_pos[0]][player_pos[1]] == "easy1": location_easy_bar_1()
-    if map_locations[player_pos[0]][player_pos[1]] == "easy2": location_easy_bar_2()
-    if map_locations[player_pos[0]][player_pos[1]] == "easy3": location_easy_bar_3()
-    if map_locations[player_pos[0]][player_pos[1]] == "easy4": location_easy_bar_4()
-    if map_locations[player_pos[0]][player_pos[1]] == "easy5": location_easy_bar_5()
-    if map_locations[player_pos[0]][player_pos[1]] == "diff1": location_difficult_1()
-    if map_locations[player_pos[0]][player_pos[1]] == "diff2": location_difficult_2()
-    if map_locations[player_pos[0]][player_pos[1]] == "diff3": location_difficult_3()
-    if map_locations[player_pos[0]][player_pos[1]] == "diff4": location_difficult_4()
-    if map_locations[player_pos[0]][player_pos[1]] == "diff5": location_difficult_5()
-    if map_locations[player_pos[0]][player_pos[1]] == "diff6": location_difficult_6()
-    if map_locations[player_pos[0]][player_pos[1]] == "diff7": location_difficult_7()
-    if map_locations[player_pos[0]][player_pos[1]] == "diff8": location_difficult_8()
+def beaten(player_pos, map_visual, map_locations, beat):
+    if map_locations[player_pos[0]][player_pos[1]] == \
+            "easy1": location_easy_bar_1(player_pos, map_visual, map_locations, beat)
+    if map_locations[player_pos[0]][player_pos[1]] == \
+            "easy2": location_easy_bar_2(player_pos, map_visual, map_locations, beat)
+    if map_locations[player_pos[0]][player_pos[1]] == \
+            "easy3": location_easy_bar_3(player_pos, map_visual, map_locations, beat)
+    if map_locations[player_pos[0]][player_pos[1]] == \
+            "easy4": location_easy_bar_4(player_pos, map_visual, map_locations, beat)
+    if map_locations[player_pos[0]][player_pos[1]] == \
+            "easy5": location_easy_bar_5(player_pos, map_visual, map_locations, beat)
+    if map_locations[player_pos[0]][player_pos[1]] == \
+            "diff1": location_difficult_1(player_pos, map_visual, map_locations, beat)
+    if map_locations[player_pos[0]][player_pos[1]] == \
+            "diff2": location_difficult_2(player_pos, map_visual, map_locations, beat)
+    if map_locations[player_pos[0]][player_pos[1]] == \
+            "diff3": location_difficult_3(player_pos, map_visual, map_locations, beat)
+    if map_locations[player_pos[0]][player_pos[1]] == \
+            "diff4": location_difficult_4(player_pos, map_visual, map_locations, beat)
+    if map_locations[player_pos[0]][player_pos[1]] == \
+            "diff5": location_difficult_5(player_pos, map_visual, map_locations, beat)
+    if map_locations[player_pos[0]][player_pos[1]] == \
+            "diff6": location_difficult_6(player_pos, map_visual, map_locations, beat)
+    if map_locations[player_pos[0]][player_pos[1]] == \
+            "diff7": location_difficult_7(player_pos, map_visual, map_locations, beat)
+    if map_locations[player_pos[0]][player_pos[1]] == \
+            "diff8": location_difficult_8(player_pos, map_visual, map_locations, beat)
 
 
-def explored(player_pos, map_visual, map_locations):
-    if map_locations[player_pos[0]][player_pos[1]] == "easy1": location_easy_bar_1()
-    if map_locations[player_pos[0]][player_pos[1]] == "easy2": location_easy_bar_2()
-    if map_locations[player_pos[0]][player_pos[1]] == "easy3": location_easy_bar_3()
-    if map_locations[player_pos[0]][player_pos[1]] == "easy4": location_easy_bar_4()
-    if map_locations[player_pos[0]][player_pos[1]] == "easy5": location_easy_bar_5()
-    if map_locations[player_pos[0]][player_pos[1]] == "diff1": location_difficult_1()
-    if map_locations[player_pos[0]][player_pos[1]] == "diff2": location_difficult_2()
-    if map_locations[player_pos[0]][player_pos[1]] == "diff3": location_difficult_3()
-    if map_locations[player_pos[0]][player_pos[1]] == "diff4": location_difficult_4()
-    if map_locations[player_pos[0]][player_pos[1]] == "diff5": location_difficult_5()
-    if map_locations[player_pos[0]][player_pos[1]] == "diff6": location_difficult_6()
-    if map_locations[player_pos[0]][player_pos[1]] == "diff7": location_difficult_7()
-    if map_locations[player_pos[0]][player_pos[1]] == "diff8": location_difficult_8()
+def explored(player_pos, map_visual, map_locations, found):
+    if map_locations[player_pos[0]][player_pos[1]] == "p1":
+        location_none_port_1(player_pos, map_visual, map_locations, found)
+    if map_locations[player_pos[0]][player_pos[1]] == "p2":
+        location_none_port_2(player_pos, map_visual, map_locations, found)
+    if map_locations[player_pos[0]][player_pos[1]] == "c1":
+        location_none_city_1(player_pos, map_visual, map_locations, found)
+    if map_locations[player_pos[0]][player_pos[1]] == "c2":
+        location_none_city_2(player_pos, map_visual, map_locations, found)
+    if map_locations[player_pos[0]][player_pos[1]] == "c3":
+        location_none_city_3(player_pos, map_visual, map_locations, found)
+    if map_locations[player_pos[0]][player_pos[1]] == "c4":
+        location_none_city_4(player_pos, map_visual, map_locations, found)
+    if map_locations[player_pos[0]][player_pos[1]] == "c5":
+        location_none_city_5(player_pos, map_visual, map_locations, found)
+    if map_locations[player_pos[0]][player_pos[1]] == "y1":
+        location_none_yawning_1(player_pos, map_visual, map_locations, found)
+    if map_locations[player_pos[0]][player_pos[1]] == "y2":
+        location_none_yawning_2(player_pos, map_visual, map_locations, found)
+    if map_locations[player_pos[0]][player_pos[1]] == "y3":
+        location_none_yawning_3(player_pos, map_visual, map_locations, found)
 
 
 
@@ -186,7 +206,7 @@ def win():
 def location_none_port_1():
 
 
-def location_none_port_1():
+def location_none_port_2():
 
 
 def location_easy_bar_1():
