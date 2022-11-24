@@ -1,4 +1,4 @@
-def map_display(player_pos, map_visual, health, level, exp):
+def map_display(player_pos, map_visual, health, level, exp, re_rolls,  add, take_away):
     for height in range(len(map_visual)):
         for width in range(len(map_visual)):
             if width == player_pos[0] and height == player_pos[1]:
@@ -55,22 +55,19 @@ def location_finder(player_pos, map_visual,  map_locations,  re_rolls, add, take
         beaten(player_pos, map_visual,  map_locations, True)
 
 
-def location_none_port(player_pos, map_visual, map_locations, re_rolls, add, take_away, done):
-    return map_visual, modify, gain
-
-def location_none_city(player_pos, map_visual, map_locations, re_rolls, add, take_away, done):
-    return map_visual, modify, gain
-
-def location_none_yawning_portal(player_pos, map_visual, map_locations, re_rolls, add, take_away, done):
-    return map_visual, modify, gain
+def location_none_port(player_pos, map_visual, map_locations, re_rolls, add, take_away):
 
 
-def location_easy(player_pos, map_visual, map_locations, re_rolls, add, take_away, done):
-    return map_visual, modify, gain
+def location_none_city(player_pos, map_visual, map_locations, re_rolls, add, take_away):
 
 
-def location_hard(player_pos, map_visual, map_locations, re_rolls, add, take_away, done):
-    return map_visual, map_locations, modify, gain, re_rolls, add, take_away,
+def location_none_yawning_portal(player_pos, map_visual, map_locations, re_rolls, add, take_away):
+
+
+def location_easy(player_pos, map_visual, map_locations, re_rolls, add, take_away):
+
+
+def location_hard(player_pos, map_visual, map_locations, re_rolls, add, take_away):
 
 
 def beaten(player_pos, map_visual, map_locations, beat):
@@ -125,31 +122,15 @@ def explored(player_pos, map_visual, map_locations, found):
         location_none_yawning_3(player_pos, map_visual, map_locations, found)
 
 
-
-
-def location_start_back(map_visual):
-    return map_visual, modify, gain
-
-
-def location_start():
-    return
-
-
-def location_end(player_pos, map_visual, re_rolls, add, take_away):
-    return map_visual, modify, gain
-
-
 def player_health(modify, health):
-    if modify == 1:
-        health += 1
-        if health > 3:
-            health = 3
-        print(health)
-        return health
-
     if modify == -1:
         health -= 1
-        print(health)
+        print("lose health message")
+        return health
+
+    if modify == -2:
+        health -= 2
+        print("lose to boss method")
         return health
 
     if modify == 0:
@@ -157,20 +138,18 @@ def player_health(modify, health):
 
 
 def experience(gain, level, exp):
-    if gain == 0:
-        return
+    if gain != 1:
+        return level, exp, False
     if gain == 1:
         exp += 1
         if level == 1 and exp == 4:
             level = 2
             exp = 0
-            up = True
-            return level, exp, up
+            return level, exp, True
         if level == 2 and exp == 6:
             level = 3
             exp = 0
-            up = True
-            return level, exp, up
+            return level, exp, True
         else:
             up = False
             return level, exp, up
@@ -179,28 +158,34 @@ def experience(gain, level, exp):
 def level_up(health, level, re_rolls, add, take_away):
     if level == 2:
         print("level up 2 message")
-    if level == 2:
+    if level == 3:
         print("level up 3 message")
-    player_health(1, health)
-
+    if health <= 3:
+        health += 1
     if re_rolls <= level:
         re_rolls += 1
     if re_rolls < level:
         add += 1
     if re_rolls < level:
         take_away += 1
+    return
 
 
 def lose():
     print("lose text")
-    stop = 1
     return False
 
 
 def win():
     print("win text")
-    stop = 1
     return False
+
+
+def location_start():
+    return
+
+
+def location_start_back():
 
 
 def location_none_port_1():
@@ -268,7 +253,11 @@ def location_none_yawning_1():
 
 def location_none_yawning_2():
 
+
 def location_none_yawning_3():
+
+
+def location_end():
 
 def play(map_visual, map_locations, player_pos, health, level, exp, stop, add, take_away, re_rolls)
 
@@ -285,25 +274,30 @@ def play(map_visual, map_locations, player_pos, health, level, exp, stop, add, t
         if health < 1:
             stop = lose()
 
-        if modify == 2 and gain == 2:
+        if gain == 2:
             stop = win()
 
         level, exp, up = experience(gain, level, exp)
+
         if up:
-            level_up(health, level, re_rolls, add, take_away)
+            health, level, re_rolls, add, take_away = level_up(health, level, re_rolls, add, take_away)
+
     return
 
 
 def var():
-    map_visual = [["*", "*", "*", "*", "*"], ["*", "*", "*", "*", "*"], ["*", "*", "*", "*", "*"],
-                  ["*", "*", "*", "*", "*"], ["*", "*", "*", "*", "*"]]
-
+    map_visual = [["*", "*", "*", "*", "*"],
+                  ["*", "*", "*", "*", "*"],
+                  ["*", "*", "*", "*", "*"],
+                  ["*", "*", "*", "*", "*"],
+                  ["*", "*", "*", "*", "*"]]
 
     map_locations = [["3", "3", "3", "y", "4"],
                      ["c", "c", "3", "y", "y"],
                      ["2", "2", "c", "3", "3"],
                      ["p", "2", "2", "c", "3"],
                      ["1", "p", "2", "c", "3"]]
+
     player_pos = [0, 4]
     health = 3
     level = 1
