@@ -76,7 +76,6 @@ def location_hard(maps, player_character):
 
 def beaten(maps, player_character, beat):
     location = maps["map_locations": [[player_character["player_pos"[0]]][player_character["player_pos"[1]]]]]
-
     return location()
 
 
