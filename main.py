@@ -186,79 +186,79 @@ def location_start():
 
 
 def location_start_back(player_pos, map_visual,  map_locations,  re_rolls, add, take_away):
-
+    return
 
 def location_none_port_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None):
-
+    return
 
 def location_none_port_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None):
-
+    return
 
 def location_easy_bar_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
-
+    return
 
 def location_easy_bar_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
-
+    return
 
 def location_easy_bar_3(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
-
+    return
 
 def location_easy_bar_4(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
-
+    return
 
 def location_easy_bar_5(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
-
+    return
 
 def location_none_city_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None):
-
+    return
 
 def location_none_city_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None ):
-
+    return
 
 def location_none_city_3(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None):
-
+    return
 
 def location_none_city_4(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None):
-
+    return
 
 def location_none_city_5(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None):
-
+    return
 
 def location_difficult_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
-
+    return
 
 def location_difficult_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
-
+    return
 
 def location_difficult_3(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
-
+    return
 
 def location_difficult_4(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
-
+    return
 
 def location_difficult_5(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
-
+    return
 
 def location_difficult_6(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
-
+    return
 
 def location_difficult_7(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
-
+    return
 
 def location_difficult_8(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, beat = None):
-
+    return
 
 def location_none_yawning_1(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None):
-
+    return
 
 def location_none_yawning_2(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None):
-
+    return
 
 def location_none_yawning_3(player_pos, map_visual,  map_locations,  re_rolls, add, take_away, found = None):
-
+    return
 
 def location_end(player_pos, map_visual,  map_locations,  re_rolls, add, take_away):
-
+    return
 
 
 def play(map_visual, map_locations, player_pos, health, level, exp, stop, add, take_away, re_rolls):
