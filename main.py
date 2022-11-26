@@ -356,6 +356,85 @@ def location_end(maps, player_character):
     return maps, player_character
 
 
+def game_set_up(player_character):
+    rolls = [random.randint(1, 6), random.randint(1, 6), random.randint(1, 6)]
+    print(rolls)
+    total = rolls[0] + rolls[1] + rolls[2]
+    action = "roll"
+    roll = rolls[2]
+    while total < 21 and action != "hold":
+        print(total)
+        total, roll, action, player_character = game_choices(player_character, total, roll)
+
+    return total, player_character
+
+
+def game_choices(player_character, total, roll):
+    choices1 = ["1", "2", "3"]
+    choices2 = ["1", "2", "3", "4", "5"]
+
+    if player_character["level"] == 1:
+        choice = input("choices 1")
+    else:
+        choice = input("choices 2")
+
+    if (choice in choices1 and player_character["level"] == 1) or (
+            choice in choices2 and player_character["level"] > 1):
+        total, roll, action, player_character, = game_actions(total, roll, choice, player_character)
+        return total, roll, action, player_character
+
+    else:
+        print("bad choice")
+        return total, roll, "none", player_character
+
+
+def game_actions(total, roll, action, player_character):
+    if action == "1":
+        return rolling(total, roll, action, player_character)
+
+    elif action == "2" and player_character["re_rolls"] > 0:
+        return rolling(total, roll, action, player_character)
+
+    elif action == "3":
+        return total, roll, "none", player_character
+
+    elif action == "4" and player_character["add"] > 0:
+        return total_modify(total, roll, action, player_character)
+
+    elif action == "5" and player_character["take_away"] > 0:
+        return total_modify(total, roll, action, player_character)
+
+    else:
+        print("you can't do that")
+        return total, roll, "none", player_character
+
+
+def rolling(total, roll, action, player_character):
+    if action == "1":
+        roll = random.randint(1, 6)
+        total += roll
+        return total, roll, "hold", player_character
+
+    elif action == "2":
+        total -= roll
+        roll = random.randint(1, 6)
+        total += roll
+        player_character["re_rolls"] -= 1
+        return total, roll, "none", player_character
+
+
+def total_modify(total, roll, action, player_character):
+    if action == "4":
+        total += 1
+        player_character["add"] -= 1
+        return total, roll, "none", player_character
+
+    if action == "5":
+        total -= 1
+        player_character["take_away"] -= 1
+        return total, roll, "none", player_character
+
+
 def play(maps, player_character, stop):
     # location_start()
     while stop:
