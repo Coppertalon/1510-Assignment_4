@@ -1,47 +1,13 @@
 import random
 
 
-def map_display(maps, player_character):
-    for height in range(len(maps["map_visual"])):
-        for width in range(len(maps["map_visual"])):
-            if height == player_character["player_pos"][0] and width == player_character["player_pos"][1]:
-                print("#", end="")
-            else:
-                print(maps["map_visual"][height][width], end="")
-        print("")
-    print("Legend:  * = Unexplored,    # = Player,    ! = Found Bar,   @ = Beaten Bar,")
-    print("Legend:  O = Your Ship,    X = Yawning Portal,    P = Found Port,   C = Found City,")
-    print("Stats:  Renown:" + player_character["level"] + "reputation: " + player_character["exp"] +
-          "Credibility" + player_character["health"])
-    print("Level 1 Skills:  re-rolls: " + player_character["re_rolls"])
+def win():
+    print("win text")
+    return False
 
-    if player_character["level"] > 1:
-        print("Level 2 Skills:  add 1 to roll:" + player_character["add"] +
-              "remove 1 from roll:" + player_character["take_away"])
-    return
-
-
-def move(player_character):
-    valid_moves = ["n", "s", "e", "w"]
-    movement = ""
-    while movement not in valid_moves:
-        movement = input("movement \n")
-
-        if movement.lower() in valid_moves:
-            if movement == "n":
-                player_character["player_pos"][0] += -1
-            elif movement == "s":
-                player_character["player_pos"][0] += 1
-            elif movement == "w":
-                player_character["player_pos"][1] -= 1
-            elif movement == "e":
-                player_character["player_pos"][1] += 1
-            else:
-                print('"' + movement + '"' + " is an invalid movement. Please try again")
-
-        else:
-            print('"' + movement + '"' + " is an invalid movement. Please try again")
-    return player_character
+def lose():
+    print("lose text")
+    return False
 
 
 def location_finder(maps, player_character):
@@ -61,9 +27,9 @@ def location_finder(maps, player_character):
     if location == "y":
         return location_yawning_portal(maps, player_character)
     elif maps["map_beat"][player_character["player_pos"][0]][player_character["player_pos"][1]] == "0":
-        return returned(maps, player_character, False)
+        return return_location(maps, player_character, False)
     elif maps["map_beat"][player_character["player_pos"][0]][player_character["player_pos"][1]] == "1":
-        return returned(maps, player_character, True)
+        return return_location(maps, player_character, True)
 
 
 def location_port(maps, player_character):
@@ -101,78 +67,30 @@ def location_hard(maps, player_character):
     return location(maps, player_character)
 
 
-def returned(maps, player_character, beat):
+def return_location(maps, player_character, beat):
     location = maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]]
     return location(maps, player_character, beat)
 
 
-def health(battle_result, player_character):
-    if battle_result == -1:
-        player_character["health"] -= 1
-        print("lose health message")
-        return player_character["health"]
-
-    if battle_result == -2:
-        player_character["health"] -= 2
-        print("lose to boss method")
-        return player_character["health"]
-
-    else:
-        return player_character["health"]
-
-
-def experience(battle_result, player_character):
-    if battle_result == 1:
-        player_character["exp"] += 1
-
-        if player_character["level"] == 1 and player_character["exp"] == 4:
-            player_character["level"] = 2
-            player_character["exp"] = 0
-            return player_character, True
-
-        if player_character["level"] == 2 and player_character["exp"] == 6:
-            player_character["level"] = 3
-            player_character["exp"] = 0
-            return player_character, True
-    else:
-        return player_character, False
+def dont_use_location(maps, player_character, location_type):
+    if location_type == "easy":
+        print("too east")
+        return maps, player_character, 0
+    if location_type == "hard":
+        print("too hard")
+        return maps, player_character, 0
+    if location_type == "explored":
+        print("explored")
+        return maps, player_character, 0
+    if location_type == "beat":
+        print("beaten")
+        return maps, player_character, 0
 
 
-def level_up(player_character):
-    if player_character["level"] == 2:
-        print("level up 2 message")
-
-    if player_character["level"] == 3:
-        print("level up 3 message")
-
-    if player_character["health"] <= 3:
-        player_character["health"] += 1
-
-    if player_character["re_rolls"] <= player_character["level"]:
-        player_character["re_rolls"] += 1
-
-    if player_character["take_away"] < player_character["level"]:
-        player_character["take_away"] += 1
-
-    if player_character["add"] < player_character["level"]:
-        player_character["add"] += 1
-
-    return player_character
-
-
-def lose():
-    print("lose text")
-    return False
-
-
-def win():
-    print("win text")
-    return False
-
-
-def location_start():
-    print("start tutorial")
-    return
+def mark_location(maps, player_character, location_name, location_name_map):
+    maps["map_visual"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_name_map
+    maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_name
+    return maps
 
 
 def location_start_back(maps, player_character):
@@ -589,20 +507,9 @@ def location_end(maps, player_character):
     return maps, player_character
 
 
-def dont_use_location(maps, player_character, location_type):
-    if location_type == "easy":
-        print("too east")
-        return maps, player_character, 0
-    if location_type == "hard":
-        print("too hard")
-        return maps, player_character, 0
-    if location_type == "explored":
-        print("explored")
-        return maps, player_character, 0
-    if location_type == "beat":
-        print("beaten")
-        return maps, player_character, 0
-
+def location_start():
+    print("start tutorial")
+    return
 
 
 def game_set_up(player_character):
@@ -684,6 +591,103 @@ def total_modify(total, roll, action, player_character):
         total -= 1
         player_character["take_away"] -= 1
         return total, roll, "none", player_character
+
+
+def move(player_character):
+    valid_moves = ["n", "s", "e", "w"]
+    movement = ""
+    while movement not in valid_moves:
+        movement = input("movement \n")
+
+        if movement.lower() in valid_moves:
+            if movement == "n":
+                player_character["player_pos"][0] += -1
+            elif movement == "s":
+                player_character["player_pos"][0] += 1
+            elif movement == "w":
+                player_character["player_pos"][1] -= 1
+            elif movement == "e":
+                player_character["player_pos"][1] += 1
+            else:
+                print('"' + movement + '"' + " is an invalid movement. Please try again")
+
+        else:
+            print('"' + movement + '"' + " is an invalid movement. Please try again")
+    return player_character
+
+
+def health(battle_result, player_character):
+    if battle_result == -1:
+        player_character["health"] -= 1
+        print("lose health message")
+        return player_character["health"]
+
+    if battle_result == -2:
+        player_character["health"] -= 2
+        print("lose to boss method")
+        return player_character["health"]
+
+    else:
+        return player_character["health"]
+
+
+def experience(battle_result, player_character):
+    if battle_result == 1:
+        player_character["exp"] += 1
+
+        if player_character["level"] == 1 and player_character["exp"] == 4:
+            player_character["level"] = 2
+            player_character["exp"] = 0
+            return player_character, True
+
+        if player_character["level"] == 2 and player_character["exp"] == 6:
+            player_character["level"] = 3
+            player_character["exp"] = 0
+            return player_character, True
+    else:
+        return player_character, False
+
+
+def level_up(player_character):
+    if player_character["level"] == 2:
+        print("level up 2 message")
+
+    if player_character["level"] == 3:
+        print("level up 3 message")
+
+    if player_character["health"] <= 3:
+        player_character["health"] += 1
+
+    if player_character["re_rolls"] <= player_character["level"]:
+        player_character["re_rolls"] += 1
+
+    if player_character["take_away"] < player_character["level"]:
+        player_character["take_away"] += 1
+
+    if player_character["add"] < player_character["level"]:
+        player_character["add"] += 1
+
+    return player_character
+
+
+def map_display(maps, player_character):
+    for height in range(len(maps["map_visual"])):
+        for width in range(len(maps["map_visual"])):
+            if height == player_character["player_pos"][0] and width == player_character["player_pos"][1]:
+                print("#", end="")
+            else:
+                print(maps["map_visual"][height][width], end="")
+        print("")
+    print("Legend:  * = Unexplored,    # = Player,    ! = Found Bar,   @ = Beaten Bar,")
+    print("Legend:  O = Your Ship,    X = Yawning Portal,    P = Found Port,   C = Found City,")
+    print("Stats:  Renown:" + player_character["level"] + "reputation: " + player_character["exp"] +
+          "Credibility" + player_character["health"])
+    print("Level 1 Skills:  re-rolls: " + player_character["re_rolls"])
+
+    if player_character["level"] > 1:
+        print("Level 2 Skills:  add 1 to roll:" + player_character["add"] +
+              "remove 1 from roll:" + player_character["take_away"])
+    return
 
 
 def play(maps, player_character, stop):
