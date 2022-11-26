@@ -116,10 +116,12 @@ def health(battle_result, player_character):
 def experience(battle_result, player_character):
     if battle_result == 1:
         player_character["exp"] += 1
+
         if player_character["level"] == 1 and player_character["exp"] == 4:
             player_character["level"] = 2
             player_character["exp"] = 0
             return player_character, True
+
         if player_character["level"] == 2 and player_character["exp"] == 6:
             player_character["level"] = 3
             player_character["exp"] = 0
@@ -131,16 +133,22 @@ def experience(battle_result, player_character):
 def level_up(player_character):
     if player_character["level"] == 2:
         print("level up 2 message")
+
     if player_character["level"] == 3:
         print("level up 3 message")
+
     if player_character["health"] <= 3:
         player_character["health"] += 1
+
     if player_character["re_rolls"] <= player_character["level"]:
         player_character["re_rolls"] += 1
+
     if player_character["take_away"] < player_character["level"]:
         player_character["take_away"] += 1
+
     if player_character["add"] < player_character["level"]:
         player_character["add"] += 1
+
     return player_character
 
 
@@ -649,15 +657,15 @@ def play(maps, player_character, stop):
 
         maps, player_character, result = location_finder(maps, player_character)
 
-        # player_character = health(result, player_character)
-        # player_character, up = experience(result, player_character)
-        #
-        # if up:
-        #     player_character = level_up(player_character)
-        #
-        # if player_character["health"] < 1:
-        #     stop = lose()
-        #
+        player_character = health(result, player_character)
+        player_character, up = experience(result, player_character)
+
+        if up:
+            player_character = level_up(player_character)
+
+        if player_character["health"] < 1:
+            stop = lose()
+
         # if result == 2:
         #     stop = win()
     return
