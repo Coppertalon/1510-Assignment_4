@@ -9,7 +9,15 @@ def map_display(maps, player_character):
             else:
                 print(maps["map_visual"][height][width], end="")
         print("")
-    print("Legend:")
+    print("Legend:  * = Unexplored,    # = Player,    ! = Found Bar,   @ = Beaten Bar,")
+    print("Legend:  O = Your Ship,    X = Yawning Portal,    P = Found Port,   C = Found City,")
+    print("Stats:  Renown:" + player_character["level"] + "reputation: " + player_character["exp"] +
+          "Credibility" + player_character["health"])
+    print("Level 1 Skills:  re-rolls: " + player_character["re_rolls"])
+
+    if player_character["level"] > 1:
+        print("Level 2 Skills:  add 1 to roll:" + player_character["add"] +
+              "remove 1 from roll:" + player_character["take_away"])
     return
 
 
@@ -554,7 +562,7 @@ def location_yawning_1(maps, player_character, found=None):
     maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_yawning_1
     print("yawn_1")
     if found:
-        return dont_use_location(maps, player_character, "explored")
+        return dont_use_location(maps, player_character, "found")
     return maps, player_character, 0
 
 
@@ -562,7 +570,7 @@ def location_yawning_2(maps, player_character, found=None):
     maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_yawning_2
     print("yawn_2")
     if found:
-        return dont_use_location(maps, player_character, "explored")
+        return dont_use_location(maps, player_character, "found")
     return maps, player_character, 0
 
 
@@ -570,7 +578,7 @@ def location_yawning_3(maps, player_character, found=None):
     maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_yawning_3
     print("yawn_3")
     if found:
-        return dont_use_location(maps, player_character, "explored")
+        return dont_use_location(maps, player_character, "found")
     else:
         return maps, player_character, 0
 
@@ -591,7 +599,7 @@ def dont_use_location(maps, player_character, location_type):
     if location_type == "explored":
         print("explored")
         return maps, player_character, 0
-    if location_type == "beaten":
+    if location_type == "beat":
         print("beaten")
         return maps, player_character, 0
 
