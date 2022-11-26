@@ -98,25 +98,23 @@ def returned(maps, player_character, beat):
     return location(maps, player_character, beat)
 
 
-def player_health(battle_health, player_character):
-    if battle_health == -1:
+def health(battle_result, player_character):
+    if battle_result == -1:
         player_character["health"] -= 1
         print("lose health message")
         return player_character["health"]
 
-    if battle_health == -2:
+    if battle_result == -2:
         player_character["health"] -= 2
         print("lose to boss method")
         return player_character["health"]
 
-    if battle_health == 0:
+    else:
         return player_character["health"]
 
 
-def experience(battle_exp, player_character):
-    if battle_exp != 1:
-        return player_character, False
-    if battle_exp == 1:
+def experience(battle_result, player_character):
+    if battle_result == 1:
         player_character["exp"] += 1
         if player_character["level"] == 1 and player_character["exp"] == 4:
             player_character["level"] = 2
@@ -126,9 +124,8 @@ def experience(battle_exp, player_character):
             player_character["level"] = 3
             player_character["exp"] = 0
             return player_character, True
-        else:
-            up = False
-            return player_character, up
+    else:
+        return player_character, False
 
 
 def level_up(player_character):
@@ -164,7 +161,7 @@ def location_start():
 
 def location_start_back(maps, player_character):
     print("start")
-    return maps, player_character
+    return maps, player_character, 0
 
 
 def location_port_1(maps, player_character, beat=None):
@@ -172,7 +169,7 @@ def location_port_1(maps, player_character, beat=None):
     print("port_1")
     if beat:
         print("return")
-    return maps, player_character
+    return maps, player_character, 0
 
 
 def location_port_2(maps, player_character, beat=None):
@@ -180,47 +177,126 @@ def location_port_2(maps, player_character, beat=None):
     print("port_2")
     if beat:
         print("return")
-    return maps, player_character
+    return maps, player_character, 0
 
 
 def location_easy_1(maps, player_character, beat=None):
     maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_easy_1
     print("easy_1")
+    print("player stats")
+
     if beat:
         print("return")
-    return maps, player_character
+
+    choice = input("play or leave")
+
+    if choice == "play":
+        print("start")
+        roll, player_character = game_set_up(player_character)
+        if 10 < roll < 21:
+            print("win")
+            return maps, player_character, 1
+        else:
+            print("lose")
+            return maps, player_character, -1
+
+    else:
+        return maps, player_character, 0
 
 
 def location_easy_2(maps, player_character, beat=None):
     maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_easy_2
-    print("easy_2")
+    print("player stats")
+
     if beat:
         print("return")
-    return maps, player_character
+
+    choice = input("play or leave")
+
+    if choice == "play":
+        print("start")
+        roll, player_character = game_set_up(player_character)
+        if 10 < roll < 21:
+            print("win")
+            return maps, player_character, 1
+        else:
+            print("lose")
+            return maps, player_character, -1
+
+    else:
+        return maps, player_character, 0
 
 
 def location_easy_3(maps, player_character, beat=None):
     maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_easy_3
     print("easy_3")
+    print("player stats")
+
     if beat:
         print("return")
-    return maps, player_character
+
+    choice = input("play or leave")
+
+    if choice == "play":
+        print("start")
+        roll, player_character = game_set_up(player_character)
+        if 10 < roll < 21:
+            print("win")
+            return maps, player_character, 1
+        else:
+            print("lose")
+            return maps, player_character, -1
+
+    else:
+        return maps, player_character, 0
 
 
 def location_easy_4(maps, player_character, beat=None):
     maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_easy_4
     print("easy_4")
+    print("player stats")
+
     if beat:
         print("return")
-    return maps, player_character
+
+    choice = input("play or leave")
+
+    if choice == "play":
+        print("start")
+        roll, player_character = game_set_up(player_character)
+        if 10 < roll < 21:
+            print("win")
+            return maps, player_character, 1
+        else:
+            print("lose")
+            return maps, player_character, -1
+
+    else:
+        return maps, player_character, 0
 
 
 def location_easy_5(maps, player_character, beat=None):
     maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_easy_5
     print("easy_5")
+    print("player stats")
+
     if beat:
         print("return")
-    return maps, player_character
+
+    choice = input("play or leave")
+
+    if choice == "play":
+        print("start")
+        roll, player_character = game_set_up(player_character)
+        if 10 < roll < 21:
+            print("win")
+            return maps, player_character, 1
+        else:
+            print("lose")
+            return maps, player_character, -1
+
+    else:
+        return maps, player_character, 0
 
 
 def location_city_1(maps, player_character, beat=None):
@@ -228,7 +304,7 @@ def location_city_1(maps, player_character, beat=None):
     print("city_1")
     if beat:
         print("return")
-    return maps, player_character
+    return maps, player_character, 0
 
 
 def location_city_2(maps, player_character, beat=None):
@@ -236,7 +312,7 @@ def location_city_2(maps, player_character, beat=None):
     print("city_2")
     if beat:
         print("return")
-    return maps, player_character
+    return maps, player_character, 0
 
 
 def location_city_3(maps, player_character, beat=None):
@@ -244,7 +320,7 @@ def location_city_3(maps, player_character, beat=None):
     print("city_3")
     if beat:
         print("return")
-    return maps, player_character
+    return maps, player_character, 0
 
 
 def location_city_4(maps, player_character, beat=None):
@@ -252,7 +328,7 @@ def location_city_4(maps, player_character, beat=None):
     print("city_4")
     if beat:
         print("return")
-    return maps, player_character
+    return maps, player_character, 0
 
 
 def location_city_5(maps, player_character, beat=None):
@@ -260,71 +336,197 @@ def location_city_5(maps, player_character, beat=None):
     print("city_5")
     if beat:
         print("return")
-    return maps, player_character
+    return maps, player_character, 0
 
 
 def location_difficult_1(maps, player_character, beat=None):
     maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_difficult_1
     print("difficult_1")
+    print("player stats")
+
     if beat:
         print("return")
-    return maps, player_character
+
+    choice = input("play or leave")
+
+    if choice == "play":
+        print("start")
+        roll, player_character = game_set_up(player_character)
+        if 10 < roll < 21:
+            print("win")
+            return maps, player_character, 1
+        else:
+            print("lose")
+            return maps, player_character, -1
+
+    else:
+        return maps, player_character, 0
 
 
 def location_difficult_2(maps, player_character, beat=None):
     maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_difficult_2
     print("difficult_2")
+    print("player stats")
+
     if beat:
         print("return")
-    return maps, player_character
 
+    choice = input("play or leave")
+
+    if choice == "play":
+        print("start")
+        roll, player_character = game_set_up(player_character)
+        if 10 < roll < 21:
+            print("win")
+            return maps, player_character, 1
+        else:
+            print("lose")
+            return maps, player_character, -1
+
+    else:
+        return maps, player_character, 0
 
 def location_difficult_3(maps, player_character, beat=None):
     maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_difficult_3
     print("difficult_3")
+    print("player stats")
+
     if beat:
         print("return")
-    return maps, player_character
 
+    choice = input("play or leave")
+
+    if choice == "play":
+        print("start")
+        roll, player_character = game_set_up(player_character)
+        if 10 < roll < 21:
+            print("win")
+            return maps, player_character, 1
+        else:
+            print("lose")
+            return maps, player_character, -1
+
+    else:
+        return maps, player_character, 0
 
 def location_difficult_4(maps, player_character, beat=None):
     maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_difficult_4
     print("difficult_4")
+    print("player stats")
+
     if beat:
         print("return")
-    return maps, player_character
+
+    choice = input("play or leave")
+
+    if choice == "play":
+        print("start")
+        roll, player_character = game_set_up(player_character)
+        if 10 < roll < 21:
+            print("win")
+            return maps, player_character, 1
+        else:
+            print("lose")
+            return maps, player_character, -1
+
+    else:
+        return maps, player_character, 0
 
 
 def location_difficult_5(maps, player_character, beat=None):
     maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_difficult_5
     print("difficult_5")
+    print("player stats")
+
     if beat:
         print("return")
-    return maps, player_character
+
+    choice = input("play or leave")
+
+    if choice == "play":
+        print("start")
+        roll, player_character = game_set_up(player_character)
+        if 10 < roll < 21:
+            print("win")
+            return maps, player_character, 1
+        else:
+            print("lose")
+            return maps, player_character, -1
+
+    else:
+        return maps, player_character, 0
 
 
 def location_difficult_6(maps, player_character, beat=None):
     maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_difficult_6
     print("difficult_6")
+    print("player stats")
+
     if beat:
         print("return")
-    return maps, player_character
+
+    choice = input("play or leave")
+
+    if choice == "play":
+        print("start")
+        roll, player_character = game_set_up(player_character)
+        if 10 < roll < 21:
+            print("win")
+            return maps, player_character, 1
+        else:
+            print("lose")
+            return maps, player_character, -1
+
+    else:
+        return maps, player_character, 0
 
 
 def location_difficult_7(maps, player_character, beat=None):
     maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_difficult_7
     print("difficult_7")
+    print("player stats")
+
     if beat:
         print("return")
-    return maps, player_character
+
+    choice = input("play or leave")
+
+    if choice == "play":
+        print("start")
+        roll, player_character = game_set_up(player_character)
+        if 10 < roll < 21:
+            print("win")
+            return maps, player_character, 1
+        else:
+            print("lose")
+            return maps, player_character, -1
+
+    else:
+        return maps, player_character, 0
 
 
 def location_difficult_8(maps, player_character, beat=None):
     maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_difficult_8
     print("difficult_8")
+    print("player stats")
+
     if beat:
         print("return")
-    return maps, player_character
+
+    choice = input("play or leave")
+
+    if choice == "play":
+        print("start")
+        roll, player_character = game_set_up(player_character)
+        if 10 < roll < 21:
+            print("win")
+            return maps, player_character, 1
+        else:
+            print("lose")
+            return maps, player_character, -1
+
+    else:
+        return maps, player_character, 0
 
 
 def location_yawning_1(maps, player_character, beat=None):
@@ -332,7 +534,7 @@ def location_yawning_1(maps, player_character, beat=None):
     print("yawn_1")
     if beat:
         print("return")
-    return maps, player_character
+    return maps, player_character, 0
 
 
 def location_yawning_2(maps, player_character, beat=None):
@@ -340,7 +542,7 @@ def location_yawning_2(maps, player_character, beat=None):
     print("yawn_2")
     if beat:
         print("return")
-    return maps, player_character
+    return maps, player_character, 0
 
 
 def location_yawning_3(maps, player_character, beat=None):
@@ -348,11 +550,12 @@ def location_yawning_3(maps, player_character, beat=None):
     print("yawn_3")
     if beat:
         print("return")
-    return maps, player_character
+    return maps, player_character, 0
 
 
 def location_end(maps, player_character):
     print("end")
+    roll, player_character = game_set_up(player_character)
     return maps, player_character
 
 
@@ -444,19 +647,18 @@ def play(maps, player_character, stop):
         player_character = move(player_character)
         map_display(maps, player_character)
 
-        maps, player_character = location_finder(maps, player_character)
+        maps, player_character, result = location_finder(maps, player_character)
 
-        # battle_health, battle_exp
-        # player_character = player_health(battle_health, player_character)
+        # player_character = health(result, player_character)
+        # player_character, up = experience(result, player_character)
         #
-        # player_character, up = experience(battle_exp, player_character)
         # if up:
         #     player_character = level_up(player_character)
         #
         # if player_character["health"] < 1:
         #     stop = lose()
         #
-        # if battle_exp == 2:
+        # if result == 2:
         #     stop = win()
     return
 
