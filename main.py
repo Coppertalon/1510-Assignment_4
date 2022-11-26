@@ -394,6 +394,7 @@ def location_difficult_2(maps, player_character, beat=None):
     else:
         return maps, player_character, 0
 
+
 def location_difficult_3(maps, player_character, beat=None):
     maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_difficult_3
     print("difficult_3")
@@ -416,6 +417,7 @@ def location_difficult_3(maps, player_character, beat=None):
 
     else:
         return maps, player_character, 0
+
 
 def location_difficult_4(maps, player_character, beat=None):
     maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]] = location_difficult_4
