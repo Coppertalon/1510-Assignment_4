@@ -546,13 +546,14 @@ def location_end(maps, player_character):
     return maps, player_character
 
 
-def location_start():
+def location_start(player_character, maps):
+    mark_location(player_character, maps, "1", "O")
     print("start tutorial")
     return
 
 
 def game_set_up(player_character):
-    rolls = [random.randint(1, 6), random.randint(1, 6), random.randint(1, 6)]
+    rolls = [random.randint(1, 6) for index in range(3)]
     print(rolls)
     total = rolls[0] + rolls[1] + rolls[2]
     action = "roll"
@@ -730,7 +731,7 @@ def map_display(maps, player_character):
 
 
 def play(maps, player_character, stop):
-    # location_start()
+    # location_start(player_character, maps)
     while stop:
         map_display(maps, player_character)
         player_character = move(player_character)
@@ -752,6 +753,10 @@ def play(maps, player_character, stop):
     return
 
 
+def map_maker(user_map):
+    return ["*", "*", "*", "*", "*"]
+
+
 def var():
     locations = {"port": [location_port_1, location_port_2],
                  "easy": [location_easy_1, location_easy_2, location_easy_3, location_easy_4, location_easy_5],
@@ -760,21 +765,14 @@ def var():
                                location_difficult_5, location_difficult_6, location_difficult_7, location_difficult_8],
                  "yawn": [location_yawning_1, location_yawning_2, location_yawning_3]}
 
-    maps = {"map_visual": [["*", "*", "*", "*", "X"],
-                           ["*", "*", "*", "*", "*"],
-                           ["*", "*", "*", "*", "*"],
-                           ["*", "*", "*", "*", "*"],
-                           ["O", "*", "*", "*", "*"]],
+    player_map = list(map(map_maker,[[], [], [], [], []]))
+
+    maps = {"map_visual": player_map,
             "map_locations": [["3", "3", "3", "y", "4"],
                               ["c", "c", "3", "y", "y"],
                               ["2", "2", "c", "3", "3"],
                               ["p", "2", "2", "c", "3"],
                               ["1", "p", "2", "c", "3"]],
-            "map_beat":      [["0", "0", "0", "0", "0"],
-                              ["0", "0", "0", "0", "0"],
-                              ["0", "0", "0", "0", "0"],
-                              ["0", "0", "0", "0", "0"],
-                              ["0", "0", "0", "0", "0"]],
             "locations": locations}
     name = input("player name")
     player_character = {"name": name, "player_pos": [4, 0], "health": 3, "level": 1, "exp": 0, "add": 0, "take_away": 0, "re_roll": 1}
