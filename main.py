@@ -694,8 +694,8 @@ def level_up(player_character):
     if player_character["level"] == 3:
         print("level up 3 message")
 
-    if player_character["health"] <= 3:
-        player_character["health"] += 1
+
+    player_character["health"] += 1
 
     if player_character["re_rolls"] <= player_character["level"]:
         player_character["re_rolls"] += 1
