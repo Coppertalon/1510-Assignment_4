@@ -4,30 +4,30 @@ import random
 def map_display(maps, player_character):
     for height in range(len(maps["map_visual"])):
         for width in range(len(maps["map_visual"])):
-            if width == player_character["player_pos"][0] and height == player_character["player_pos"][1]:
+            if height == player_character["player_pos"][0] and width == player_character["player_pos"][1]:
                 print("#", end="")
             else:
-                print(maps["map_visual"][width][height], end="")
+                print(maps["map_visual"][height][width], end="")
         print("")
     print("Legend:")
     return
 
 
 def move(player_character):
-    valid_moves = ["1", "2", "3", "4"]
+    valid_moves = ["n", "s", "e", "w"]
     movement = ""
     while movement not in valid_moves:
         movement = input("movement \n")
 
         if movement.lower() in valid_moves:
-            if movement in valid_moves:
-                player_character["player_pos"][1] += -1
-            elif movement in valid_moves:
-                player_character["player_pos"][1] += 1
-            elif movement in valid_moves:
-                player_character["player_pos"][0] -= 1
-            elif movement in valid_moves:
+            if movement == "n":
+                player_character["player_pos"][0] += -1
+            elif movement == "s":
                 player_character["player_pos"][0] += 1
+            elif movement == "w":
+                player_character["player_pos"][1] -= 1
+            elif movement == "e":
+                player_character["player_pos"][1] += 1
             else:
                 print('"' + movement + '"' + " is an invalid movement. Please try again")
 
@@ -38,13 +38,13 @@ def move(player_character):
 
 def location_finder(maps, player_character):
     location = maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]]
-    if location == 1:
+    if location == "1":
         return location_start_back(maps, player_character)
-    if location == 2:
+    if location == "2":
         return location_easy(maps, player_character)
-    if location == 3:
+    if location == "3":
         return location_hard(maps, player_character)
-    if location == 4:
+    if location == "4":
         return location_end(maps, player_character)
     if location == "p":
         return location_port(maps, player_character)
@@ -57,32 +57,32 @@ def location_finder(maps, player_character):
 
 
 def location_port(maps, player_character):
-    random_location = random.randint(0, len(maps["locations"]["port"]))
+    random_location = random.randint(0, (len(maps["locations"]["port"])-1))
     location = maps["locations"]["port"][random_location]
     return location(maps, player_character)
 
 
 def location_city(maps, player_character):
-    random_location = random.randint(0, len(maps["locations"]["city"]))
+    random_location = random.randint(0, (len(maps["locations"]["city"])-1))
     location = maps["locations"]["city"][random_location]
     return location(maps, player_character)
 
 
 def location_yawning_portal(maps, player_character):
-    random_location = random.randint(0, len(maps["locations"]["yawn"]))
+    random_location = random.randint(0, (len(maps["locations"]["yawn"])-1))
     location = maps["locations"]["yawn"][random_location]
     return location(maps, player_character)
 
 
 def location_easy(maps, player_character):
-    random_location = random.randint(0, len(maps["locations"]["easy"]))
+    random_location = random.randint(0, (len(maps["locations"]["easy"])-1))
     location = maps["locations"]["easy"][random_location]
     return location(maps, player_character)
 
 
 def location_hard(maps, player_character):
-    random_location = random.randint(0, len(maps["locations"]["hard"]))
-    location = maps["locations"]["hard"][random_location]
+    random_location = random.randint(0, (len(maps["locations"]["difficult"])-1))
+    location = maps["locations"]["difficult"][random_location]
     return location(maps, player_character)
 
 
@@ -356,7 +356,7 @@ def var():
                  "city": [location_city_1, location_city_2, location_city_3, location_city_4, location_city_5],
                  "difficult": [location_difficult_1, location_difficult_2, location_difficult_3, location_difficult_4,
                                location_difficult_5, location_difficult_6, location_difficult_7, location_difficult_8],
-                 "yawn": [location_city_1, location_city_2, location_city_3, location_city_4, location_city_5]}
+                 "yawn": [location_yawning_1, location_yawning_2, location_yawning_3]}
 
     maps = {"map_visual": [["*", "*", "*", "*", "*"],
                            ["*", "*", "*", "*", "*"],
@@ -370,7 +370,7 @@ def var():
                               ["1", "p", "2", "c", "3"]],
             "locations": locations}
 
-    player_character = {"player_pos": [0, 4], "health": 3, "level": 1, "exp": 0, "add": 0, "take_away": 0, "re_roll": 0}
+    player_character = {"player_pos": [4, 0], "health": 3, "level": 1, "exp": 0, "add": 0, "take_away": 0, "re_roll": 0}
     play(maps, player_character, True)
 
 
