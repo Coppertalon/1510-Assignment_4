@@ -392,11 +392,11 @@ def game_actions(total, roll, action, player_character):
     if action == "1":
         return rolling(total, roll, action, player_character)
 
-    elif action == "2" and player_character["re_rolls"] > 0:
+    elif action == "2" and player_character["re_roll"] > 0:
         return rolling(total, roll, action, player_character)
 
     elif action == "3":
-        return total, roll, "none", player_character
+        return total, roll, "hold", player_character
 
     elif action == "4" and player_character["add"] > 0:
         return total_modify(total, roll, action, player_character)
@@ -413,13 +413,15 @@ def rolling(total, roll, action, player_character):
     if action == "1":
         roll = random.randint(1, 6)
         total += roll
-        return total, roll, "hold", player_character
+        print(roll)
+        return total, roll, "none", player_character
 
     elif action == "2":
         total -= roll
         roll = random.randint(1, 6)
         total += roll
-        player_character["re_rolls"] -= 1
+        print(roll)
+        player_character["re_roll"] -= 1
         return total, roll, "none", player_character
 
 
@@ -484,7 +486,7 @@ def var():
                               ["0", "0", "0", "0", "0"]],
             "locations": locations}
 
-    player_character = {"player_pos": [4, 0], "health": 3, "level": 1, "exp": 0, "add": 0, "take_away": 0, "re_roll": 0}
+    player_character = {"player_pos": [4, 0], "health": 3, "level": 1, "exp": 0, "add": 0, "take_away": 0, "re_roll": 1}
     play(maps, player_character, True)
 
 
