@@ -116,7 +116,7 @@ def location_easy_1(maps: dict, player_character: dict, done=None):
     choice = input("play or leave \n")
 
     if choice == "play":
-        return battle_starter(maps, player_character, location_easy_1, 10)
+        return battle_starter(maps, player_character, location_easy_1, 16)
 
     else:
         mark_location(maps, player_character, location_easy_1, "!")
@@ -136,7 +136,7 @@ def location_easy_2(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        return battle_starter(maps, player_character, location_easy_2, 10)
+        return battle_starter(maps, player_character, location_easy_2, 16)
 
     else:
         mark_location(maps, player_character, location_easy_2, "!")
@@ -156,7 +156,7 @@ def location_easy_3(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        return battle_starter(maps, player_character, location_easy_3, 10)
+        return battle_starter(maps, player_character, location_easy_3, 16)
 
     else:
         mark_location(maps, player_character, location_easy_3, "!")
@@ -176,7 +176,7 @@ def location_easy_4(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        return battle_starter(maps, player_character, location_easy_4, 10)
+        return battle_starter(maps, player_character, location_easy_4, 17)
 
     else:
         mark_location(maps, player_character, location_easy_4, "!")
@@ -195,7 +195,7 @@ def location_easy_5(maps: dict, player_character: dict, done=None):
     choice = input("play or leave \n")
 
     if choice == "play":
-        return battle_starter(maps, player_character, location_easy_5, 10)
+        return battle_starter(maps, player_character, location_easy_5, 17)
 
     else:
         mark_location(maps, player_character, location_easy_5, "!")
@@ -255,7 +255,7 @@ def location_difficult_1(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        return battle_starter(maps, player_character, location_difficult_1, 10)
+        return battle_starter(maps, player_character, location_difficult_1, 18)
 
     else:
         mark_location(maps, player_character, location_difficult_1, "!")
@@ -275,7 +275,7 @@ def location_difficult_2(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        return battle_starter(maps, player_character, location_difficult_2, 10)
+        return battle_starter(maps, player_character, location_difficult_2, 18)
 
     else:
         mark_location(maps, player_character, location_difficult_2, "!")
@@ -295,7 +295,7 @@ def location_difficult_3(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        return battle_starter(maps, player_character, location_difficult_3, 10)
+        return battle_starter(maps, player_character, location_difficult_3, 18)
 
     else:
         mark_location(maps, player_character, location_difficult_3, "!")
@@ -315,7 +315,7 @@ def location_difficult_4(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        return battle_starter(maps, player_character, location_difficult_4, 10)
+        return battle_starter(maps, player_character, location_difficult_4, 18)
 
     else:
         mark_location(maps, player_character, location_difficult_4, "!")
@@ -335,7 +335,7 @@ def location_difficult_5(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        return battle_starter(maps, player_character, location_difficult_5, 10)
+        return battle_starter(maps, player_character, location_difficult_5, 18)
 
     else:
         mark_location(maps, player_character, location_difficult_5, "!")
@@ -355,7 +355,7 @@ def location_difficult_6(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        return battle_starter(maps, player_character, location_difficult_6, 10)
+        return battle_starter(maps, player_character, location_difficult_6, 19)
 
     else:
         mark_location(maps, player_character, location_difficult_6, "!")
@@ -375,7 +375,7 @@ def location_difficult_7(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        return battle_starter(maps, player_character, location_difficult_7, 10)
+        return battle_starter(maps, player_character, location_difficult_7, 19)
 
     else:
         mark_location(maps, player_character, location_difficult_7, "!")
@@ -396,7 +396,7 @@ def location_difficult_8(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        return battle_starter(maps, player_character, location_difficult_8, 10)
+        return battle_starter(maps, player_character, location_difficult_8, 19)
 
     else:
         mark_location(maps, player_character, location_difficult_8, "!")
