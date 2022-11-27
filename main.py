@@ -451,7 +451,7 @@ def location_end(maps: dict, player_character: dict):
     return maps, player_character, 0
 
 
-def final_dialogue(score):
+def final_dialogue(score: int):
     if score == -2:
         print("hard loss")
         return -2
@@ -483,6 +483,7 @@ def location_start(maps: dict, player_character: dict):
     print("Goal")
     map_display(maps, player_character)
     print("Goodbye")
+    input("Press enter to contuinue")
 
     player_character["re_roll"] = 1
     return maps, player_character
@@ -508,14 +509,21 @@ def game_set_up(player_character: dict):
     roll = rolls[2]
     while total < 21 and action != "hold":
         print(total)
+
+        print("Level 1 Skills:  re-rolls: " + player_character["re_roll"])
+
+        if player_character["level"] > 1:
+            print("Level 2 Skills:  add 1 to roll:" + player_character["add"] +
+                  "remove 1 from roll:" + player_character["take_away"])
+
         total, roll, action, player_character = game_choices(player_character, total, roll)
 
     return total, player_character
 
 
 def game_choices(player_character: dict, total: int, roll: int):
-    moves1 = ["1", "2", "3"]
-    moves2 = ["1", "2", "3", "4", "5"]
+    moves1 = ["roll", "hold", "re_roll"]
+    moves2 = ["roll", "hold", "re_roll", "add", "take_away"]
 
     if player_character["level"] == 1:
         print_choice = iter(moves1)
@@ -529,7 +537,8 @@ def game_choices(player_character: dict, total: int, roll: int):
             print(number, next(print_choice))
         choice = input("moves2 \n")
 
-    if (choice in moves1 and player_character["level"] == 1) or (choice in moves2 and player_character["level"] > 1):
+    if (choice in ["1", "2", "3"] and player_character["level"] == 1) \
+            or (choice in ["1", "2", "3", "4", "5"] and player_character["level"] > 1):
         total, roll, action, player_character, = game_actions(total, roll, player_character, action=choice)
         return total, roll, action, player_character
 
@@ -588,7 +597,7 @@ def total_modify(total: int, roll: int, action: str, player_character: dict):
 
 
 def move(player_character: dict):
-    valid_moves = ["n", "s", "e", "w"]
+    valid_moves = ["north", "south", "east", "west"]
     movement = ""
     while movement not in valid_moves:
         print_choice = iter(valid_moves)
@@ -596,14 +605,14 @@ def move(player_character: dict):
             print(number, next(print_choice))
         movement = input("movement \n")
 
-        if movement.lower() in valid_moves:
-            if movement == "n":
+        if movement.lower() in ["1", "2", "3", "4"]:
+            if movement == "n" and player_character["player_pos"][0] > 1:
                 player_character["player_pos"][0] += -1
-            elif movement == "s":
+            elif movement == "s" and player_character["player_pos"][0] < 4:
                 player_character["player_pos"][0] += 1
-            elif movement == "w":
+            elif movement == "w" and player_character["player_pos"][1] > 1:
                 player_character["player_pos"][1] -= 1
-            elif movement == "e":
+            elif movement == "e" and player_character["player_pos"][1] < 4:
                 player_character["player_pos"][1] += 1
             else:
                 print('"' + movement + '"' + " is an invalid movement. Please try again")
