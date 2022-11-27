@@ -429,9 +429,41 @@ def location_yawning_3(maps: dict, player_character: dict, done=None):
 
 
 def location_end(maps: dict, player_character: dict):
-    print("end")
-    roll, player_character = game_set_up(player_character)
-    return maps, player_character
+    if player_character["level"] > 1:
+        print("end")
+        score = 0
+        rounds = 0
+
+        while score < 2 and rounds < 3:
+            roll, player_character = game_set_up(player_character)
+
+            if (19 + score) > roll > 21:
+                score += 1
+                print("win")
+            else:
+                score -= 1
+                print("lose")
+
+            rounds += 1
+        return final_dialogue(score)
+
+    print("too low")
+    return maps, player_character, 0
+
+
+def final_dialogue(score):
+    if score == -2:
+        print("hard loss")
+        return -2
+    if score == -1:
+        print("close loss")
+        return -2
+    if score == 1:
+        print("close win")
+        return 2
+    if score == 2:
+        print("solid win")
+        return 2
 
 
 def location_start(maps: dict, player_character: dict):
