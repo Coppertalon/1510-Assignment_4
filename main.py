@@ -113,7 +113,7 @@ def location_easy_1(maps: dict, player_character: dict, done=None):
         return dont_use_location(maps, player_character, "easy")
 
     print("player stats")
-    choice = input("play or leave")
+    choice = input("play or leave \n")
 
     if choice == "play":
         return battle_starter(maps, player_character, location_easy_1, 10)
@@ -132,7 +132,7 @@ def location_easy_2(maps: dict, player_character: dict, done=None):
         return dont_use_location(maps, player_character, "easy")
 
     print("player stats")
-    choice = input("play or leave")
+    choice = input("play or leave \n")
 
     if choice == "play":
         print("start")
@@ -152,7 +152,7 @@ def location_easy_3(maps: dict, player_character: dict, done=None):
         return dont_use_location(maps, player_character, "easy")
 
     print("player stats")
-    choice = input("play or leave")
+    choice = input("play or leave \n")
 
     if choice == "play":
         print("start")
@@ -172,7 +172,7 @@ def location_easy_4(maps: dict, player_character: dict, done=None):
         return dont_use_location(maps, player_character, "easy")
 
     print("player stats")
-    choice = input("play or leave")
+    choice = input("play or leave \n")
 
     if choice == "play":
         print("start")
@@ -192,7 +192,7 @@ def location_easy_5(maps: dict, player_character: dict, done=None):
         return dont_use_location(maps, player_character, "easy")
 
     print("player stats")
-    choice = input("play or leave")
+    choice = input("play or leave \n")
 
     if choice == "play":
         return battle_starter(maps, player_character, location_easy_5, 10)
@@ -251,7 +251,7 @@ def location_difficult_1(maps: dict, player_character: dict, done=None):
         return dont_use_location(maps, player_character, "hard")
 
     print("player stats")
-    choice = input("play or leave")
+    choice = input("play or leave \n")
 
     if choice == "play":
         print("start")
@@ -271,7 +271,7 @@ def location_difficult_2(maps: dict, player_character: dict, done=None):
         return dont_use_location(maps, player_character, "hard")
 
     print("player stats")
-    choice = input("play or leave")
+    choice = input("play or leave \n")
 
     if choice == "play":
         print("start")
@@ -291,7 +291,7 @@ def location_difficult_3(maps: dict, player_character: dict, done=None):
         return dont_use_location(maps, player_character, "hard")
 
     print("player stats")
-    choice = input("play or leave")
+    choice = input("play or leave \n")
 
     if choice == "play":
         print("start")
@@ -311,7 +311,7 @@ def location_difficult_4(maps: dict, player_character: dict, done=None):
         return dont_use_location(maps, player_character, "hard")
 
     print("player stats")
-    choice = input("play or leave")
+    choice = input("play or leave \n")
 
     if choice == "play":
         print("start")
@@ -331,7 +331,7 @@ def location_difficult_5(maps: dict, player_character: dict, done=None):
         return dont_use_location(maps, player_character, "hard")
 
     print("player stats")
-    choice = input("play or leave")
+    choice = input("play or leave \n")
 
     if choice == "play":
         print("start")
@@ -351,7 +351,7 @@ def location_difficult_6(maps: dict, player_character: dict, done=None):
         return dont_use_location(maps, player_character, "hard")
 
     print("player stats")
-    choice = input("play or leave")
+    choice = input("play or leave \n")
 
     if choice == "play":
         print("start")
@@ -371,7 +371,7 @@ def location_difficult_7(maps: dict, player_character: dict, done=None):
         return dont_use_location(maps, player_character, "hard")
 
     print("player stats")
-    choice = input("play or leave")
+    choice = input("play or leave \n")
 
     if choice == "play":
         print("start")
@@ -392,7 +392,7 @@ def location_difficult_8(maps: dict, player_character: dict, done=None):
         return dont_use_location(maps, player_character, "easy")
 
     print("player stats")
-    choice = input("play or leave")
+    choice = input("play or leave \n")
 
     if choice == "play":
         print("start")
@@ -482,16 +482,22 @@ def game_set_up(player_character: dict):
 
 
 def game_choices(player_character: dict, total: int, roll: int):
-    choices1 = ["1", "2", "3"]
-    choices2 = ["1", "2", "3", "4", "5"]
+    moves1 = ["1", "2", "3"]
+    moves2 = ["1", "2", "3", "4", "5"]
 
     if player_character["level"] == 1:
-        choice = input("choices 1")
-    else:
-        choice = input("choices 2")
+        print_choice = iter(moves1)
+        for number, option in enumerate(range(len(moves1))):
+            print(number, next(print_choice))
+        choice = input("moves1 \n")
 
-    if (choice in choices1 and player_character["level"] == 1) or (
-            choice in choices2 and player_character["level"] > 1):
+    else:
+        print_choice = iter(moves2)
+        for number, option in enumerate(range(len(moves2))):
+            print(number, next(print_choice))
+        choice = input("moves2 \n")
+
+    if (choice in moves1 and player_character["level"] == 1) or (choice in moves2 and player_character["level"] > 1):
         total, roll, action, player_character, = game_actions(total, roll, player_character, action=choice)
         return total, roll, action, player_character
 
@@ -553,6 +559,9 @@ def move(player_character: dict):
     valid_moves = ["n", "s", "e", "w"]
     movement = ""
     while movement not in valid_moves:
+        print_choice = iter(valid_moves)
+        for number, option in enumerate(range(len(valid_moves))):
+            print(number, next(print_choice))
         movement = input("movement \n")
 
         if movement.lower() in valid_moves:
@@ -691,7 +700,7 @@ def var():
                               ["p", "2", "2", "c", "3"],
                               ["1", "p", "2", "c", "3"]],
             "locations": locations}
-    name = input("player name")
+    name = input("player name \n")
     player_character = {"name": name, "player_pos": [4, 0], "health": 3, "level": 1, "exp": 0,
                         "add": 0, "take_away": 0, "re_roll": 0}
 
