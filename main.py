@@ -13,25 +13,18 @@ def lose():
 
 def location_finder(maps: dict, player_character: dict):
     location = maps["map_locations"][player_character["player_pos"][0]][player_character["player_pos"][1]]
-    if location == "1":
-        return location_start_back(maps, player_character)
-    if location == "2":
-        return location_easy(maps, player_character)
-    if location == "3":
-        return location_hard(maps, player_character)
-    if location == "4":
-        return location_end(maps, player_character)
-    if location == "p":
-        return location_port(maps, player_character)
-    if location == "c":
-        return location_city(maps, player_character)
-    if location == "y":
-        return location_yawning_portal(maps, player_character)
+    locations = [location_start_back, location_easy, location_hard, location_end,
+                 location_port, location_city, location_yawning_portal]
+    location_options = ["1", "2", "3", "4", "p", "c", "y"]
+
+    for i in range(1, 8):
+        if locations[i] == location_options[i]:
+            return locations[i](maps, player_character)
+
+    if maps["map_visual"][player_character["player_pos"][0]][player_character["player_pos"][1]] == "!":
+        return location(maps, player_character, done=False)
     else:
-        if maps["map_visual"][player_character["player_pos"][0]][player_character["player_pos"][1]] == "!":
-            return location(maps, player_character, done=False)
-        else:
-            return location(maps, player_character, done=True)
+        return location(maps, player_character, done=True)
 
 
 def location_port(maps: dict, player_character: dict):
@@ -123,16 +116,7 @@ def location_easy_1(maps: dict, player_character: dict, done=None):
     choice = input("play or leave")
 
     if choice == "play":
-        print("start")
-        roll, player_character = game_set_up(player_character)
-        if 10 < roll < 21:
-            mark_location(maps, player_character, location_easy_1, "@")
-            print("win")
-            return maps, player_character, 1
-        else:
-            mark_location(maps, player_character, location_easy_1, "!")
-            print("lose")
-            return maps, player_character, -1
+        return battle_starter(maps, player_character, location_easy_1, 10)
 
     else:
         mark_location(maps, player_character, location_easy_1, "!")
@@ -152,15 +136,7 @@ def location_easy_2(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        roll, player_character = game_set_up(player_character)
-        if 10 < roll < 21:
-            mark_location(maps, player_character, location_easy_2, "@")
-            print("win")
-            return maps, player_character, 1
-        else:
-            mark_location(maps, player_character, location_easy_2, "!")
-            print("lose")
-            return maps, player_character, -1
+        return battle_starter(maps, player_character, location_easy_2, 10)
 
     else:
         mark_location(maps, player_character, location_easy_2, "!")
@@ -180,15 +156,7 @@ def location_easy_3(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        roll, player_character = game_set_up(player_character)
-        if 10 < roll < 21:
-            mark_location(maps, player_character, location_easy_3, "@")
-            print("win")
-            return maps, player_character, 1
-        else:
-            mark_location(maps, player_character, location_easy_3, "!")
-            print("lose")
-            return maps, player_character, -1
+        return battle_starter(maps, player_character, location_easy_3, 10)
 
     else:
         mark_location(maps, player_character, location_easy_3, "!")
@@ -208,15 +176,7 @@ def location_easy_4(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        roll, player_character = game_set_up(player_character)
-        if 10 < roll < 21:
-            mark_location(maps, player_character, location_easy_4, "@")
-            print("win")
-            return maps, player_character, 1
-        else:
-            mark_location(maps, player_character, location_easy_4, "!")
-            print("lose")
-            return maps, player_character, -1
+        return battle_starter(maps, player_character, location_easy_4, 10)
 
     else:
         mark_location(maps, player_character, location_easy_4, "!")
@@ -235,16 +195,7 @@ def location_easy_5(maps: dict, player_character: dict, done=None):
     choice = input("play or leave")
 
     if choice == "play":
-        print("start")
-        roll, player_character = game_set_up(player_character)
-        if 10 < roll < 21:
-            mark_location(maps, player_character, location_easy_5, "@")
-            print("win")
-            return maps, player_character, 1
-        else:
-            mark_location(maps, player_character, location_easy_5, "!")
-            print("lose")
-            return maps, player_character, -1
+        return battle_starter(maps, player_character, location_easy_5, 10)
 
     else:
         mark_location(maps, player_character, location_easy_5, "!")
@@ -304,15 +255,7 @@ def location_difficult_1(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        roll, player_character = game_set_up(player_character)
-        if 10 < roll < 21:
-            mark_location(maps, player_character, location_difficult_1, "@")
-            print("win")
-            return maps, player_character, 1
-        else:
-            mark_location(maps, player_character, location_difficult_1, "!")
-            print("lose")
-            return maps, player_character, -1
+        return battle_starter(maps, player_character, location_difficult_1, 10)
 
     else:
         mark_location(maps, player_character, location_difficult_1, "!")
@@ -332,15 +275,7 @@ def location_difficult_2(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        roll, player_character = game_set_up(player_character)
-        if 10 < roll < 21:
-            mark_location(maps, player_character, location_difficult_2, "@")
-            print("win")
-            return maps, player_character, 1
-        else:
-            mark_location(maps, player_character, location_difficult_2, "!")
-            print("lose")
-            return maps, player_character, -1
+        return battle_starter(maps, player_character, location_difficult_2, 10)
 
     else:
         mark_location(maps, player_character, location_difficult_2, "!")
@@ -360,15 +295,7 @@ def location_difficult_3(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        roll, player_character = game_set_up(player_character)
-        if 10 < roll < 21:
-            mark_location(maps, player_character, location_difficult_3, "@")
-            print("win")
-            return maps, player_character, 1
-        else:
-            mark_location(maps, player_character, location_difficult_3, "!")
-            print("lose")
-            return maps, player_character, -1
+        return battle_starter(maps, player_character, location_difficult_3, 10)
 
     else:
         mark_location(maps, player_character, location_difficult_3, "!")
@@ -388,15 +315,7 @@ def location_difficult_4(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        roll, player_character = game_set_up(player_character)
-        if 10 < roll < 21:
-            mark_location(maps, player_character, location_difficult_4, "@")
-            print("win")
-            return maps, player_character, 1
-        else:
-            mark_location(maps, player_character, location_difficult_4, "!")
-            print("lose")
-            return maps, player_character, -1
+        return battle_starter(maps, player_character, location_difficult_4, 10)
 
     else:
         mark_location(maps, player_character, location_difficult_4, "!")
@@ -416,15 +335,7 @@ def location_difficult_5(maps: dict, player_character: dict, done=None):
 
     if choice == "play":
         print("start")
-        roll, player_character = game_set_up(player_character)
-        if 10 < roll < 21:
-            mark_location(maps, player_character, location_difficult_5, "@")
-            print("win")
-            return maps, player_character, 1
-        else:
-            mark_location(maps, player_character, location_difficult_5, "!")
-            print("lose")
-            return maps, player_character, -1
+        return battle_starter(maps, player_character, location_difficult_5, 10)
 
     else:
         mark_location(maps, player_character, location_difficult_5, "!")
@@ -531,7 +442,7 @@ def location_start(maps: dict, player_character: dict):
     print("Battle Explanation")
 
     roll, player_character = game_set_up(player_character)
-    if 16 < roll < 21:
+    if 15 < roll < 21:
         print("win")
     else:
         print("lose")
