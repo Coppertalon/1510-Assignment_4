@@ -1,3 +1,6 @@
+"""
+Assignment 4
+"""
 import random
 
 
@@ -65,12 +68,16 @@ def location_hard(maps: dict, player_character: dict):
 def dont_use_location(location_type: str):
     if location_type == "easy":
         print("too east")
+        input("Press enter to continue")
     if location_type == "hard":
         print("too hard")
+        input("Press enter to continue")
     if location_type == "explored":
         print("explored")
+        input("Press enter to continue")
     if location_type == "beat":
         print("beaten")
+        input("Press enter to continue")
     return
 
 
@@ -119,9 +126,11 @@ def location_easy_1(maps: dict, player_character: dict, done=None):
     print("easy_1")
     if done:
         dont_use_location("beat")
+        return maps, player_character, 0, True
     elif player_character["level"] > 1:
         mark_location(maps, player_character, location_easy_1, "!")
         dont_use_location("easy")
+        return maps, player_character, 0, True
 
     player_stats(player_character)
     choice = input("play, leave, or quit \n")
@@ -141,9 +150,11 @@ def location_easy_2(maps: dict, player_character: dict, done=None):
     print("easy_2")
     if done:
         dont_use_location("beat")
+        return maps, player_character, 0, True
     elif player_character["level"] > 1:
         mark_location(maps, player_character, location_easy_2, "!")
         dont_use_location("easy")
+        return maps, player_character, 0, True
 
     player_stats(player_character)
     choice = input("play or leave \n")
@@ -164,9 +175,11 @@ def location_easy_3(maps: dict, player_character: dict, done=None):
     print("easy_3")
     if done:
         dont_use_location("beat")
+        return maps, player_character, 0, True
     elif player_character["level"] > 1:
         mark_location(maps, player_character, location_easy_3, "!")
         dont_use_location("easy")
+        return maps, player_character, 0, True
 
     player_stats(player_character)
     choice = input("play or leave \n")
@@ -187,9 +200,11 @@ def location_easy_4(maps: dict, player_character: dict, done=None):
     print("easy_4")
     if done:
         dont_use_location("beat")
+        return maps, player_character, 0, True
     elif player_character["level"] > 1:
         mark_location(maps, player_character, location_easy_4, "!")
         dont_use_location("easy")
+        return maps, player_character, 0, True
 
     player_stats(player_character)
     choice = input("play or leave \n")
@@ -210,9 +225,11 @@ def location_easy_5(maps: dict, player_character: dict, done=None):
     print("easy_5")
     if done:
         dont_use_location("beat")
+        return maps, player_character, 0, True
     elif player_character["level"] > 1:
         mark_location(maps, player_character, location_easy_5, "!")
         dont_use_location("easy")
+        return maps, player_character, 0, True
 
     player_stats(player_character)
     choice = input("play or leave \n")
@@ -307,9 +324,11 @@ def location_difficult_1(maps: dict, player_character: dict, done=None):
     print("difficult_1")
     if done:
         dont_use_location("beat")
+        return maps, player_character, 0, True
     elif player_character["level"] == 1:
         mark_location(maps, player_character, location_difficult_1, "!")
         dont_use_location("hard")
+        return maps, player_character, 0, True
 
     player_stats(player_character)
     choice = input("play or leave \n")
@@ -330,9 +349,11 @@ def location_difficult_2(maps: dict, player_character: dict, done=None):
     print("difficult_2")
     if done:
         dont_use_location("beat")
+        return maps, player_character, 0, True
     elif player_character["level"] == 1:
         mark_location(maps, player_character, location_difficult_2, "!")
         dont_use_location("hard")
+        return maps, player_character, 0, True
 
     player_stats(player_character)
     choice = input("play or leave \n")
@@ -353,9 +374,11 @@ def location_difficult_3(maps: dict, player_character: dict, done=None):
     print("difficult_3")
     if done:
         dont_use_location("beat")
+        return maps, player_character, 0, True
     elif player_character["level"] == 1:
         mark_location(maps, player_character, location_difficult_3, "!")
         dont_use_location("hard")
+        return maps, player_character, 0, True
 
     player_stats(player_character)
     choice = input("play or leave \n")
@@ -376,9 +399,11 @@ def location_difficult_4(maps: dict, player_character: dict, done=None):
     print("difficult_4")
     if done:
         dont_use_location("beat")
+        return maps, player_character, 0, True
     elif player_character["level"] == 1:
         mark_location(maps, player_character, location_difficult_4, "!")
         dont_use_location("hard")
+        return maps, player_character, 0, True
 
     player_stats(player_character)
     choice = input("play or leave \n")
@@ -399,9 +424,11 @@ def location_difficult_5(maps: dict, player_character: dict, done=None):
     print("difficult_5")
     if done:
         dont_use_location("beat")
+        return maps, player_character, 0, True
     elif player_character["level"] == 1:
         mark_location(maps, player_character, location_difficult_5, "!")
         dont_use_location("hard")
+        return maps, player_character, 0, True
 
     player_stats(player_character)
     choice = input("play or leave \n")
@@ -422,9 +449,11 @@ def location_difficult_6(maps: dict, player_character: dict, done=None):
     print("difficult_6")
     if done:
         dont_use_location("beat")
+        return maps, player_character, 0, True
     elif player_character["level"] == 1:
         mark_location(maps, player_character, location_difficult_6, "!")
         dont_use_location("hard")
+        return maps, player_character, 0, True
 
     player_stats(player_character)
     choice = input("play or leave \n")
@@ -445,9 +474,11 @@ def location_difficult_7(maps: dict, player_character: dict, done=None):
     print("difficult_7")
     if done:
         dont_use_location("beat")
+        return maps, player_character, 0, True
     elif player_character["level"] == 1:
         mark_location(maps, player_character, location_difficult_7, "!")
         dont_use_location("hard")
+        return maps, player_character, 0, True
 
     player_stats(player_character)
     choice = input("play or leave \n")
@@ -468,9 +499,11 @@ def location_difficult_8(maps: dict, player_character: dict, done=None):
     print("difficult_8")
     if done:
         dont_use_location("beat")
-    elif player_character["level"] > 1:
+        return maps, player_character, 0, True
+    elif player_character["level"] == 1:
         mark_location(maps, player_character, location_difficult_8, "!")
-        dont_use_location("easy")
+        dont_use_location("hard")
+        return maps, player_character, 0, True
 
     player_stats(player_character)
     choice = input("play or leave \n")
@@ -533,7 +566,7 @@ def location_yawning_3(maps: dict, player_character: dict, done=None):
 
 
 def location_end(maps: dict, player_character: dict):
-    if player_character["level"] > 1:
+    if player_character["level"] > 2:
         print("end")
         score = 0
         rounds = 0
@@ -541,7 +574,7 @@ def location_end(maps: dict, player_character: dict):
         while score < 2 and rounds < 3:
             roll, player_character = game_set_up(player_character)
 
-            if (19 + score) > roll > 21:
+            if (19 + score) < roll > 21:
                 score += 1
                 print("win")
             else:
@@ -595,7 +628,7 @@ def location_start(maps: dict, player_character: dict):
 
 def battle_starter(maps: dict, player_character: dict, location, roll_to_beat: int):
     roll, player_character = game_set_up(player_character)
-    if roll_to_beat < roll < 21:
+    if roll_to_beat < roll < 22:
         mark_location(maps, player_character, location, "@")
         print("win")
         return maps, player_character, 1, True
@@ -751,12 +784,12 @@ def experience(battle_result: int, player_character: dict):
     if battle_result == 1:
         player_character["exp"] = player_character["exp"] + 1
 
-        if player_character["level"] == 1 and player_character["exp"] == 4:
+        if player_character["level"] == 1 and player_character["exp"] == 3:
             player_character["level"] = 2
             player_character["exp"] = 0
             return player_character, 1
 
-        if player_character["level"] == 2 and player_character["exp"] == 6:
+        if player_character["level"] == 2 and player_character["exp"] == 5:
             player_character["level"] = 3
             player_character["exp"] = 0
             return player_character, 1
@@ -775,8 +808,8 @@ def level_up(player_character: dict):
 
     player_character["health"] = player_character["health"] + 1
 
-    if player_character["re_rolls"] <= player_character["level"]:
-        player_character["re_rolls"] = player_character["re_rolls"] + 1
+    if player_character["re_roll"] <= player_character["level"]:
+        player_character["re_roll"] = player_character["re_roll"] + 1
 
     if player_character["take_away"] < player_character["level"]:
         player_character["take_away"] = player_character["take_away"] + 1
@@ -824,7 +857,8 @@ def play(maps: dict, player_character: dict, run: bool):
         map_display(maps, player_character)
 
         maps, player_character, result, stop = location_finder(maps, player_character)
-
+        if stop is False:
+            break
         player_character = health(result, player_character)
         player_character, up = experience(result, player_character)
 
@@ -860,7 +894,7 @@ def var():
                               ["1", "p", "2", "c", "3"]],
             "locations": locations}
     name = input("player name \n")
-    player_character = {"name": name, "player_pos": [4, 0], "health": 3, "level": 1, "exp": 0,
+    player_character = {"name": name, "player_pos": [4, 0], "health": 3, "level": 2, "exp": 2,
                         "add": 0, "take_away": 0, "re_roll": 1}
 
     play(maps, player_character, run=True)
