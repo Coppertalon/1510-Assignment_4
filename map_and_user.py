@@ -105,8 +105,10 @@ def map_display(maps: dict, player_character: dict):
 
     for height in range(len(maps["map_visual"])):
         for width in range(len(maps["map_visual"])):
+
             if height == player_character["player_position"][0] and width == player_character["player_position"][1]:
                 print("#", end="")
+
             else:
                 print(maps["map_visual"][height][width], end="")
         print("")

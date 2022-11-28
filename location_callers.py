@@ -1,5 +1,6 @@
 import random
 import location_descriptions
+import gameplay
 
 
 def location_finder(maps: dict, player_character: dict):
@@ -79,3 +80,64 @@ def mark_location(maps: dict, player_character: dict, location_name, location_na
     maps["map_locations"][player_character["player_position"][0]][player_character["player_position"][1]] \
         = location_name
     return maps
+
+
+def non_combat_location():
+    choice = "none"
+    while choice not in ["1", "2"]:
+        choice = input("1: Move \n2: Quit\n")
+        if choice == "1":
+            return True
+
+        if choice == "2":
+            return False
+
+        else:
+            print("Invalid choice.")
+
+
+def combat_location(maps, player_character, location, difficulty):
+    choice = "none"
+    while choice not in ["1", "2", "3"]:
+        choice = input("1: Play \n2: Leave \n3: Quit\n")
+        if choice == "1":
+            print("start")
+            return gameplay.battle_starter(maps, player_character, location, difficulty)
+
+        if choice == "2":
+            mark_location(maps, player_character, location, "!")
+            return maps, player_character, 0, True
+
+        if choice == "3":
+            return maps, player_character, 0, False
+
+        else:
+            print("Invalid choice.")
+
+
+def location_check_easy(maps, player_character, done, location):
+    if done:
+        dont_use_location("beat")
+        return maps, player_character, True
+
+    elif player_character["level"] > 1:
+        mark_location(maps, player_character, location, "!")
+        dont_use_location("easy")
+        return maps, player_character, True
+
+    else:
+        return maps, player_character, False
+
+
+def location_check_hard(maps, player_character, done, location):
+    if done:
+        dont_use_location("beat")
+        return maps, player_character, True
+
+    elif player_character["level"] == 1:
+        mark_location(maps, player_character, location, "!")
+        dont_use_location("hard")
+        return maps, player_character, True
+
+    else:
+        return maps, player_character, False
