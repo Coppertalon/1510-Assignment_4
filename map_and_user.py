@@ -1,7 +1,10 @@
-def move(player_character: dict):
+def move_decided(player_character: dict):
+
     valid_moves = ["north", "south", "east", "west", "quit"]
     movement = ""
+
     while movement not in ["1", "2", "3", "4"]:
+
         print_choice = iter(valid_moves)
         for number, option in enumerate(range(len(valid_moves)), 1):
             print(number, next(print_choice))
@@ -11,30 +14,42 @@ def move(player_character: dict):
             return player_character, False
 
         if movement in ["1", "2", "3", "4"]:
-            if movement == "1" and player_character["player_position"][0] > 0:
-                player_character["player_position"][0] -= 1
-            elif movement == "2" and player_character["player_position"][0] < 4:
-                player_character["player_position"][0] += 1
-            elif movement == "3" and player_character["player_position"][1] > 0:
-                player_character["player_position"][1] -= 1
-            elif movement == "4" and player_character["player_position"][1] < 4:
-                player_character["player_position"][1] += 1
-            else:
-                print('"', movement, '"', " is an invalid movement. Please try again")
-                movement = "false"
+            player_character, movement = player_mover(player_character, movement)
 
         else:
             print('"', movement, '"', " is an invalid movement. Please try again")
+
     return player_character, True
 
 
-def health(battle_result: int, player_character: dict):
-    if battle_result == -1:
+def player_mover(player_character, movement):
+
+    if movement == "1" and player_character["player_position"][0] > 0:
+        player_character["player_position"][0] -= 1
+
+    elif movement == "2" and player_character["player_position"][0] < 4:
+        player_character["player_position"][0] += 1
+
+    elif movement == "3" and player_character["player_position"][1] > 0:
+        player_character["player_position"][1] -= 1
+
+    elif movement == "4" and player_character["player_position"][1] < 4:
+        player_character["player_position"][1] += 1
+
+    else:
+        print('"', movement, '"', " is an invalid movement. Please try again")
+        movement = "false"
+
+    return player_character, movement
+
+
+def health(outcome: int, player_character: dict):
+    if outcome == -1:
         player_character["health"] = player_character["health"] - 1
         print("lose health message")
         return player_character
 
-    if battle_result == -2:
+    if outcome == -2:
         player_character["health"] = player_character["health"] - 2
         print("lose to boss method")
         return player_character
@@ -43,8 +58,8 @@ def health(battle_result: int, player_character: dict):
         return player_character
 
 
-def experience(battle_result: int, player_character: dict):
-    if battle_result == 1:
+def experience(outcome: int, player_character: dict):
+    if outcome == 1:
         player_character["exp"] = player_character["exp"] + 1
 
         if player_character["level"] == 1 and player_character["exp"] == 3:
@@ -56,6 +71,7 @@ def experience(battle_result: int, player_character: dict):
             player_character["level"] = 3
             player_character["exp"] = 0
             return player_character, 1
+
         else:
             return player_character, 0
     else:
@@ -63,6 +79,7 @@ def experience(battle_result: int, player_character: dict):
 
 
 def level_up(player_character: dict):
+
     if player_character["level"] == 2:
         print("level up 2 message")
 
@@ -84,6 +101,8 @@ def level_up(player_character: dict):
 
 
 def map_display(maps: dict, player_character: dict):
+    print("\n \n \n")
+
     for height in range(len(maps["map_visual"])):
         for width in range(len(maps["map_visual"])):
             if height == player_character["player_position"][0] and width == player_character["player_position"][1]:
@@ -101,6 +120,7 @@ def map_display(maps: dict, player_character: dict):
 
 
 def player_stats(player_character: dict):
+
     print("Stats:  Renown:", player_character["level"], "  Reputation: ", player_character["exp"],
           "  Credibility", player_character["health"])
     print("Level 1 Skills:  Re-rolls: ", player_character["re_roll"])
@@ -108,4 +128,5 @@ def player_stats(player_character: dict):
     if player_character["level"] > 1:
         print("Level 2 Skills:  Add 1 to roll:", player_character["add"],
               "  Remove 1 from roll:", player_character["take_away"])
+
     return
