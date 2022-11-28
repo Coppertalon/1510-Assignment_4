@@ -67,7 +67,7 @@ def location_hard(maps: dict, player_character: dict):
 
 def dont_use_location(location_type: str):
     if location_type == "easy":
-        print("too east")
+        print("too easy")
         input("Press enter to continue")
     if location_type == "hard":
         print("too hard")
@@ -574,18 +574,19 @@ def location_end(maps: dict, player_character: dict):
         while score < 2 and rounds < 3:
             roll, player_character = game_set_up(player_character)
 
-            if (19 + score) < roll > 21:
+            if (19 + score) < roll < 22:
                 score += 1
                 print("win")
             else:
                 score -= 1
                 print("lose")
-
+            print(score)
             rounds += 1
-        return final_dialogue(score)
+        final_dialogue(score)
+        return maps, player_character, 0, False
 
     print("too low")
-    return maps, player_character, 0
+    return maps, player_character, 0, False
 
 
 def final_dialogue(score: int):
@@ -894,8 +895,8 @@ def var():
                               ["1", "p", "2", "c", "3"]],
             "locations": locations}
     name = input("player name \n")
-    player_character = {"name": name, "player_pos": [4, 0], "health": 3, "level": 2, "exp": 2,
-                        "add": 0, "take_away": 0, "re_roll": 1}
+    player_character = {"name": name, "player_pos": [4, 0], "health": 3, "level": 0, "exp": 0,
+                        "add": 0, "take_away": 0, "re_roll": 0}
 
     play(maps, player_character, run=True)
     print("Game Over")
