@@ -15,12 +15,15 @@ def battle_starter(maps: dict, player_character: dict, location, roll_to_beat: i
 
 
 def game_set_up(player_character: dict):
+
     rolls = [random.randint(1, 6) for i in range(3)]
-    print(rolls)
+    print("\nYou rolled :", rolls)
     total = rolls[0] + rolls[1] + rolls[2]
     action = "roll"
     roll = rolls[2]
+
     while total < 27 and action != "hold":
+        print("\n")
         print(total)
         if total > 21:
             print("You are currently over the max roll")
