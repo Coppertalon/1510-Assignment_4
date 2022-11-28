@@ -3,7 +3,9 @@ import location_descriptions
 
 
 def location_finder(maps: dict, player_character: dict):
+
     location = maps["map_locations"][player_character["player_position"][0]][player_character["player_position"][1]]
+
     locations = [location_descriptions.location_start_back, location_easy, location_hard,
                  location_descriptions.location_end, location_port, location_city, location_yawning_portal]
 
@@ -15,6 +17,7 @@ def location_finder(maps: dict, player_character: dict):
 
     if maps["map_visual"][player_character["player_position"][0]][player_character["player_position"][1]] == "!":
         return location(maps, player_character, done=False)
+
     else:
         return location(maps, player_character, done=True)
 
