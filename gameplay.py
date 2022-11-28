@@ -1,3 +1,6 @@
+"""
+Assignment 4 Gameplay functions
+"""
 import random
 import location_callers
 

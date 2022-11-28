@@ -1,3 +1,6 @@
+"""
+Assignment 4 Location Helper functions
+"""
 import random
 import location_descriptions
 import gameplay

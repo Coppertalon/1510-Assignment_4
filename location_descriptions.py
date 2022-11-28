@@ -1,3 +1,6 @@
+"""
+Assignment 4 Location Description functions
+"""
 import game
 import map_and_user
 import location_callers

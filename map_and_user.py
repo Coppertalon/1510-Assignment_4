@@ -1,3 +1,6 @@
+"""
+Assignment 4 Map and Player functions
+"""
 def move_decided(player_character: dict):
 
     valid_moves = ["north", "south", "east", "west", "quit"]
