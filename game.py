@@ -8,16 +8,37 @@ import location_descriptions
 
 
 def win():
+    """
+    Displays the winning text for when a user beats the game then returns false to stop the game loop
+
+    :postcondition: display the win game message
+    :return: boolean false
+    """
     print("win text")
     return False
 
 
 def lose():
+    """
+    Displays the winning text for when a user loses the game then returns false to stop the game loop
+
+    :postcondition: display the lose game message
+    :return: boolean false
+    """
     print("lose text")
     return False
 
 
 def start(maps: dict, player_character: dict):
+    """
+    Introduces the player to the game world and their goal then plays a practice round with no consequences.
+
+    :param maps: a dictionary of the games maps
+    :param player_character: a dictionary of the players characteristics
+    :precondition: player_character must contain a key "re-rolls" mapped to an int or float
+    :postconditon: add 1 to "re-roll" and return player_character and map
+    :return: updated map and player dictionaries
+    """
     location_callers.mark_location(maps, player_character,  "1", "O")
 
     print("Game Explanation")
@@ -38,7 +59,15 @@ def start(maps: dict, player_character: dict):
     return maps, player_character
 
 
-def final_dialogue(score: int):
+def final_dialogue(score: int) -> int:
+    """
+    Print unique dialog depending on how the final battle then return a value to show if the player won or lost.
+
+    :param score: an int
+    :precondition: score should always be [-2, -1, 1, 2]
+    :postconditon: print text and return an int representing if a player won [2] or lost [-2]
+    :return: int
+    """
     if score == -2:
         print("hard loss")
         return -2
@@ -54,15 +83,35 @@ def final_dialogue(score: int):
 
 
 def map_maker(user_map: list):
+    """
+    makes a list item a list of "*"'s - called only as part of a map function.
+
+    :param user_map: a list
+    :preconditon: user_map should be a list inside a list
+    :return: a list of five "*"
+    """
     return ["*", "*", "*", "*", "*"]
 
 
 def play(maps: dict, player_character: dict, run: bool):
+    """
+    Primary gameplay loop of the game. takes the player to the tutorial then enters a loop of the following:
+
+    display the map, let the player move, show mapa again, take the player to that location, check if they quit
+    update player health and experience, update level if necessary, check if the player won or lost the game.
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param run: a boolean
+    :precondition: maps must contain the game maps, player_character must contain player stats, run = True
+    :postcondition: have run the game and displayed if the player won or lost the game
+    :return: none
+    """
     maps, player_character = start(maps, player_character)
 
     while run:
         map_and_user.map_display(maps, player_character)
-        player_character, run = map_and_user.move(player_character)
+        player_character, run = map_and_user.move_decider(player_character)
         map_and_user.map_display(maps, player_character)
 
         maps, player_character, outcome, quitter = location_callers.location_finder(maps, player_character)
@@ -85,6 +134,11 @@ def play(maps: dict, player_character: dict, run: bool):
 
 
 def var():
+    """
+    Initialize all variables for the game. Print game over when game stops
+
+    :postcondition: all game variables are initialized, game over is printed
+    """
     locations = {"port": [location_descriptions.location_port_1, location_descriptions.location_port_2],
                  "easy": [location_descriptions.location_easy_1, location_descriptions.location_easy_2,
                           location_descriptions.location_easy_3, location_descriptions.location_easy_4,
@@ -128,6 +182,7 @@ def var():
 
 
 def main():
+    """driver"""
     var()
 
 
