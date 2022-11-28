@@ -17,7 +17,7 @@ def location_finder(maps: dict, player_character: dict):
                  location_port, location_city, location_yawning_portal]
     location_options = ["1", "2", "3", "4", "p", "c", "y"]
 
-    for i in range(0, 8):
+    for i in range(0, 7):
         if location == location_options[i]:
             return locations[i](maps, player_character)
 
@@ -113,7 +113,7 @@ def location_easy_1(maps: dict, player_character: dict, done=None):
         return dont_use_location(maps, player_character, "easy")
 
     player_stats(player_character)
-    choice = input("play or leave \n")
+    choice = input("play, leave, or quit \n")
 
     if choice == "play":
         return battle_starter(maps, player_character, location_easy_1, 16)
@@ -599,7 +599,7 @@ def total_modify(total: int, roll: int, action: str, player_character: dict):
 
 
 def move(player_character: dict):
-    valid_moves = ["north", "south", "east", "west"]
+    valid_moves = ["north", "south", "east", "west", "quit"]
     movement = ""
     while movement not in ["1", "2", "3", "4"]:
         print_choice = iter(valid_moves)
@@ -607,21 +607,25 @@ def move(player_character: dict):
             print(number, next(print_choice))
         movement = input("movement \n")
 
-        if movement.lower() in ["1", "2", "3", "4"]:
-            if movement == "1" and player_character["player_pos"][0] > 1:
+        if movement == "5":
+            return player_character, False
+
+        if movement in ["1", "2", "3", "4"]:
+            if movement == "1" and player_character["player_pos"][0] > 0:
                 player_character["player_pos"][0] -= 1
             elif movement == "2" and player_character["player_pos"][0] < 4:
                 player_character["player_pos"][0] += 1
-            elif movement == "3" and player_character["player_pos"][1] > 1:
+            elif movement == "3" and player_character["player_pos"][1] > 0:
                 player_character["player_pos"][1] -= 1
             elif movement == "4" and player_character["player_pos"][1] < 4:
                 player_character["player_pos"][1] += 1
             else:
                 print('"', movement, '"', " is an invalid movement. Please try again")
+                movement = "false"
 
         else:
             print('"', movement, '"', " is an invalid movement. Please try again")
-    return player_character
+    return player_character, True
 
 
 def health(battle_result: int, player_character: dict):
@@ -697,7 +701,7 @@ def map_display(maps: dict, player_character: dict):
 
 
 def player_stats(player_character: dict):
-    print("Stats:  Renown:", player_character["level"], "reputation: ", player_character["exp"],
+    print("Stats:  Renown:", player_character["level"], "Reputation: ", player_character["exp"],
           "Credibility", player_character["health"])
     print("Level 1 Skills:  re-rolls: ", player_character["re_roll"])
 
@@ -711,12 +715,11 @@ def play(maps: dict, player_character: dict, run: bool):
     # maps, player_character = location_start(maps, player_character)
 
     while run:
-        up = 0
         map_display(maps, player_character)
-        player_character = move(player_character)
+        player_character, run = move(player_character)
         map_display(maps, player_character)
 
-        maps, player_character, result = location_finder(maps, player_character)
+        maps, player_character, result, stop = location_finder(maps, player_character)
 
         player_character = health(result, player_character)
         player_character, up = experience(result, player_character)
@@ -754,9 +757,10 @@ def var():
             "locations": locations}
     name = input("player name \n")
     player_character = {"name": name, "player_pos": [4, 0], "health": 3, "level": 1, "exp": 0,
-                        "add": 0, "take_away": 0, "re_roll": 0}
+                        "add": 0, "take_away": 0, "re_roll": 1}
 
     play(maps, player_character, run=True)
+    print("Game Over")
 
 
 def main():
