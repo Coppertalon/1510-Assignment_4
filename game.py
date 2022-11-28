@@ -23,19 +23,17 @@ def start(maps: dict, player_character: dict):
     print("Game Explanation")
     print("Practice battle")
     print("Battle Explanation")
+    input("Press enter to continue")
 
     roll, player_character = gameplay.game_set_up(player_character)
-    if 15 < roll < 21:
-        print("win")
+    if 15 < roll < 22:
+        print("\n \nwin")
     else:
-        print("lose")
+        print("\n \nlose")
 
     print("Lore")
     print("Goal")
-    input("Press enter to contuinue")
-
-    map_and_user.map_display(maps, player_character)
-    print("Goodbye")
+    input("Press enter to continue")
     player_character["re_roll"] = 1
     return maps, player_character
 
@@ -67,11 +65,13 @@ def play(maps: dict, player_character: dict, run: bool):
         player_character, run = map_and_user.move(player_character)
         map_and_user.map_display(maps, player_character)
 
-        maps, player_character, result, stop = location_callers.location_finder(maps, player_character)
-        if stop is False:
+        maps, player_character, outcome, quitter = location_callers.location_finder(maps, player_character)
+
+        if quitter is False:
             break
-        player_character = map_and_user.health(result, player_character)
-        player_character, up = map_and_user.experience(result, player_character)
+
+        player_character = map_and_user.health(outcome, player_character)
+        player_character, up = map_and_user.experience(outcome, player_character)
 
         if up == 1:
             player_character = map_and_user.level_up(player_character)
@@ -79,7 +79,7 @@ def play(maps: dict, player_character: dict, run: bool):
         if player_character["health"] < 1:
             run = lose()
 
-        if result == 2:
+        if outcome == 2:
             run = win()
     return
 
@@ -117,7 +117,7 @@ def var():
     player_character = {"name": name,
                         "player_position": [4, 0],
                         "health": 3,
-                        "level": 0,
+                        "level": 1,
                         "exp": 0,
                         "add": 0,
                         "take_away": 0,
