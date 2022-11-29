@@ -7,12 +7,27 @@ import location_callers
 import gameplay
 
 
-def location_start_back(maps: dict, player_character: dict):
+def location_start_back(maps:
+                        dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                        player_character:
+                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
+                        tuple[dict[str: list, str: list,
+                              str: dict[str: list, str: list, str: list, str: list, str: list]],
+                              dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                              int]:
     print("start")
     return maps, player_character, 0
 
 
-def location_port_1(maps: dict, player_character: dict, done=None):
+def location_port_1(maps:
+                    dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                    player_character:
+                    dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                    done=None) -> \
+                    tuple[dict[str: list, str: list,
+                          str: dict[str: list, str: list, str: list, str: list, str: list]],
+                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                          int, bool]:
 
     location_callers.mark_location(maps, player_character, location_port_1, "P")
     print("port_1")
@@ -25,7 +40,15 @@ def location_port_1(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_port_2(maps: dict, player_character: dict, done=None):
+def location_port_2(maps:
+                    dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                    player_character:
+                    dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                    done=None) -> \
+                    tuple[dict[str: list, str: list,
+                          str: dict[str: list, str: list, str: list, str: list, str: list]],
+                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                          int, bool]:
     location_callers.mark_location(maps, player_character, location_port_2, "P")
     print("port_2")
     if done:
@@ -37,7 +60,15 @@ def location_port_2(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_easy_1(maps: dict, player_character: dict, done=None):
+def location_easy_1(maps:
+                    dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                    player_character:
+                    dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                    done=None) -> \
+                    tuple[dict[str: list, str: list,
+                          str: dict[str: list, str: list, str: list, str: list, str: list]],
+                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                          int, bool]:
     print("easy_1")
 
     maps, player_character, stop = location_callers.location_check_easy(maps, player_character, done, location_easy_1)
@@ -52,7 +83,15 @@ def location_easy_1(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_easy_2(maps: dict, player_character: dict, done=None):
+def location_easy_2(maps:
+                    dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                    player_character:
+                    dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                    done=None) -> \
+                    tuple[dict[str: list, str: list,
+                          str: dict[str: list, str: list, str: list, str: list, str: list]],
+                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                          int, bool]:
     print("easy_2")
 
     maps, player_character, stop = location_callers.location_check_easy(maps, player_character, done, location_easy_2)
@@ -67,7 +106,15 @@ def location_easy_2(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_easy_3(maps: dict, player_character: dict, done=None):
+def location_easy_3(maps:
+                    dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                    player_character:
+                    dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                    done=None) -> \
+                    tuple[dict[str: list, str: list,
+                          str: dict[str: list, str: list, str: list, str: list, str: list]],
+                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                          int, bool]:
     print("easy_3")
 
     maps, player_character, stop = location_callers.location_check_easy(maps, player_character, done, location_easy_3)
@@ -81,7 +128,15 @@ def location_easy_3(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_easy_4(maps: dict, player_character: dict, done=None):
+def location_easy_4(maps:
+                    dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                    player_character:
+                    dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                    done=None) -> \
+                    tuple[dict[str: list, str: list,
+                          str: dict[str: list, str: list, str: list, str: list, str: list]],
+                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                          int, bool]:
     print("easy_4")
 
     maps, player_character, stop = location_callers.location_check_easy(maps, player_character, done, location_easy_4)
@@ -96,7 +151,15 @@ def location_easy_4(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_easy_5(maps: dict, player_character: dict, done=None):
+def location_easy_5(maps:
+                    dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                    player_character:
+                    dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                    done=None) -> \
+                    tuple[dict[str: list, str: list,
+                          str: dict[str: list, str: list, str: list, str: list, str: list]],
+                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                          int, bool]:
     print("easy_5")
 
     maps, player_character, stop = location_callers.location_check_easy(maps, player_character, done, location_easy_5)
@@ -111,7 +174,15 @@ def location_easy_5(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_city_1(maps: dict, player_character: dict, done=None):
+def location_city_1(maps:
+                    dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                    player_character:
+                    dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                    done=None) -> \
+                    tuple[dict[str: list, str: list,
+                          str: dict[str: list, str: list, str: list, str: list, str: list]],
+                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                          int, bool]:
     location_callers.mark_location(maps, player_character, location_city_1, "C")
     print("city_1")
     if done:
@@ -123,7 +194,15 @@ def location_city_1(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_city_2(maps: dict, player_character: dict, done=None):
+def location_city_2(maps:
+                    dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                    player_character:
+                    dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                    done=None) -> \
+                    tuple[dict[str: list, str: list,
+                          str: dict[str: list, str: list, str: list, str: list, str: list]],
+                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                          int, bool]:
     location_callers.mark_location(maps, player_character, location_city_2, "C")
     print("city_2")
     if done:
@@ -135,7 +214,15 @@ def location_city_2(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_city_3(maps: dict, player_character: dict, done=None):
+def location_city_3(maps:
+                    dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                    player_character:
+                    dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                    done=None) -> \
+                    tuple[dict[str: list, str: list,
+                          str: dict[str: list, str: list, str: list, str: list, str: list]],
+                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                          int, bool]:
     location_callers.mark_location(maps, player_character, location_city_3, "C")
     print("city_3")
     if done:
@@ -147,7 +234,15 @@ def location_city_3(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_city_4(maps: dict, player_character: dict, done=None):
+def location_city_4(maps:
+                    dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                    player_character:
+                    dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                    done=None) -> \
+                    tuple[dict[str: list, str: list,
+                          str: dict[str: list, str: list, str: list, str: list, str: list]],
+                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                          int, bool]:
     location_callers.mark_location(maps, player_character, location_city_4, "C")
     print("city_4")
     if done:
@@ -159,7 +254,15 @@ def location_city_4(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_city_5(maps: dict, player_character: dict, done=None):
+def location_city_5(maps:
+                    dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                    player_character:
+                    dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                    done=None) -> \
+                    tuple[dict[str: list, str: list,
+                          str: dict[str: list, str: list, str: list, str: list, str: list]],
+                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                          int, bool]:
     location_callers.mark_location(maps, player_character, location_city_5, "C")
     print("city_5")
     if done:
@@ -171,7 +274,15 @@ def location_city_5(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_difficult_1(maps: dict, player_character: dict, done=None):
+def location_difficult_1(maps:
+                         dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                         player_character:
+                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                         done=None) -> \
+                         tuple[dict[str: list, str: list,
+                               str: dict[str: list, str: list, str: list, str: list, str: list]],
+                               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                               int, bool]:
     print("difficult_1")
 
     maps, player_character, stop = \
@@ -187,7 +298,15 @@ def location_difficult_1(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_difficult_2(maps: dict, player_character: dict, done=None):
+def location_difficult_2(maps:
+                         dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                         player_character:
+                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                         done=None) -> \
+                         tuple[dict[str: list, str: list,
+                               str: dict[str: list, str: list, str: list, str: list, str: list]],
+                               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                               int, bool]:
     print("difficult_2")
 
     maps, player_character, stop = \
@@ -203,7 +322,15 @@ def location_difficult_2(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_difficult_3(maps: dict, player_character: dict, done=None):
+def location_difficult_3(maps:
+                         dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                         player_character:
+                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                         done=None) -> \
+                         tuple[dict[str: list, str: list,
+                               str: dict[str: list, str: list, str: list, str: list, str: list]],
+                               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                               int, bool]:
     print("difficult_3")
 
     maps, player_character, stop = \
@@ -219,7 +346,15 @@ def location_difficult_3(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_difficult_4(maps: dict, player_character: dict, done=None):
+def location_difficult_4(maps:
+                         dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                         player_character:
+                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                         done=None) -> \
+                         tuple[dict[str: list, str: list,
+                               str: dict[str: list, str: list, str: list, str: list, str: list]],
+                               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                               int, bool]:
     print("difficult_4")
 
     maps, player_character, stop = \
@@ -234,7 +369,15 @@ def location_difficult_4(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_difficult_5(maps: dict, player_character: dict, done=None):
+def location_difficult_5(maps:
+                         dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                         player_character:
+                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                         done=None) -> \
+                         tuple[dict[str: list, str: list,
+                               str: dict[str: list, str: list, str: list, str: list, str: list]],
+                               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                               int, bool]:
     print("difficult_5")
 
     maps, player_character, stop = \
@@ -250,7 +393,15 @@ def location_difficult_5(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_difficult_6(maps: dict, player_character: dict, done=None):
+def location_difficult_6(maps:
+                         dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                         player_character:
+                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                         done=None) -> \
+                         tuple[dict[str: list, str: list,
+                               str: dict[str: list, str: list, str: list, str: list, str: list]],
+                               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                               int, bool]:
     print("difficult_6")
 
     maps, player_character, stop = \
@@ -266,7 +417,15 @@ def location_difficult_6(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_difficult_7(maps: dict, player_character: dict, done=None):
+def location_difficult_7(maps:
+                         dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                         player_character:
+                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                         done=None) -> \
+                         tuple[dict[str: list, str: list,
+                               str: dict[str: list, str: list, str: list, str: list, str: list]],
+                               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                               int, bool]:
     print("difficult_7")
 
     maps, player_character, stop = \
@@ -282,7 +441,15 @@ def location_difficult_7(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_difficult_8(maps: dict, player_character: dict, done=None):
+def location_difficult_8(maps:
+                         dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                         player_character:
+                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                         done=None) -> \
+                         tuple[dict[str: list, str: list,
+                               str: dict[str: list, str: list, str: list, str: list, str: list]],
+                               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                               int, bool]:
     print("difficult_8")
 
     maps, player_character, stop = \
@@ -298,7 +465,15 @@ def location_difficult_8(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_yawning_1(maps: dict, player_character: dict, done=None):
+def location_yawning_1(maps:
+                       dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                       player_character:
+                       dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                       done=None) -> \
+                       tuple[dict[str: list, str: list,
+                             str: dict[str: list, str: list, str: list, str: list, str: list]],
+                             dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                             int, bool]:
     location_callers.mark_location(maps, player_character, location_yawning_1, "X")
     print("yawn_1")
     if done:
@@ -310,7 +485,15 @@ def location_yawning_1(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_yawning_2(maps: dict, player_character: dict, done=None):
+def location_yawning_2(maps:
+                       dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                       player_character:
+                       dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                       done=None) -> \
+                       tuple[dict[str: list, str: list,
+                             str: dict[str: list, str: list, str: list, str: list, str: list]],
+                             dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                             int, bool]:
     location_callers.mark_location(maps, player_character, location_yawning_2, "X")
     print("yawn_2")
     if done:
@@ -322,7 +505,15 @@ def location_yawning_2(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_yawning_3(maps: dict, player_character: dict, done=None):
+def location_yawning_3(maps:
+                       dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                       player_character:
+                       dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                       done=None) -> \
+                       tuple[dict[str: list, str: list,
+                             str: dict[str: list, str: list, str: list, str: list, str: list]],
+                             dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                             int, bool]:
     location_callers.mark_location(maps, player_character, location_yawning_3, "X")
     print("yawn_3")
     if done:
@@ -334,7 +525,14 @@ def location_yawning_3(maps: dict, player_character: dict, done=None):
     return maps, player_character, outcome, quitter
 
 
-def location_end(maps: dict, player_character: dict):
+def location_end(maps:
+                 dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                 player_character:
+                 dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
+                 tuple[dict[str: list, str: list,
+                       str: dict[str: list, str: list, str: list, str: list, str: list]],
+                       dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                       int, bool]:
     if player_character["level"] > 2:
         print("end")
         score = 0
