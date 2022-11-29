@@ -7,7 +7,7 @@ import location_callers
 import location_descriptions
 
 
-def win():
+def win() -> bool:
     """
     Displays the winning text for when a user beats the game then returns false to stop the game loop
 
@@ -15,10 +15,11 @@ def win():
     :return: boolean false
     """
     print("win text")
+
     return False
 
 
-def lose():
+def lose() -> bool:
     """
     Displays the winning text for when a user loses the game then returns false to stop the game loop
 
@@ -26,10 +27,13 @@ def lose():
     :return: boolean false
     """
     print("lose text")
+
     return False
 
 
-def start(maps: dict, player_character: dict):
+def start(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+          player_character: dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int])\
+          -> tuple[dict, dict]:
     """
     Introduces the player to the game world and their goal then plays a practice round with no consequences.
 
@@ -47,6 +51,7 @@ def start(maps: dict, player_character: dict):
     input("Press enter to continue")
 
     roll, player_character = gameplay.game_set_up(player_character)
+
     if 15 < roll < 22:
         print("\n \nwin")
     else:
@@ -55,7 +60,9 @@ def start(maps: dict, player_character: dict):
     print("Lore")
     print("Goal")
     input("Press enter to continue")
+
     player_character["re_roll"] = 1
+
     return maps, player_character
 
 
@@ -71,12 +78,15 @@ def final_dialogue(score: int) -> int:
     if score == -2:
         print("hard loss")
         return -2
+
     if score == -1:
         print("close loss")
         return -2
+
     if score == 1:
         print("close win")
         return 2
+
     if score == 2:
         print("solid win")
         return 2
@@ -93,7 +103,9 @@ def map_maker(user_map: list):
     return ["*", "*", "*", "*", "*"]
 
 
-def play(maps: dict, player_character: dict, run: bool):
+def play(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+         player_character: dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+         run: bool) -> None:
     """
     Primary gameplay loop of the game. takes the player to the tutorial then enters a loop of the following:
 
@@ -110,6 +122,7 @@ def play(maps: dict, player_character: dict, run: bool):
     maps, player_character = start(maps, player_character)
 
     while run:
+
         map_and_user.map_display(maps, player_character)
         player_character, run = map_and_user.move_decider(player_character)
         map_and_user.map_display(maps, player_character)
@@ -130,6 +143,7 @@ def play(maps: dict, player_character: dict, run: bool):
 
         if outcome == 2:
             run = win()
+
     return
 
 

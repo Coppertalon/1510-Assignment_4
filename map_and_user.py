@@ -1,7 +1,11 @@
 """
 Assignment 4 Map and Player functions
 """
-def move_decided(player_character: dict):
+
+
+def move_decider(player_character:
+                 dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
+                 tuple[dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int], bool]:
 
     valid_moves = ["north", "south", "east", "west", "quit"]
     movement = ""
@@ -25,7 +29,10 @@ def move_decided(player_character: dict):
     return player_character, True
 
 
-def player_mover(player_character, movement):
+def player_mover(player_character:
+                 dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                 movement: str) -> \
+                 tuple[dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int], str]:
 
     if movement == "1" and player_character["player_position"][0] > 0:
         player_character["player_position"][0] -= 1
@@ -46,7 +53,9 @@ def player_mover(player_character, movement):
     return player_character, movement
 
 
-def health(outcome: int, player_character: dict):
+def health(outcome: int, player_character:
+           dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
+           dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]:
     if outcome == -1:
         player_character["health"] = player_character["health"] - 1
         print("lose health message")
@@ -61,7 +70,10 @@ def health(outcome: int, player_character: dict):
         return player_character
 
 
-def experience(outcome: int, player_character: dict):
+def experience(outcome: int, player_character:
+               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
+               tuple[dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int], int]:
+
     if outcome == 1:
         player_character["exp"] = player_character["exp"] + 1
 
@@ -81,7 +93,8 @@ def experience(outcome: int, player_character: dict):
         return player_character, 0
 
 
-def level_up(player_character: dict):
+def level_up(player_character: dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) \
+        -> dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]:
 
     if player_character["level"] == 2:
         print("level up 2 message")
@@ -103,7 +116,11 @@ def level_up(player_character: dict):
     return player_character
 
 
-def map_display(maps: dict, player_character: dict):
+def map_display(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                player_character:
+                dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int])\
+                -> None:
+
     print("\n \n \n")
 
     for height in range(len(maps["map_visual"])):
@@ -124,7 +141,8 @@ def map_display(maps: dict, player_character: dict):
     return
 
 
-def player_stats(player_character: dict):
+def player_stats(player_character:
+                 dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> None:
 
     print("Stats:  Renown:", player_character["level"], "  Reputation: ", player_character["exp"],
           "  Credibility", player_character["health"])
