@@ -5,7 +5,14 @@ import random
 import location_callers
 
 
-def battle_starter(maps: dict, player_character: dict, location, roll_to_beat: int):
+def battle_starter(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                   player_character:
+                   dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                   location, roll_to_beat: int) -> \
+                   tuple[dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                         int, bool]:
+
     roll, player_character = game_set_up(player_character)
     if roll_to_beat < roll < 22:
         location_callers.mark_location(maps, player_character, location, "@")
@@ -17,7 +24,9 @@ def battle_starter(maps: dict, player_character: dict, location, roll_to_beat: i
         return maps, player_character, -1, True
 
 
-def game_set_up(player_character: dict):
+def game_set_up(player_character:
+                dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) \
+                -> tuple[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]:
 
     rolls = [random.randint(1, 6) for i in range(3)]
     print("\nYou rolled :", rolls)
@@ -42,7 +51,11 @@ def game_set_up(player_character: dict):
     return total, player_character
 
 
-def game_choices(player_character: dict, total: int, roll: int):
+def game_choices(player_character:
+                 dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                 total: int, roll: int) ->\
+                 tuple[int, int, str,
+                       dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]]:
     moves1 = ["roll", "re-roll", "hold"]
     moves2 = ["roll", "re-roll",  "hold",  "add", "take_away"]
 
@@ -68,28 +81,38 @@ def game_choices(player_character: dict, total: int, roll: int):
         return total, roll, "none", player_character
 
 
-def game_actions(total: int, roll: int, player_character: dict, action: str):
+def game_actions(total: int, roll: int, player_character:
+                 dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int], action: str)\
+                 -> tuple[int, int, str,
+                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]]:
     if action == "1":
-        return rolling(total, roll, action, player_character)
+        total, roll, action, player_character = rolling(total, roll, action, player_character)
+        return total, roll, action, player_character
 
     elif action == "2" and player_character["re_roll"] > 0:
-        return rolling(total, roll, action, player_character)
+        total, roll, action, player_character = rolling(total, roll, action, player_character)
+        return total, roll, action, player_character
 
     elif action == "3":
         return total, roll, "hold", player_character
 
     elif action == "4" and player_character["add"] > 0:
-        return total_modify(total, roll, action, player_character)
+        total, roll, action, player_character = total_modify(total, roll, action, player_character)
+        return total, roll, action, player_character
 
     elif action == "5" and player_character["take_away"] > 0:
-        return total_modify(total, roll, action, player_character)
+        total, roll, action, player_character = total_modify(total, roll, action, player_character)
+        return total, roll, action, player_character
 
     else:
         print("you can't do that")
         return total, roll, "none", player_character
 
 
-def rolling(total: int, roll: int, action: str, player_character: dict):
+def rolling(total: int, roll: int, action: str,
+            player_character: dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) \
+            -> tuple[int, int, str,
+                     dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]]:
     if action == "1":
         roll = random.randint(1, 6)
         total += roll
@@ -105,7 +128,11 @@ def rolling(total: int, roll: int, action: str, player_character: dict):
         return total, roll, "none", player_character
 
 
-def total_modify(total: int, roll: int, action: str, player_character: dict):
+def total_modify(total: int, roll: int, action: str,
+                 player_character:
+                 dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) \
+                 -> tuple[int, int, str,
+                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]]:
     if action == "4":
         total += 1
         player_character["add"] -= 1
