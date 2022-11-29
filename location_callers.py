@@ -6,7 +6,14 @@ import location_descriptions
 import gameplay
 
 
-def location_finder(maps: dict, player_character: dict):
+def location_finder(maps:
+                    dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                    player_character:
+                    dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
+                    tuple[dict[str: list, str: list,
+                          str: dict[str: list, str: list, str: list, str: list, str: list]],
+                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                          int, bool]:
 
     location = maps["map_locations"][player_character["player_position"][0]][player_character["player_position"][1]]
 
@@ -20,48 +27,88 @@ def location_finder(maps: dict, player_character: dict):
             return locations[i](maps, player_character)
 
     if maps["map_visual"][player_character["player_position"][0]][player_character["player_position"][1]] == "!":
-        return location(maps, player_character, done=False)
-
+        maps, player_character, outcome, quitter = location(maps, player_character, done=False)
+        return maps, player_character, outcome, quitter
     else:
-        return location(maps, player_character, done=True)
+        maps, player_character, outcome, quitter = location(maps, player_character, done=True)
+        return maps, player_character, outcome, quitter
 
 
-def location_port(maps: dict, player_character: dict):
+def location_port(maps:
+                  dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                  player_character:
+                  dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
+                  tuple[dict[str: list, str: list,
+                        str: dict[str: list, str: list, str: list, str: list, str: list]],
+                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                        int, bool]:
     random_location = random.randint(0, (len(maps["locations"]["port"])-1))
     location = maps["locations"]["port"][random_location]
     del maps["locations"]["port"][random_location]
-    return location(maps, player_character)
+    maps, player_character, outcome, quitter = location(maps, player_character)
+    return maps, player_character, outcome, quitter
 
 
-def location_city(maps: dict, player_character: dict):
+def location_city(maps:
+                  dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                  player_character:
+                  dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
+                  tuple[dict[str: list, str: list,
+                        str: dict[str: list, str: list, str: list, str: list, str: list]],
+                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                        int, bool]:
     random_location = random.randint(0, (len(maps["locations"]["city"])-1))
     location = maps["locations"]["city"][random_location]
     del maps["locations"]["city"][random_location]
-    return location(maps, player_character)
+    maps, player_character, outcome, quitter = location(maps, player_character)
+    return maps, player_character, outcome, quitter
 
 
-def location_yawning_portal(maps: dict, player_character: dict):
+def location_yawning_portal(maps: dict
+                            [str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                            player_character:
+                            dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
+                            tuple[dict[str: list, str: list,
+                                  str: dict[str: list, str: list, str: list, str: list, str: list]],
+                                  dict
+                                  [str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                                  int, bool]:
     random_location = random.randint(0, (len(maps["locations"]["yawn"])-1))
     location = maps["locations"]["yawn"][random_location]
     del maps["locations"]["yawn"][random_location]
-    return location(maps, player_character)
+    maps, player_character, outcome, quitter = location(maps, player_character)
+    return maps, player_character, outcome, quitter
 
 
-def location_easy(maps: dict, player_character: dict):
+def location_easy(maps:
+                  dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                  player_character:
+                  dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
+                  tuple[dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                        int, bool]:
     random_location = random.randint(0, (len(maps["locations"]["easy"])-1))
     location = maps["locations"]["easy"][random_location]
     del maps["locations"]["easy"][random_location]
-    return location(maps, player_character)
+    maps, player_character, outcome, quitter = location(maps, player_character)
+    return maps, player_character, outcome, quitter
 
 
-def location_hard(maps: dict, player_character: dict):
+def location_hard(maps:
+                  dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                  player_character:
+                  dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) ->\
+                  tuple[dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                        int, bool]:
     random_location = random.randint(0, (len(maps["locations"]["difficult"])-1))
     location = maps["locations"]["difficult"][random_location]
     del maps["locations"]["difficult"][random_location]
-    return location(maps, player_character)
+    maps, player_character, outcome, quitter = location(maps, player_character)
+    return maps, player_character, outcome, quitter
 
 
-def dont_use_location(location_type: str):
+def dont_use_location(location_type: str) -> None:
     if location_type == "easy":
         print("too easy")
         input("Press enter to continue")
@@ -77,7 +124,12 @@ def dont_use_location(location_type: str):
     return
 
 
-def mark_location(maps: dict, player_character: dict, location_name, location_name_map: str):
+def mark_location(maps:
+                  dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                  player_character:
+                  dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                  location_name, location_name_map: str) ->\
+                  dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]]:
     maps["map_visual"][player_character["player_position"][0]][player_character["player_position"][1]] \
         = location_name_map
     maps["map_locations"][player_character["player_position"][0]][player_character["player_position"][1]] \
@@ -85,7 +137,7 @@ def mark_location(maps: dict, player_character: dict, location_name, location_na
     return maps
 
 
-def non_combat_location():
+def non_combat_location() -> bool:
     choice = "none"
     while choice not in ["1", "2"]:
         choice = input("1: Move \n2: Quit\n")
@@ -99,7 +151,15 @@ def non_combat_location():
             print("Invalid choice.")
 
 
-def combat_location(maps, player_character, location, difficulty):
+def combat_location(maps:
+                    dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                    player_character:
+                    dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                    location, difficulty: int) ->\
+                        tuple[
+                        dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                        int, bool]:
     choice = "none"
     while choice not in ["1", "2", "3"]:
         choice = input("1: Play \n2: Leave \n3: Quit\n")
@@ -118,7 +178,14 @@ def combat_location(maps, player_character, location, difficulty):
             print("Invalid choice.")
 
 
-def location_check_easy(maps, player_character, done, location):
+def location_check_easy(maps:
+                        dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                        player_character:
+                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                        done: bool, location) ->\
+                        tuple[
+                        dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int], bool]:
     if done:
         dont_use_location("beat")
         return maps, player_character, True
@@ -132,7 +199,14 @@ def location_check_easy(maps, player_character, done, location):
         return maps, player_character, False
 
 
-def location_check_hard(maps, player_character, done, location):
+def location_check_hard(maps:
+                        dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                        player_character:
+                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
+                        done: bool, location) ->\
+                        tuple[
+                        dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int], bool]:
     if done:
         dont_use_location("beat")
         return maps, player_character, True
