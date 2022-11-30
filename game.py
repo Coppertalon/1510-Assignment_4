@@ -39,7 +39,7 @@ def start(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: 
 
     :param maps: a dictionary of the games maps
     :param player_character: a dictionary of the players characteristics
-    :precondition: player_character must contain a key "re-rolls" mapped to an int or float
+    :precondition: player_character and maps are set dictionaries and will have all needed values
     :postconditon: add 1 to "re-roll" and return player_character and map
     :return: updated map and player dictionaries
     """
