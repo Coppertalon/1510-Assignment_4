@@ -172,16 +172,17 @@ def var():
                           location_descriptions.location_yawning_3]}
 
     player_map = list(map(map_maker, [[], [], [], [], []]))
-
     maps = {"map_visual": player_map,
+
             "map_locations": [["3", "3", "3", "y", "4"],
                               ["c", "c", "3", "y", "y"],
                               ["2", "2", "c", "3", "3"],
                               ["p", "2", "2", "c", "3"],
                               ["1", "p", "2", "c", "3"]],
-            "locations": locations}
-    name = input("player name \n")
 
+            "locations": locations}
+
+    name = input("player name \n")
     player_character = {"name": name,
                         "player_position": [4, 0],
                         "health": 3,
