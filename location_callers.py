@@ -14,7 +14,19 @@ def location_finder(maps:
                           str: dict[str: list, str: list, str: list, str: list, str: list]],
                           dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                           int, bool]:
-
+    """
+    takes the players location on the map and finds if it has been visited or which location pool it should look for.
+    
+    if a player has already visited a location it will send them to that location.
+    if it is a battle it will send a marker of whether the battle was beat or not.
+    
+    :param maps: dictionary
+    :param player_character: dictionary
+    :precondition: player_character and maps are set dictionaries and will have all needed values
+    :postcondition: get updated player character and map based on location, 
+                    get the outcome of the location and if the player wants to quit
+    :return: dictionary, dictionary, integer, boolean
+    """
     location = maps["map_locations"][player_character["player_position"][0]][player_character["player_position"][1]]
 
     locations = [location_descriptions.location_start_back, location_easy, location_hard,
@@ -29,6 +41,7 @@ def location_finder(maps:
     if maps["map_visual"][player_character["player_position"][0]][player_character["player_position"][1]] == "!":
         maps, player_character, outcome, quitter = location(maps, player_character, done=False)
         return maps, player_character, outcome, quitter
+
     else:
         maps, player_character, outcome, quitter = location(maps, player_character, done=True)
         return maps, player_character, outcome, quitter
@@ -42,9 +55,23 @@ def location_port(maps:
                         str: dict[str: list, str: list, str: list, str: list, str: list]],
                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                         int, bool]:
+    """
+    randomly assign the players current location one of the port locations and send them to that location.
+    
+    takes a list of locations by location type in maps and removes one of the locations at random, it then assigns that 
+    location to the map so it will be returned to in the future. then send the player to the function for that location.
+    
+    :param maps: dictionary
+    :param player_character: dictionary
+    :precondition: player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map with the location function name, get updated player character based on location, 
+                    get the outcome of the location and if the player wants to quit
+    :return: dictionary, dictionary, integer, boolean
+    """
     random_location = random.randint(0, (len(maps["locations"]["port"])-1))
     location = maps["locations"]["port"][random_location]
     del maps["locations"]["port"][random_location]
+
     maps, player_character, outcome, quitter = location(maps, player_character)
     return maps, player_character, outcome, quitter
 
@@ -57,9 +84,23 @@ def location_city(maps:
                         str: dict[str: list, str: list, str: list, str: list, str: list]],
                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                         int, bool]:
+    """
+    randomly assign the players current location one of the city locations and send them to that location.
+
+    takes a list of locations by location type in maps and removes one of the locations at random, it then assigns that 
+    location to the map so it will be returned to in the future. then send the player to the function for that location.
+
+    :param maps: dictionary
+    :param player_character: dictionary
+    :precondition: player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map with the location function name, get updated player character based on location, 
+                    get the outcome of the location and if the player wants to quit
+    :return: dictionary, dictionary, integer, boolean
+    """
     random_location = random.randint(0, (len(maps["locations"]["city"])-1))
     location = maps["locations"]["city"][random_location]
     del maps["locations"]["city"][random_location]
+
     maps, player_character, outcome, quitter = location(maps, player_character)
     return maps, player_character, outcome, quitter
 
@@ -73,9 +114,23 @@ def location_yawning_portal(maps: dict
                                   dict
                                   [str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                                   int, bool]:
+    """
+    randomly assign the players current location one of the final bar locations and send them to that location.
+
+    takes a list of locations by location type in maps and removes one of the locations at random, it then assigns that 
+    location to the map so it will be returned to in the future. then send the player to the function for that location.
+
+    :param maps: dictionary
+    :param player_character: dictionary
+    :precondition: player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map with the location function name, get updated player character based on location, 
+                    get the outcome of the location and if the player wants to quit
+    :return: dictionary, dictionary, integer, boolean
+    """
     random_location = random.randint(0, (len(maps["locations"]["yawn"])-1))
     location = maps["locations"]["yawn"][random_location]
     del maps["locations"]["yawn"][random_location]
+
     maps, player_character, outcome, quitter = location(maps, player_character)
     return maps, player_character, outcome, quitter
 
@@ -87,6 +142,20 @@ def location_easy(maps:
                   tuple[dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                         int, bool]:
+    """
+    randomly assign the players current location one of the easy bar locations and send them to that location.
+
+    takes a list of locations by location type in maps and removes one of the locations at random, it then assigns that 
+    location to the map so it will be returned to in the future. then send the player to the function for that location.
+
+    :param maps: dictionary
+    :param player_character: dictionary
+    :precondition: player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map with the location function name, get updated player character based on location, 
+                    get the outcome of the location and if the player wants to quit
+    :return: dictionary, dictionary, integer, boolean
+    """
+
     random_location = random.randint(0, (len(maps["locations"]["easy"])-1))
     location = maps["locations"]["easy"][random_location]
     del maps["locations"]["easy"][random_location]
@@ -101,9 +170,23 @@ def location_hard(maps:
                   tuple[dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                         int, bool]:
+    """
+    randomly assign the players current location one of the hard bar locations and send them to that location.
+
+    takes a list of locations by location type in maps and removes one of the locations at random, it then assigns that 
+    location to the map so it will be returned to in the future. then send the player to the function for that location.
+
+    :param maps: dictionary
+    :param player_character: dictionary
+    :precondition: player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map with the location function name, get updated player character based on location, 
+                    get the outcome of the location and if the player wants to quit
+    :return: dictionary, dictionary, integer, boolean
+    """
     random_location = random.randint(0, (len(maps["locations"]["difficult"])-1))
     location = maps["locations"]["difficult"][random_location]
     del maps["locations"]["difficult"][random_location]
+
     maps, player_character, outcome, quitter = location(maps, player_character)
     return maps, player_character, outcome, quitter
 
