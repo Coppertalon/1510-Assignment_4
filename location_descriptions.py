@@ -15,7 +15,18 @@ def location_start_back(maps:
                               str: dict[str: list, str: list, str: list, str: list, str: list]],
                               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                               int]:
+
+    """
+    print the description of the start then return the player
+    
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :precondition: player_character and maps are set dictionaries and will have all needed values
+    :postcondition: inform the user they have returned to the start and return them to the move menu
+    :return: dictionary, dictionary, int
+    """
     print("start")
+    input("press Enter to continue")
     return maps, player_character, 0
 
 
@@ -533,6 +544,18 @@ def location_end(maps:
                        str: dict[str: list, str: list, str: list, str: list, str: list]],
                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                        int, bool]:
+    """
+    final boss battle. will return the player to movement if they are too low a level.
+    
+    the player will fight the boss in a best two out of three, with the roll to beat increasing the more they win.
+    after the game ends it will call a function to inform the player of the outcome.
+    
+    :param maps: dictionary
+    :param player_character: dictionary
+    :precondition: player_character and maps are set dictionaries and will have all needed values
+    :postcondition: have a score for the battle and call the function to inform player of outcome 
+    :return: dictionary, dictionary, int
+    """
     if player_character["level"] > 2:
         print("end")
         score = 0
@@ -544,11 +567,13 @@ def location_end(maps:
             if (19 + score) < roll < 22:
                 score += 1
                 print("win")
+
             else:
                 score -= 1
                 print("lose")
             print(score)
             rounds += 1
+
         game.final_dialogue(score)
         return maps, player_character, 0, False
 
