@@ -39,9 +39,20 @@ def location_port_1(maps:
                           str: dict[str: list, str: list, str: list, str: list, str: list]],
                           dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                           int, bool]:
-
+    """
+    update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
+    
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, state no combat happened
+    :return: dictionary, dictionary, boolean
+    """
     location_callers.mark_location(maps, player_character, location_port_1, "P")
     print("port_1")
+
     if done:
         location_callers.dont_use_location("found")
 
@@ -60,8 +71,20 @@ def location_port_2(maps:
                           str: dict[str: list, str: list, str: list, str: list, str: list]],
                           dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                           int, bool]:
+    """
+    update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                    player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, state no combat happened
+    :return: dictionary, dictionary, boolean
+    """
     location_callers.mark_location(maps, player_character, location_port_2, "P")
     print("port_2")
+
     if done:
         location_callers.dont_use_location("found")
 
@@ -80,9 +103,25 @@ def location_easy_1(maps:
                           str: dict[str: list, str: list, str: list, str: list, str: list]],
                           dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                           int, bool]:
+    """
+    update the map of locations, let the player choose to move, battle or quit
+     
+    if the player moves or quits, return that no combat happened and the appropriate quit variable (true = quit).
+    otherwise call the combat and return the result
+     
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, 
+                    call combat if necessary and return the outcome of the location
+    :return: dictionary, dictionary, boolean
+    """
     print("easy_1")
 
     maps, player_character, stop = location_callers.location_check_easy(maps, player_character, done, location_easy_1)
+
     if stop:
         return maps, player_character, 0, False
 
@@ -103,9 +142,25 @@ def location_easy_2(maps:
                           str: dict[str: list, str: list, str: list, str: list, str: list]],
                           dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                           int, bool]:
+    """
+    update the map of locations, let the player choose to move, battle or quit
+
+    if the player moves or quits, return that no combat happened and the appropriate quit variable (true = quit).
+    otherwise call the combat and return the result
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                    player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, 
+                    call combat if necessary and return the outcome of the location
+    :return: dictionary, dictionary, boolean
+    """
     print("easy_2")
 
     maps, player_character, stop = location_callers.location_check_easy(maps, player_character, done, location_easy_2)
+
     if stop:
         return maps, player_character, 0, False
 
@@ -126,9 +181,25 @@ def location_easy_3(maps:
                           str: dict[str: list, str: list, str: list, str: list, str: list]],
                           dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                           int, bool]:
+    """
+    update the map of locations, let the player choose to move, battle or quit
+
+    if the player moves or quits, return that no combat happened and the appropriate quit variable (true = quit).
+    otherwise call the combat and return the result
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                    player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, 
+                    call combat if necessary and return the outcome of the location
+    :return: dictionary, dictionary, boolean
+    """
     print("easy_3")
 
     maps, player_character, stop = location_callers.location_check_easy(maps, player_character, done, location_easy_3)
+
     if stop:
         return maps, player_character, 0, False
     map_and_user.player_stats(player_character)
@@ -148,9 +219,25 @@ def location_easy_4(maps:
                           str: dict[str: list, str: list, str: list, str: list, str: list]],
                           dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                           int, bool]:
+    """
+    update the map of locations, let the player choose to move, battle or quit
+
+    if the player moves or quits, return that no combat happened and the appropriate quit variable (true = quit).
+    otherwise call the combat and return the result
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, 
+                    call combat if necessary and return the outcome of the location
+    :return: dictionary, dictionary, boolean
+    """
     print("easy_4")
 
     maps, player_character, stop = location_callers.location_check_easy(maps, player_character, done, location_easy_4)
+
     if stop:
         return maps, player_character, 0, False
 
@@ -171,9 +258,25 @@ def location_easy_5(maps:
                           str: dict[str: list, str: list, str: list, str: list, str: list]],
                           dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                           int, bool]:
+    """
+    update the map of locations, let the player choose to move, battle or quit
+
+    if the player moves or quits, return that no combat happened and the appropriate quit variable (true = quit).
+    otherwise call the combat and return the result
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, 
+                    call combat if necessary and return the outcome of the location
+    :return: dictionary, dictionary, boolean
+    """
     print("easy_5")
 
     maps, player_character, stop = location_callers.location_check_easy(maps, player_character, done, location_easy_5)
+
     if stop:
         return maps, player_character, 0, False
 
@@ -194,8 +297,20 @@ def location_city_1(maps:
                           str: dict[str: list, str: list, str: list, str: list, str: list]],
                           dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                           int, bool]:
+    """
+    update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                    player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, state no combat happened
+    :return: dictionary, dictionary, boolean
+    """
     location_callers.mark_location(maps, player_character, location_city_1, "C")
     print("city_1")
+
     if done:
         location_callers.dont_use_location("found")
 
@@ -214,8 +329,20 @@ def location_city_2(maps:
                           str: dict[str: list, str: list, str: list, str: list, str: list]],
                           dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                           int, bool]:
+    """
+    update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                       player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, state no combat happened
+    :return: dictionary, dictionary, boolean
+    """
     location_callers.mark_location(maps, player_character, location_city_2, "C")
     print("city_2")
+
     if done:
         location_callers.dont_use_location("found")
 
@@ -234,8 +361,20 @@ def location_city_3(maps:
                           str: dict[str: list, str: list, str: list, str: list, str: list]],
                           dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                           int, bool]:
+    """
+    update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, state no combat happened
+    :return: dictionary, dictionary, boolean
+    """
     location_callers.mark_location(maps, player_character, location_city_3, "C")
     print("city_3")
+
     if done:
         location_callers.dont_use_location("found")
 
@@ -254,8 +393,20 @@ def location_city_4(maps:
                           str: dict[str: list, str: list, str: list, str: list, str: list]],
                           dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                           int, bool]:
+    """
+    update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, state no combat happened
+    :return: dictionary, dictionary, boolean
+    """
     location_callers.mark_location(maps, player_character, location_city_4, "C")
     print("city_4")
+
     if done:
         location_callers.dont_use_location("found")
 
@@ -274,8 +425,20 @@ def location_city_5(maps:
                           str: dict[str: list, str: list, str: list, str: list, str: list]],
                           dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                           int, bool]:
+    """
+    update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                    player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, state no combat happened
+    :return: dictionary, dictionary, boolean
+    """
     location_callers.mark_location(maps, player_character, location_city_5, "C")
     print("city_5")
+
     if done:
         location_callers.dont_use_location("found")
 
@@ -294,10 +457,26 @@ def location_difficult_1(maps:
                                str: dict[str: list, str: list, str: list, str: list, str: list]],
                                dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                                int, bool]:
+    """
+    update the map of locations, let the player choose to move, battle or quit
+
+    if the player moves or quits, return that no combat happened and the appropriate quit variable (true = quit).
+    otherwise call the combat and return the result
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, 
+                    call combat if necessary and return the outcome of the location
+    :return: dictionary, dictionary, boolean
+    """
     print("difficult_1")
 
     maps, player_character, stop = \
         location_callers.location_check_hard(maps, player_character, done, location_difficult_1)
+
     if stop:
         return maps, player_character, 0, False
 
@@ -318,10 +497,26 @@ def location_difficult_2(maps:
                                str: dict[str: list, str: list, str: list, str: list, str: list]],
                                dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                                int, bool]:
+    """
+    update the map of locations, let the player choose to move, battle or quit
+
+    if the player moves or quits, return that no combat happened and the appropriate quit variable (true = quit).
+    otherwise call the combat and return the result
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, 
+                    call combat if necessary and return the outcome of the location
+    :return: dictionary, dictionary, boolean
+    """
     print("difficult_2")
 
     maps, player_character, stop = \
         location_callers.location_check_hard(maps, player_character, done, location_difficult_2)
+
     if stop:
         return maps, player_character, 0, False
 
@@ -342,10 +537,26 @@ def location_difficult_3(maps:
                                str: dict[str: list, str: list, str: list, str: list, str: list]],
                                dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                                int, bool]:
+    """
+    update the map of locations, let the player choose to move, battle or quit
+
+    if the player moves or quits, return that no combat happened and the appropriate quit variable (true = quit).
+    otherwise call the combat and return the result
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, 
+                    call combat if necessary and return the outcome of the location
+    :return: dictionary, dictionary, boolean
+    """
     print("difficult_3")
 
     maps, player_character, stop = \
         location_callers.location_check_hard(maps, player_character, done, location_difficult_3)
+
     if stop:
         return maps, player_character, 0, False
 
@@ -366,6 +577,21 @@ def location_difficult_4(maps:
                                str: dict[str: list, str: list, str: list, str: list, str: list]],
                                dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                                int, bool]:
+    """
+    update the map of locations, let the player choose to move, battle or quit
+
+    if the player moves or quits, return that no combat happened and the appropriate quit variable (true = quit).
+    otherwise call the combat and return the result
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, 
+                    call combat if necessary and return the outcome of the location
+    :return: dictionary, dictionary, boolean
+    """
     print("difficult_4")
 
     maps, player_character, stop = \
@@ -389,10 +615,26 @@ def location_difficult_5(maps:
                                str: dict[str: list, str: list, str: list, str: list, str: list]],
                                dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                                int, bool]:
+    """
+    update the map of locations, let the player choose to move, battle or quit
+
+    if the player moves or quits, return that no combat happened and the appropriate quit variable (true = quit).
+    otherwise call the combat and return the result
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, 
+                    call combat if necessary and return the outcome of the location
+    :return: dictionary, dictionary, boolean
+    """
     print("difficult_5")
 
     maps, player_character, stop = \
         location_callers.location_check_hard(maps, player_character, done, location_difficult_5)
+
     if stop:
         return maps, player_character, 0, False
 
@@ -413,10 +655,26 @@ def location_difficult_6(maps:
                                str: dict[str: list, str: list, str: list, str: list, str: list]],
                                dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                                int, bool]:
+    """
+    update the map of locations, let the player choose to move, battle or quit
+
+    if the player moves or quits, return that no combat happened and the appropriate quit variable (true = quit).
+    otherwise call the combat and return the result
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, 
+                    call combat if necessary and return the outcome of the location
+    :return: dictionary, dictionary, boolean
+    """
     print("difficult_6")
 
     maps, player_character, stop = \
         location_callers.location_check_hard(maps, player_character, done, location_difficult_6)
+
     if stop:
         return maps, player_character, 0, False
 
@@ -437,10 +695,26 @@ def location_difficult_7(maps:
                                str: dict[str: list, str: list, str: list, str: list, str: list]],
                                dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                                int, bool]:
+    """
+    update the map of locations, let the player choose to move, battle or quit
+
+    if the player moves or quits, return that no combat happened and the appropriate quit variable (true = quit).
+    otherwise call the combat and return the result
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, 
+                    call combat if necessary and return the outcome of the location
+    :return: dictionary, dictionary, boolean
+    """
     print("difficult_7")
 
     maps, player_character, stop = \
         location_callers.location_check_hard(maps, player_character, done, location_difficult_7)
+
     if stop:
         return maps, player_character, 0, False
 
@@ -461,10 +735,26 @@ def location_difficult_8(maps:
                                str: dict[str: list, str: list, str: list, str: list, str: list]],
                                dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                                int, bool]:
+    """
+    update the map of locations, let the player choose to move, battle or quit
+
+    if the player moves or quits, return that no combat happened and the appropriate quit variable (true = quit).
+    otherwise call the combat and return the result
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, 
+                    call combat if necessary and return the outcome of the location
+    :return: dictionary, dictionary, boolean
+    """
     print("difficult_8")
 
     maps, player_character, stop = \
         location_callers.location_check_hard(maps, player_character, done, location_difficult_8)
+
     if stop:
         return maps, player_character, 0, False
 
@@ -485,8 +775,20 @@ def location_yawning_1(maps:
                              str: dict[str: list, str: list, str: list, str: list, str: list]],
                              dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                              int, bool]:
+    """
+    update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, state no combat happened
+    :return: dictionary, dictionary, boolean
+    """
     location_callers.mark_location(maps, player_character, location_yawning_1, "X")
     print("yawn_1")
+
     if done:
         location_callers.dont_use_location("found")
 
@@ -505,8 +807,20 @@ def location_yawning_2(maps:
                              str: dict[str: list, str: list, str: list, str: list, str: list]],
                              dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                              int, bool]:
+    """
+    update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                       player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, state no combat happened
+    :return: dictionary, dictionary, boolean
+    """
     location_callers.mark_location(maps, player_character, location_yawning_2, "X")
     print("yawn_2")
+
     if done:
         location_callers.dont_use_location("found")
 
@@ -525,8 +839,20 @@ def location_yawning_3(maps:
                              str: dict[str: list, str: list, str: list, str: list, str: list]],
                              dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                              int, bool]:
+    """
+    update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :precondition: done must represent if a player has already been to this location
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map of locations, get the choice of the player, state no combat happened
+    :return: dictionary, dictionary, boolean
+    """
     location_callers.mark_location(maps, player_character, location_yawning_3, "X")
     print("yawn_3")
+
     if done:
         location_callers.dont_use_location("found")
 

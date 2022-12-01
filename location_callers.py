@@ -357,7 +357,7 @@ def location_check_hard(maps:
     :param done: a boolean
     :param location: a function
     :precondition: location must be the name of a location function,
-                       player_character and maps are set dictionaries and will have all needed values
+                   player_character and maps are set dictionaries and will have all needed values
     :postcondition: call the appropriate function and return if the player can battle at that location
     :return: dictionary, dictionary, boolean
     """
