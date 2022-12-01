@@ -46,7 +46,7 @@ def start(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: 
     location_callers.mark_location(maps, player_character,  "1", "O")
 
     print("Game Explanation")
-    print("Practice battle")
+    print("Practice Battle")
     print("Battle Explanation")
     input("Press enter to continue")
 
@@ -183,6 +183,7 @@ def var():
             "locations": locations}
 
     name = input("player name \n")
+    print("Hello", name, ", Welcome to Baldur's Bones")
     player_character = {"name": name,
                         "player_position": [4, 0],
                         "health": 3,
