@@ -50,7 +50,7 @@ def start(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: 
     print("Battle Explanation")
     input("Press enter to continue")
 
-    roll, player_character = gameplay.game_set_up(player_character)
+    roll = gameplay.game_set_up(player_character)
 
     if 15 < roll < 22:
         print("\n \nwin")
