@@ -16,13 +16,6 @@ class Test(TestCase):
                                                   "take_away": 0,
                                                   "re_roll": 0}))
     def test_battle_starter(self, get_output):
-        battle_starter({}, {"name": "test",
-                        "player_position": [4, 0],
-                        "health": 3,
-                        "level": 1,
-                        "exp": 0,
-                        "add": 0,
-                        "take_away": 0,
-                        "re_roll": 0}, 10)
+        battle_starter({}, {}, 10)
         output = get_output.getvalue()
         self.assertEqual(output, "win")
