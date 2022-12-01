@@ -131,23 +131,23 @@ def game_actions(total: int, roll: int, player_character:
     :return: int, int, sting, dictionary
     """
     if action == "1":
-        total, roll, action, player_character = rolling(total, roll, action, player_character)
-        return total, roll, action, player_character
+        total, roll, action = rolling(total, roll, action, player_character)
+        return total, roll, action
 
     elif action == "2" and player_character["re_roll"] > 0:
-        total, roll, action, player_character = rolling(total, roll, action, player_character)
-        return total, roll, action, player_character
+        total, roll, action = rolling(total, roll, action, player_character)
+        return total, roll, action
 
     elif action == "3":
         return total, roll, "hold"
 
     elif action == "4" and player_character["add"] > 0:
-        total, roll, action, player_character = total_modify(total, roll, action, player_character)
-        return total, roll, action, player_character
+        total, roll, action = total_modify(total, roll, action, player_character)
+        return total, roll, action
 
     elif action == "5" and player_character["take_away"] > 0:
-        total, roll, action, player_character = total_modify(total, roll, action, player_character)
-        return total, roll, action, player_character
+        total, roll, action = total_modify(total, roll, action, player_character)
+        return total, roll, action
 
     else:
         print("you can't do that")
