@@ -53,3 +53,91 @@ class Test(TestCase):
 
         self.assertIn(expected_output, output)
 
+    @patch('sys.stdout', new_callable=io.StringIO)
+    @patch(game_set_up({"name": "test",
+                        "player_position": [4, 0],
+                        "health": 3,
+                        "level": 1,
+                        "exp": 0,
+                        "add": 0,
+                        "take_away": 0,
+                        "re_roll": 0}), return_value=(13, {"name": "test",
+                                                           "player_position": [4, 0],
+                                                           "health": 3,
+                                                           "level": 1,
+                                                           "exp": 0,
+                                                           "add": 0,
+                                                           "take_away": 0,
+                                                           "re_roll": 0}))
+    def test_start_lose_low(self, mock_function, get_output):
+        player_character = {"name": "test",
+                            "player_position": [4, 0],
+                            "health": 3,
+                            "level": 1,
+                            "exp": 0,
+                            "add": 0,
+                            "take_away": 0,
+                            "re_roll": 0}
+
+        maps = {"map_visual": [["*", "*", "*", "*", "*"],
+                               ["*", "*", "*", "*", "*"],
+                               ["*", "*", "*", "*", "*"],
+                               ["*", "*", "*", "*", "*"],
+                               ["*", "*", "*", "*", "*"]],
+                "map_locations": [["3", "3", "3", "y", "4"],
+                                  ["c", "c", "3", "y", "y"],
+                                  ["2", "2", "c", "3", "3"],
+                                  ["p", "2", "2", "c", "3"],
+                                  ["1", "p", "2", "c", "3"]]}
+
+        start(maps, player_character)
+
+        output = get_output.getvalue()
+        expected_output = "\n\nlose\n"
+
+        self.assertIn(expected_output, output)
+
+    @patch('sys.stdout', new_callable=io.StringIO)
+    @patch(game_set_up({"name": "test",
+                        "player_position": [4, 0],
+                        "health": 3,
+                        "level": 1,
+                        "exp": 0,
+                        "add": 0,
+                        "take_away": 0,
+                        "re_roll": 0}), return_value=(23, {"name": "test",
+                                                           "player_position": [4, 0],
+                                                           "health": 3,
+                                                           "level": 1,
+                                                           "exp": 0,
+                                                           "add": 0,
+                                                           "take_away": 0,
+                                                           "re_roll": 0}))
+    def test_start_lose_low(self, mock_function, get_output):
+        player_character = {"name": "test",
+                            "player_position": [4, 0],
+                            "health": 3,
+                            "level": 1,
+                            "exp": 0,
+                            "add": 0,
+                            "take_away": 0,
+                            "re_roll": 0}
+
+        maps = {"map_visual": [["*", "*", "*", "*", "*"],
+                               ["*", "*", "*", "*", "*"],
+                               ["*", "*", "*", "*", "*"],
+                               ["*", "*", "*", "*", "*"],
+                               ["*", "*", "*", "*", "*"]],
+                "map_locations": [["3", "3", "3", "y", "4"],
+                                  ["c", "c", "3", "y", "y"],
+                                  ["2", "2", "c", "3", "3"],
+                                  ["p", "2", "2", "c", "3"],
+                                  ["1", "p", "2", "c", "3"]]}
+
+        start(maps, player_character)
+
+        output = get_output.getvalue()
+        expected_output = "\n\nlose\n"
+
+        self.assertIn(expected_output, output)
+
