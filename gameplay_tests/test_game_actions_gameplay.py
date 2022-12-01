@@ -7,7 +7,7 @@ from gameplay import game_actions
 class Test(TestCase):
 
     def test_rolling_hold(self):
-        total, roll, quitter, player_character = game_actions(10, 3, {"name": "test",
+        total, roll, quitter = game_actions(10, 3, {"name": "test",
                                                           "player_position": [4, 0],
                                                           "health": 3,
                                                           "level": 2,
