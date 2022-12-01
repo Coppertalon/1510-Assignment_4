@@ -50,7 +50,7 @@ def game_set_up(player_character:
     :postcondition: find the total of the players rolls after the game and return it
     :return: an int
     """
-    rolls = [random.randint(1, 6) for i in range(3)]
+    rolls = [random.randint(1, 6) for three_rolls in range(3)]
     print("\nYou rolled :", rolls)
     total = rolls[0] + rolls[1] + rolls[2]
 
