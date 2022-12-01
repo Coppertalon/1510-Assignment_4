@@ -9,9 +9,7 @@ def battle_starter(maps: dict[str: list, str: list, str: dict[str: list, str: li
                    player_character:
                    dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                    location, roll_to_beat: int) -> \
-                   tuple[dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
-                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                         int, bool]:
+                   tuple[int, bool]:
     """
     Takes the difficulty of a battle from a location and starts the battle then prints the result afterwards.
     
@@ -30,17 +28,17 @@ def battle_starter(maps: dict[str: list, str: list, str: dict[str: list, str: li
     if roll_to_beat < roll < 22:
         location_callers.mark_location(maps, player_character, location, "@")
         print("win")
-        return maps, player_character, 1, True
+        return 1, True
 
     else:
         location_callers.mark_location(maps, player_character, location, "!")
         print("lose")
-        return maps, player_character, -1, True
+        return -1, True
 
 
 def game_set_up(player_character:
                 dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) \
-                -> tuple[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]:
+                -> int:
 
     """
     create the players starting roll then inform them of their total and update it based on their actions.
@@ -70,16 +68,15 @@ def game_set_up(player_character:
             print("Level 2 Skills:  add 1 to roll:", player_character["add"],
                   "remove 1 from roll:", player_character["take_away"])
 
-        total, roll, action, player_character = game_choices(player_character, total, roll)
+        total, roll, action = game_choices(player_character, total, roll)
 
-    return total, player_character
+    return total
 
 
 def game_choices(player_character:
                  dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                  total: int, roll: int) ->\
-                 tuple[int, int, str,
-                       dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]]:
+                 tuple[int, int, str]:
 
     """
     inform the player of their choices and call the function to check if it valid and perform it.
@@ -111,18 +108,17 @@ def game_choices(player_character:
     if (choice in ["1", "2", "3"] and player_character["level"] == 1) \
             or (choice in ["1", "2", "3", "4", "5"] and player_character["level"] > 1):
 
-        total, roll, action, player_character, = game_actions(total, roll, player_character, action=choice)
-        return total, roll, action, player_character
+        total, roll, action = game_actions(total, roll, player_character, action=choice)
+        return total, roll, action
 
     else:
         print("bad choice")
-        return total, roll, "none", player_character
+        return total, roll, "none"
 
 
 def game_actions(total: int, roll: int, player_character:
                  dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int], action: str)\
-                 -> tuple[int, int, str,
-                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]]:
+                 -> tuple[int, int, str]:
     """
     takes the users choice of action and performs it if it is valid. otherwise inform the player it is not.
     
@@ -143,7 +139,7 @@ def game_actions(total: int, roll: int, player_character:
         return total, roll, action, player_character
 
     elif action == "3":
-        return total, roll, "hold", player_character
+        return total, roll, "hold"
 
     elif action == "4" and player_character["add"] > 0:
         total, roll, action, player_character = total_modify(total, roll, action, player_character)
@@ -155,13 +151,12 @@ def game_actions(total: int, roll: int, player_character:
 
     else:
         print("you can't do that")
-        return total, roll, "none", player_character
+        return total, roll, "none"
 
 
 def rolling(total: int, roll: int, action: str,
             player_character: dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) \
-            -> tuple[int, int, str,
-                     dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]]:
+            -> tuple[int, int, str]:
     """
     re-roll the previous roll or roll again and add to the total.
 
@@ -178,7 +173,7 @@ def rolling(total: int, roll: int, action: str,
         roll = random.randint(1, 6)
         total += roll
         print(roll)
-        return total, roll, "none", player_character
+        return total, roll, "none"
 
     elif action == "2":
         total -= roll
@@ -186,14 +181,13 @@ def rolling(total: int, roll: int, action: str,
         total += roll
         print(roll)
         player_character["re_roll"] -= 1
-        return total, roll, "none", player_character
+        return total, roll, "none"
 
 
 def total_modify(total: int, roll: int, action: str,
                  player_character:
                  dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) \
-                 -> tuple[int, int, str,
-                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]]:
+                 -> tuple[int, int, str]:
     """
     add 1 to the total or take away 1 from the total.
     
@@ -209,9 +203,9 @@ def total_modify(total: int, roll: int, action: str,
     if action == "4":
         total += 1
         player_character["add"] -= 1
-        return total, roll, "none", player_character
+        return total, roll, "none"
 
     if action == "5":
         total -= 1
         player_character["take_away"] -= 1
-        return total, roll, "none", player_character
+        return total, roll, "none"

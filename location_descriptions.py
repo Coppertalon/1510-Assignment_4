@@ -7,14 +7,7 @@ import location_callers
 import gameplay
 
 
-def location_start_back(maps:
-                        dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
-                        player_character:
-                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
-                        tuple[dict[str: list, str: list,
-                              str: dict[str: list, str: list, str: list, str: list, str: list]],
-                              dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                              int]:
+def location_start_back() -> None:
 
     """
     print the description of the start then return the player
@@ -27,18 +20,14 @@ def location_start_back(maps:
     """
     print("start")
     input("press Enter to continue")
-    return maps, player_character, 0
+    return 0
 
 
 def location_port_1(maps:
                     dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                     player_character:
                     dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                    done=None) -> \
-                    tuple[dict[str: list, str: list,
-                          str: dict[str: list, str: list, str: list, str: list, str: list]],
-                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                          int, bool]:
+                    done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
     
@@ -59,18 +48,14 @@ def location_port_1(maps:
     quitter = location_callers.non_combat_location()
     outcome = 0
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_port_2(maps:
                     dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                     player_character:
                     dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                    done=None) -> \
-                    tuple[dict[str: list, str: list,
-                          str: dict[str: list, str: list, str: list, str: list, str: list]],
-                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                          int, bool]:
+                    done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
 
@@ -91,18 +76,14 @@ def location_port_2(maps:
     quitter = location_callers.non_combat_location()
     outcome = 0
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_easy_1(maps:
                     dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                     player_character:
                     dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                    done=None) -> \
-                    tuple[dict[str: list, str: list,
-                          str: dict[str: list, str: list, str: list, str: list, str: list]],
-                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                          int, bool]:
+                    done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move, battle or quit
      
@@ -120,28 +101,23 @@ def location_easy_1(maps:
     """
     print("easy_1")
 
-    maps, player_character, stop = location_callers.location_check_easy(maps, player_character, done, location_easy_1)
+    stop = location_callers.location_check_easy(maps, player_character, done, location_easy_1)
 
     if stop:
-        return maps, player_character, 0, False
+        return 0, False
 
     map_and_user.player_stats(player_character)
 
-    maps, player_character, outcome, quitter = \
-        location_callers.combat_location(maps, player_character, location_easy_1, difficulty=15)
+    outcome, quitter = location_callers.combat_location(maps, player_character, location_easy_1, difficulty=15)
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_easy_2(maps:
                     dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                     player_character:
                     dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                    done=None) -> \
-                    tuple[dict[str: list, str: list,
-                          str: dict[str: list, str: list, str: list, str: list, str: list]],
-                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                          int, bool]:
+                    done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move, battle or quit
 
@@ -159,28 +135,23 @@ def location_easy_2(maps:
     """
     print("easy_2")
 
-    maps, player_character, stop = location_callers.location_check_easy(maps, player_character, done, location_easy_2)
+    stop = location_callers.location_check_easy(maps, player_character, done, location_easy_2)
 
     if stop:
-        return maps, player_character, 0, False
+        return 0, False
 
     map_and_user.player_stats(player_character)
 
-    maps, player_character, outcome, quitter = \
-        location_callers.combat_location(maps, player_character, location_easy_2, difficulty=15)
+    outcome, quitter = location_callers.combat_location(maps, player_character, location_easy_2, difficulty=15)
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_easy_3(maps:
                     dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                     player_character:
                     dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                    done=None) -> \
-                    tuple[dict[str: list, str: list,
-                          str: dict[str: list, str: list, str: list, str: list, str: list]],
-                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                          int, bool]:
+                    done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move, battle or quit
 
@@ -198,27 +169,22 @@ def location_easy_3(maps:
     """
     print("easy_3")
 
-    maps, player_character, stop = location_callers.location_check_easy(maps, player_character, done, location_easy_3)
+    stop = location_callers.location_check_easy(maps, player_character, done, location_easy_3)
 
     if stop:
         return maps, player_character, 0, False
     map_and_user.player_stats(player_character)
 
-    maps, player_character, outcome, quitter = \
-        location_callers.combat_location(maps, player_character, location_easy_3, difficulty=16)
+    outcome, quitter = location_callers.combat_location(maps, player_character, location_easy_3, difficulty=16)
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_easy_4(maps:
                     dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                     player_character:
                     dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                    done=None) -> \
-                    tuple[dict[str: list, str: list,
-                          str: dict[str: list, str: list, str: list, str: list, str: list]],
-                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                          int, bool]:
+                    done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move, battle or quit
 
@@ -236,28 +202,23 @@ def location_easy_4(maps:
     """
     print("easy_4")
 
-    maps, player_character, stop = location_callers.location_check_easy(maps, player_character, done, location_easy_4)
+    stop = location_callers.location_check_easy(maps, player_character, done, location_easy_4)
 
     if stop:
-        return maps, player_character, 0, False
+        return 0, False
 
     map_and_user.player_stats(player_character)
 
-    maps, player_character, outcome, quitter = \
-        location_callers.combat_location(maps, player_character, location_easy_4, difficulty=16)
+    outcome, quitter = location_callers.combat_location(maps, player_character, location_easy_4, difficulty=16)
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_easy_5(maps:
                     dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                     player_character:
                     dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                    done=None) -> \
-                    tuple[dict[str: list, str: list,
-                          str: dict[str: list, str: list, str: list, str: list, str: list]],
-                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                          int, bool]:
+                    done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move, battle or quit
 
@@ -278,25 +239,20 @@ def location_easy_5(maps:
     maps, player_character, stop = location_callers.location_check_easy(maps, player_character, done, location_easy_5)
 
     if stop:
-        return maps, player_character, 0, False
+        return 0, False
 
     map_and_user.player_stats(player_character)
 
-    maps, player_character, outcome, quitter = \
-        location_callers.combat_location(maps, player_character, location_easy_5, difficulty=16)
+    outcome, quitter = location_callers.combat_location(maps, player_character, location_easy_5, difficulty=16)
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_city_1(maps:
                     dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                     player_character:
                     dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                    done=None) -> \
-                    tuple[dict[str: list, str: list,
-                          str: dict[str: list, str: list, str: list, str: list, str: list]],
-                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                          int, bool]:
+                    done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
 
@@ -317,18 +273,14 @@ def location_city_1(maps:
     quitter = location_callers.non_combat_location()
     outcome = 0
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_city_2(maps:
                     dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                     player_character:
                     dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                    done=None) -> \
-                    tuple[dict[str: list, str: list,
-                          str: dict[str: list, str: list, str: list, str: list, str: list]],
-                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                          int, bool]:
+                    done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
 
@@ -349,18 +301,14 @@ def location_city_2(maps:
     quitter = location_callers.non_combat_location()
     outcome = 0
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_city_3(maps:
                     dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                     player_character:
                     dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                    done=None) -> \
-                    tuple[dict[str: list, str: list,
-                          str: dict[str: list, str: list, str: list, str: list, str: list]],
-                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                          int, bool]:
+                    done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
 
@@ -381,18 +329,14 @@ def location_city_3(maps:
     quitter = location_callers.non_combat_location()
     outcome = 0
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_city_4(maps:
                     dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                     player_character:
                     dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                    done=None) -> \
-                    tuple[dict[str: list, str: list,
-                          str: dict[str: list, str: list, str: list, str: list, str: list]],
-                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                          int, bool]:
+                    done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
 
@@ -413,18 +357,14 @@ def location_city_4(maps:
     quitter = location_callers.non_combat_location()
     outcome = 0
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_city_5(maps:
                     dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                     player_character:
                     dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                    done=None) -> \
-                    tuple[dict[str: list, str: list,
-                          str: dict[str: list, str: list, str: list, str: list, str: list]],
-                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                          int, bool]:
+                    done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
 
@@ -445,18 +385,14 @@ def location_city_5(maps:
     quitter = location_callers.non_combat_location()
     outcome = 0
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_difficult_1(maps:
                          dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                          player_character:
                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                         done=None) -> \
-                         tuple[dict[str: list, str: list,
-                               str: dict[str: list, str: list, str: list, str: list, str: list]],
-                               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                               int, bool]:
+                         done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move, battle or quit
 
@@ -474,29 +410,23 @@ def location_difficult_1(maps:
     """
     print("difficult_1")
 
-    maps, player_character, stop = \
-        location_callers.location_check_hard(maps, player_character, done, location_difficult_1)
+    stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_1)
 
     if stop:
-        return maps, player_character, 0, False
+        return 0, False
 
     map_and_user.player_stats(player_character)
 
-    maps, player_character, outcome, quitter = \
-        location_callers.combat_location(maps, player_character, location_difficult_1, difficulty=17)
+    outcome, quitter = location_callers.combat_location(maps, player_character, location_difficult_1, difficulty=17)
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_difficult_2(maps:
                          dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                          player_character:
                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                         done=None) -> \
-                         tuple[dict[str: list, str: list,
-                               str: dict[str: list, str: list, str: list, str: list, str: list]],
-                               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                               int, bool]:
+                         done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move, battle or quit
 
@@ -514,29 +444,23 @@ def location_difficult_2(maps:
     """
     print("difficult_2")
 
-    maps, player_character, stop = \
-        location_callers.location_check_hard(maps, player_character, done, location_difficult_2)
+    stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_2)
 
     if stop:
-        return maps, player_character, 0, False
+        return 0, False
 
     map_and_user.player_stats(player_character)
 
-    maps, player_character, outcome, quitter = \
-        location_callers.combat_location(maps, player_character, location_difficult_2, difficulty=17)
+    outcome, quitter =location_callers.combat_location(maps, player_character, location_difficult_2, difficulty=17)
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_difficult_3(maps:
                          dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                          player_character:
                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                         done=None) -> \
-                         tuple[dict[str: list, str: list,
-                               str: dict[str: list, str: list, str: list, str: list, str: list]],
-                               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                               int, bool]:
+                         done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move, battle or quit
 
@@ -554,18 +478,16 @@ def location_difficult_3(maps:
     """
     print("difficult_3")
 
-    maps, player_character, stop = \
-        location_callers.location_check_hard(maps, player_character, done, location_difficult_3)
+    stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_3)
 
     if stop:
         return maps, player_character, 0, False
 
     map_and_user.player_stats(player_character)
 
-    maps, player_character, outcome, quitter = \
-        location_callers.combat_location(maps, player_character, location_difficult_3, difficulty=17)
+    outcome, quitter = location_callers.combat_location(maps, player_character, location_difficult_3, difficulty=17)
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_difficult_4(maps:
@@ -573,10 +495,7 @@ def location_difficult_4(maps:
                          player_character:
                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                          done=None) -> \
-                         tuple[dict[str: list, str: list,
-                               str: dict[str: list, str: list, str: list, str: list, str: list]],
-                               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                               int, bool]:
+                         tuple[int, bool]:
     """
     update the map of locations, let the player choose to move, battle or quit
 
@@ -594,27 +513,22 @@ def location_difficult_4(maps:
     """
     print("difficult_4")
 
-    maps, player_character, stop = \
-        location_callers.location_check_hard(maps, player_character, done, location_difficult_4)
+    stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_4)
+
     if stop:
-        return maps, player_character, 0, False
+        return 0, False
     map_and_user.player_stats(player_character)
 
-    maps, player_character, outcome, quitter = \
-        location_callers.combat_location(maps, player_character, location_difficult_4, difficulty=17)
+    outcome, quitter = location_callers.combat_location(maps, player_character, location_difficult_4, difficulty=17)
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_difficult_5(maps:
                          dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                          player_character:
                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                         done=None) -> \
-                         tuple[dict[str: list, str: list,
-                               str: dict[str: list, str: list, str: list, str: list, str: list]],
-                               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                               int, bool]:
+                         done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move, battle or quit
 
@@ -632,29 +546,23 @@ def location_difficult_5(maps:
     """
     print("difficult_5")
 
-    maps, player_character, stop = \
-        location_callers.location_check_hard(maps, player_character, done, location_difficult_5)
+    stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_5)
 
     if stop:
-        return maps, player_character, 0, False
+        return 0, False
 
     map_and_user.player_stats(player_character)
 
-    maps, player_character, outcome, quitter = \
-        location_callers.combat_location(maps, player_character, location_difficult_5, difficulty=17)
+    outcome, quitter = location_callers.combat_location(maps, player_character, location_difficult_5, difficulty=17)
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_difficult_6(maps:
                          dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                          player_character:
                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                         done=None) -> \
-                         tuple[dict[str: list, str: list,
-                               str: dict[str: list, str: list, str: list, str: list, str: list]],
-                               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                               int, bool]:
+                         done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move, battle or quit
 
@@ -672,29 +580,23 @@ def location_difficult_6(maps:
     """
     print("difficult_6")
 
-    maps, player_character, stop = \
-        location_callers.location_check_hard(maps, player_character, done, location_difficult_6)
+    stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_6)
 
     if stop:
-        return maps, player_character, 0, False
+        return 0, False
 
     map_and_user.player_stats(player_character)
 
-    maps, player_character, outcome, quitter = \
-        location_callers.combat_location(maps, player_character, location_difficult_6, difficulty=18)
+    outcome, quitter = location_callers.combat_location(maps, player_character, location_difficult_6, difficulty=18)
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_difficult_7(maps:
                          dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                          player_character:
                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                         done=None) -> \
-                         tuple[dict[str: list, str: list,
-                               str: dict[str: list, str: list, str: list, str: list, str: list]],
-                               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                               int, bool]:
+                         done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move, battle or quit
 
@@ -712,29 +614,23 @@ def location_difficult_7(maps:
     """
     print("difficult_7")
 
-    maps, player_character, stop = \
-        location_callers.location_check_hard(maps, player_character, done, location_difficult_7)
+    stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_7)
 
     if stop:
-        return maps, player_character, 0, False
+        return 0, False
 
     map_and_user.player_stats(player_character)
 
-    maps, player_character, outcome, quitter = \
-        location_callers.combat_location(maps, player_character, location_difficult_7, difficulty=18)
+    outcome, quitter = location_callers.combat_location(maps, player_character, location_difficult_7, difficulty=18)
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_difficult_8(maps:
                          dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                          player_character:
                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                         done=None) -> \
-                         tuple[dict[str: list, str: list,
-                               str: dict[str: list, str: list, str: list, str: list, str: list]],
-                               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                               int, bool]:
+                         done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move, battle or quit
 
@@ -752,29 +648,24 @@ def location_difficult_8(maps:
     """
     print("difficult_8")
 
-    maps, player_character, stop = \
-        location_callers.location_check_hard(maps, player_character, done, location_difficult_8)
+    stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_8)
 
     if stop:
-        return maps, player_character, 0, False
+        return 0, False
 
     map_and_user.player_stats(player_character)
 
-    maps, player_character, outcome, quitter = \
+    outcome, quitter = \
         location_callers.combat_location(maps, player_character, location_difficult_8, difficulty=18)
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_yawning_1(maps:
                        dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                        player_character:
                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                       done=None) -> \
-                       tuple[dict[str: list, str: list,
-                             str: dict[str: list, str: list, str: list, str: list, str: list]],
-                             dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                             int, bool]:
+                       done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
 
@@ -795,18 +686,14 @@ def location_yawning_1(maps:
     quitter = location_callers.non_combat_location()
     outcome = 0
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_yawning_2(maps:
                        dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                        player_character:
                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                       done=None) -> \
-                       tuple[dict[str: list, str: list,
-                             str: dict[str: list, str: list, str: list, str: list, str: list]],
-                             dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                             int, bool]:
+                       done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
 
@@ -827,18 +714,14 @@ def location_yawning_2(maps:
     quitter = location_callers.non_combat_location()
     outcome = 0
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_yawning_3(maps:
                        dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                        player_character:
                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                       done=None) -> \
-                       tuple[dict[str: list, str: list,
-                             str: dict[str: list, str: list, str: list, str: list, str: list]],
-                             dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                             int, bool]:
+                       done=None) -> tuple[int, bool]:
     """
     update the map of locations, let the player choose to move or quit, then return (outcome) that no combat occurred.
 
@@ -859,17 +742,14 @@ def location_yawning_3(maps:
     quitter = location_callers.non_combat_location()
     outcome = 0
 
-    return maps, player_character, outcome, quitter
+    return outcome, quitter
 
 
 def location_end(maps:
                  dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                  player_character:
                  dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
-                 tuple[dict[str: list, str: list,
-                       str: dict[str: list, str: list, str: list, str: list, str: list]],
-                       dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                       int, bool]:
+                 tuple[int, bool]:
     """
     final boss battle. will return the player to movement if they are too low a level.
     
@@ -901,7 +781,7 @@ def location_end(maps:
             rounds += 1
 
         game.final_dialogue(score)
-        return maps, player_character, 0, False
+        return 0, False
 
     print("too low")
-    return maps, player_character, 0, False
+    return 0, False

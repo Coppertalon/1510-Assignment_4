@@ -10,10 +10,7 @@ def location_finder(maps:
                     dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                     player_character:
                     dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
-                    tuple[dict[str: list, str: list,
-                          str: dict[str: list, str: list, str: list, str: list, str: list]],
-                          dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                          int, bool]:
+                    tuple[int, bool]:
     """
     takes the players location on the map and finds if it has been visited or which location pool it should look for.
     
@@ -39,22 +36,19 @@ def location_finder(maps:
             return locations[i](maps, player_character)
 
     if maps["map_visual"][player_character["player_position"][0]][player_character["player_position"][1]] == "!":
-        maps, player_character, outcome, quitter = location(maps, player_character, done=False)
-        return maps, player_character, outcome, quitter
+        outcome, quitter = location(maps, player_character, done=False)
+        return outcome, quitter
 
     else:
-        maps, player_character, outcome, quitter = location(maps, player_character, done=True)
-        return maps, player_character, outcome, quitter
+        outcome, quitter = location(maps, player_character, done=True)
+        return outcome, quitter
 
 
 def location_port(maps:
                   dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                   player_character:
                   dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
-                  tuple[dict[str: list, str: list,
-                        str: dict[str: list, str: list, str: list, str: list, str: list]],
-                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                        int, bool]:
+                  tuple[int, bool]:
     """
     randomly assign the players current location one of the port locations and send them to that location.
     
@@ -72,18 +66,15 @@ def location_port(maps:
     location = maps["locations"]["port"][random_location]
     del maps["locations"]["port"][random_location]
 
-    maps, player_character, outcome, quitter = location(maps, player_character)
-    return maps, player_character, outcome, quitter
+    outcome, quitter = location(maps, player_character)
+    return outcome, quitter
 
 
 def location_city(maps:
                   dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                   player_character:
                   dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
-                  tuple[dict[str: list, str: list,
-                        str: dict[str: list, str: list, str: list, str: list, str: list]],
-                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                        int, bool]:
+                  tuple[int, bool]:
     """
     randomly assign the players current location one of the city locations and send them to that location.
 
@@ -101,19 +92,15 @@ def location_city(maps:
     location = maps["locations"]["city"][random_location]
     del maps["locations"]["city"][random_location]
 
-    maps, player_character, outcome, quitter = location(maps, player_character)
-    return maps, player_character, outcome, quitter
+    outcome, quitter = location(maps, player_character)
+    return outcome, quitter
 
 
 def location_yawning_portal(maps: dict
                             [str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                             player_character:
                             dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
-                            tuple[dict[str: list, str: list,
-                                  str: dict[str: list, str: list, str: list, str: list, str: list]],
-                                  dict
-                                  [str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                                  int, bool]:
+                            tuple[int, bool]:
     """
     randomly assign the players current location one of the final bar locations and send them to that location.
 
@@ -131,17 +118,15 @@ def location_yawning_portal(maps: dict
     location = maps["locations"]["yawn"][random_location]
     del maps["locations"]["yawn"][random_location]
 
-    maps, player_character, outcome, quitter = location(maps, player_character)
-    return maps, player_character, outcome, quitter
+    outcome, quitter = location(maps, player_character)
+    return outcome, quitter
 
 
 def location_easy(maps:
                   dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                   player_character:
                   dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
-                  tuple[dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
-                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                        int, bool]:
+                  tuple[int, bool]:
     """
     randomly assign the players current location one of the easy bar locations and send them to that location.
 
@@ -159,17 +144,15 @@ def location_easy(maps:
     random_location = random.randint(0, (len(maps["locations"]["easy"])-1))
     location = maps["locations"]["easy"][random_location]
     del maps["locations"]["easy"][random_location]
-    maps, player_character, outcome, quitter = location(maps, player_character)
-    return maps, player_character, outcome, quitter
+    outcome, quitter = location(maps, player_character)
+    return outcome, quitter
 
 
 def location_hard(maps:
                   dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                   player_character:
                   dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) ->\
-                  tuple[dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
-                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                        int, bool]:
+                  tuple[int, bool]:
     """
     randomly assign the players current location one of the hard bar locations and send them to that location.
 
@@ -187,8 +170,8 @@ def location_hard(maps:
     location = maps["locations"]["difficult"][random_location]
     del maps["locations"]["difficult"][random_location]
 
-    maps, player_character, outcome, quitter = location(maps, player_character)
-    return maps, player_character, outcome, quitter
+    outcome, quitter = location(maps, player_character)
+    return outcome, quitter
 
 
 def dont_use_location(location_type: str) -> None:
@@ -219,8 +202,7 @@ def mark_location(maps:
                   dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                   player_character:
                   dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                  location_name, location_name_map: str) ->\
-                  dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]]:
+                  location_name, location_name_map: str) -> None:
     """
     take the players position and update the maps.
     
@@ -240,7 +222,7 @@ def mark_location(maps:
         = location_name_map
     maps["map_locations"][player_character["player_position"][0]][player_character["player_position"][1]] \
         = location_name
-    return maps
+    return
 
 
 def non_combat_location() -> bool:
@@ -268,10 +250,7 @@ def combat_location(maps:
                     player_character:
                     dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                     location, difficulty: int) ->\
-                        tuple[
-                        dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
-                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                        int, bool]:
+                        tuple[int, bool]:
     """
     give the user the choice to move quit or fight from a combat location.
     
@@ -293,10 +272,10 @@ def combat_location(maps:
 
         if choice == "2":
             mark_location(maps, player_character, location, "!")
-            return maps, player_character, 0, True
+            return 0, True
 
         if choice == "3":
-            return maps, player_character, 0, False
+            return 0, False
 
         else:
             print("Invalid choice.")
@@ -306,10 +285,7 @@ def location_check_easy(maps:
                         dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                         player_character:
                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                        done: bool, location) ->\
-                        tuple[
-                        dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
-                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int], bool]:
+                        done: bool, location) -> bool:
     """
     check if a location is too easy for the player or has been explored and update the map if necessary.
     
@@ -327,25 +303,22 @@ def location_check_easy(maps:
     """
     if done:
         dont_use_location("beat")
-        return maps, player_character, True
+        return True
 
     elif player_character["level"] > 1:
         mark_location(maps, player_character, location, "!")
         dont_use_location("easy")
-        return maps, player_character, True
+        return True
 
     else:
-        return maps, player_character, False
+        return False
 
 
 def location_check_hard(maps:
                         dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                         player_character:
                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                        done: bool, location) ->\
-                        tuple[
-                        dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
-                        dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int], bool]:
+                        done: bool, location) -> bool:
     """
     check if a location is too hard for the player or has been explored and update the map if necessary.
 
@@ -363,12 +336,12 @@ def location_check_hard(maps:
     """
     if done:
         dont_use_location("beat")
-        return maps, player_character, True
+        return True
 
     elif player_character["level"] == 1:
         mark_location(maps, player_character, location, "!")
         dont_use_location("hard")
-        return maps, player_character, True
+        return True
 
     else:
-        return maps, player_character, False
+        return False

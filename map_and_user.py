@@ -4,8 +4,7 @@ Assignment 4 Map and Player functions
 
 
 def move_decider(player_character:
-                 dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
-                 tuple[dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int], bool]:
+                 dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> bool:
     """
     let the user chose how to move their character or quit the game then call the mover function.
     
@@ -34,13 +33,12 @@ def move_decider(player_character:
         else:
             print('"', movement, '"', " is an invalid movement. Please try again")
 
-    return player_character, True
+    return True
 
 
 def player_mover(player_character:
                  dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
-                 movement: str) -> \
-                 tuple[dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int], str]:
+                 movement: str) -> str:
     """
     take the users movement and update the character position if it is valid, other wise tell the user it is invalid.
     
@@ -67,12 +65,11 @@ def player_mover(player_character:
         print('"', movement, '"', " is an invalid movement. Please try again")
         movement = "false"
 
-    return player_character, movement
+    return movement
 
 
 def health(outcome: int, player_character:
-           dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
-           dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]:
+           dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> None:
     """
     update the players health based on the outcome of their previous location. 
     
@@ -86,20 +83,19 @@ def health(outcome: int, player_character:
     if outcome == -1:
         player_character["health"] = player_character["health"] - 1
         print("lose health message")
-        return player_character
+        return
 
     if outcome == -2:
         player_character["health"] = player_character["health"] - 2
         print("lose to boss method")
-        return player_character
+        return
 
     else:
-        return player_character
+        return
 
 
 def experience(outcome: int, player_character:
-               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
-               tuple[dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int], int]:
+               dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> int:
     """
     update the players experience and level based on their combat and return 1 if they leveled up.
 
@@ -116,21 +112,21 @@ def experience(outcome: int, player_character:
         if player_character["level"] == 1 and player_character["exp"] == 3:
             player_character["level"] = 2
             player_character["exp"] = 0
-            return player_character, 1
+            return 1
 
         if player_character["level"] == 2 and player_character["exp"] == 5:
             player_character["level"] = 3
             player_character["exp"] = 0
-            return player_character, 1
+            return 1
 
         else:
-            return player_character, 0
+            return 0
     else:
-        return player_character, 0
+        return 0
 
 
 def level_up(player_character: dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) \
-        -> dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]:
+        -> None:
     """
     update and increase the players stats for leveling up.
 
@@ -156,7 +152,7 @@ def level_up(player_character: dict[str: str, str: tuple, str: int, str: int, st
     if player_character["add"] < player_character["level"]:
         player_character["add"] = player_character["add"] + 1
 
-    return player_character
+    return
 
 
 def map_display(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],

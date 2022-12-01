@@ -33,7 +33,7 @@ def lose() -> bool:
 
 def start(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
           player_character: dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int])\
-          -> tuple[dict, dict]:
+          -> None:
     """
     Introduces the player to the game world and their goal then plays a practice round with no consequences.
 
@@ -63,7 +63,7 @@ def start(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: 
 
     player_character["re_roll"] = 1
 
-    return maps, player_character
+    return
 
 
 def final_dialogue(score: int) -> int:
@@ -119,24 +119,24 @@ def play(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: l
     :postcondition: have run the game and displayed if the player won or lost the game
     :return: none
     """
-    maps, player_character = start(maps, player_character)
+    start(maps, player_character)
 
     while run:
 
         map_and_user.map_display(maps, player_character)
-        player_character, run = map_and_user.move_decider(player_character)
+        run = map_and_user.move_decider(player_character)
         map_and_user.map_display(maps, player_character)
 
-        maps, player_character, outcome, quitter = location_callers.location_finder(maps, player_character)
+        outcome, quitter = location_callers.location_finder(maps, player_character)
 
         if quitter is False:
             break
 
-        player_character = map_and_user.health(outcome, player_character)
-        player_character, up = map_and_user.experience(outcome, player_character)
+        map_and_user.health(outcome, player_character)
+        up = map_and_user.experience(outcome, player_character)
 
         if up == 1:
-            player_character = map_and_user.level_up(player_character)
+            map_and_user.level_up(player_character)
 
         if player_character["health"] < 1:
             run = lose()
