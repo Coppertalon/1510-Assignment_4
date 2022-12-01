@@ -9,7 +9,15 @@ import io
 class Test(TestCase):
 
     @patch('sys.stdout', new_callable=io.StringIO)
-    @patch(game_set_up({}), return_value=(17, {"name": "test",
+    @patch('builtins.input', side_effect=['1', '3', '1'])
+    @patch(game_set_up({"name": "test",
+                        "player_position": [4, 0],
+                        "health": 3,
+                        "level": 1,
+                        "exp": 0,
+                        "add": 0,
+                        "take_away": 0,
+                        "re_roll": 0}), return_value=(17, {"name": "test",
                         "player_position": [4, 0],
                         "health": 3,
                         "level": 1,
@@ -17,7 +25,7 @@ class Test(TestCase):
                         "add": 0,
                         "take_away": 0,
                         "re_roll": 0}))
-    def test_start_win(self, mock_function, get_output):
+    def test_start_win(self, mock_function, mock_inputs, get_output):
 
         player_character = {"name": "test",
                         "player_position": [4, 0],
