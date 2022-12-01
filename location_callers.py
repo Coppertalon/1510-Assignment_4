@@ -192,6 +192,14 @@ def location_hard(maps:
 
 
 def dont_use_location(location_type: str) -> None:
+    """
+    take and display the status of a location that has been explored, a fight that is beaten / too easy / too hard.
+
+    :param location_type: string
+    :precondition: location type must be a string in ["easy", "hard", "explored", "beat"
+    :postcondition: print the location status
+    :return: none
+    """
     if location_type == "easy":
         print("too easy")
         input("Press enter to continue")
@@ -213,6 +221,21 @@ def mark_location(maps:
                   dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                   location_name, location_name_map: str) ->\
                   dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]]:
+    """
+    take the players position and update the maps.
+    
+    update the map of locations with the name of the location function that corresponds to that location.
+    then update the visual map with a single character representing that location type.
+    
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param location_name: a function
+    :param location_name_map: a string
+    :precondition: location_name must be the name of a location function, location_name must be a single character
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: update the map dictionary values: map_visual and map_locations
+    :return: dictionary
+    """
     maps["map_visual"][player_character["player_position"][0]][player_character["player_position"][1]] \
         = location_name_map
     maps["map_locations"][player_character["player_position"][0]][player_character["player_position"][1]] \
@@ -221,6 +244,12 @@ def mark_location(maps:
 
 
 def non_combat_location() -> bool:
+    """
+    give the user the choice to move or quit from a non-combat location.
+
+    :postcondition: return boolean for if the user choose to quit or not
+    :return: boolean
+    """
     choice = "none"
     while choice not in ["1", "2"]:
         choice = input("1: Move \n2: Quit\n")
@@ -243,6 +272,18 @@ def combat_location(maps:
                         dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int],
                         int, bool]:
+    """
+    give the user the choice to move quit or fight from a combat location.
+    
+    :param maps: dictionary
+    :param player_character: dictionary
+    :param location: function
+    :param difficulty: int
+    :precondition: difficulty must be a positive integer, location must be the name of a location function
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: return the result of if there was a battle, updated player_character, and if they player quit
+    :return: dictionary, dictionary, integer, boolean
+    """
     choice = "none"
     while choice not in ["1", "2", "3"]:
         choice = input("1: Play \n2: Leave \n3: Quit\n")
@@ -269,6 +310,21 @@ def location_check_easy(maps:
                         tuple[
                         dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int], bool]:
+    """
+    check if a location is too easy for the player or has been explored and update the map if necessary.
+    
+    if a player has already beaten a location or is too low a level for a location then it will inform the player and
+    update the map if necessary then return a true to stop the player from fighting. otherwise it returns false.
+    
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :param location: a function
+    :precondition: location must be the name of a location function,
+                   player_character and maps are set dictionaries and will have all needed values
+    :postcondition: call the appropriate function and return if the player can battle at that location
+    :return: dictionary, dictionary, boolean
+    """
     if done:
         dont_use_location("beat")
         return maps, player_character, True
@@ -290,6 +346,21 @@ def location_check_hard(maps:
                         tuple[
                         dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                         dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int], bool]:
+    """
+    check if a location is too hard for the player or has been explored and update the map if necessary.
+
+    if a player has already beaten a location or is too high level for a location then it will inform the player and
+    update the map if necessary then return a true to stop the player from fighting. otherwise it returns false.
+
+    :param maps: a dictionary
+    :param player_character: a dictionary
+    :param done: a boolean
+    :param location: a function
+    :precondition: location must be the name of a location function,
+                       player_character and maps are set dictionaries and will have all needed values
+    :postcondition: call the appropriate function and return if the player can battle at that location
+    :return: dictionary, dictionary, boolean
+    """
     if done:
         dont_use_location("beat")
         return maps, player_character, True
