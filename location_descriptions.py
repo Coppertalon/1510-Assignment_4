@@ -16,7 +16,9 @@ def location_start_back() -> None:
     :postcondition: inform the user they have returned to the start and return them to the move menu
     :return: dictionary, dictionary, int
     """
-    print("start")
+    print("As you walk back to your ship you take a moment to clear your mind and relax. 'I can do this' you think to"
+          " yourself. I just need to remember to focus and think about the odds."
+          " There is no one for you to play against here")
     input("press Enter to continue")
     return
 
@@ -38,7 +40,10 @@ def location_port_1(maps:
     :return: dictionary, dictionary, boolean
     """
     location_callers.mark_location(maps, player_character, location_port_1, "P")
-    print("port_1")
+    print("As you walk towards the boardwalk you hear the sounds of partying and merriment"
+          " in the distance. As you walk along the dock several fishermen offer you the 'fresh' catch pof the day."
+          " You know better and ignore them as you continue along."
+          " There does not seem to be anyone to play around here.")
 
     if done:
         location_callers.dont_use_location("found")
@@ -66,7 +71,9 @@ def location_port_2(maps:
     :return: dictionary, dictionary, boolean
     """
     location_callers.mark_location(maps, player_character, location_port_2, "P")
-    print("port_2")
+    print("As you walk around the ports of Waterdeep you enter a largely abandoned area. Empty warehouses surround"
+          " you on all sides as you hear the telltale skittering of rats. The air is thick smells of salt and fish."
+          " It seems to be an abounded part of the docks and there does not seem to be anyone to play around here.")
 
     if done:
         location_callers.dont_use_location("found")
@@ -676,7 +683,11 @@ def location_yawning_1(maps:
     :return: dictionary, dictionary, boolean
     """
     location_callers.mark_location(maps, player_character, location_yawning_1, "Y")
-    print("yawn_1")
+    print("As you walk into the side entrance of the tavern you are stunned by a young creature with bright red skin"
+          " who appears to be playing the fiddle. The air in the room is electric as the creature enters another "
+          " quick and energetic song about a young halfling lad who outplayed a devil in a competition of song."
+          " The crowd seems absolutely enraptured and there is no sign of the man you are here to play"
+          " There does not seem to be anyone to play around here.")
 
     if done:
         location_callers.dont_use_location("found")
@@ -704,7 +715,10 @@ def location_yawning_2(maps:
     :return: dictionary, dictionary, boolean
     """
     location_callers.mark_location(maps, player_character, location_yawning_2, "Y")
-    print("yawn_2")
+    print("You walk into the main entrance of the tavern and see a large wooden plaque hanging over the bar with"
+          " a picture of a swirling black portal. A gnome sitting at the front calls out to you, 'bartenders busy right"
+          " noy, if you want a drink, you'll have to wait.' If your looking for Volo he's in the back somewhere making"
+          " a ruckus. There does not seem to be anyone to play around here.")
 
     if done:
         location_callers.dont_use_location("found")
@@ -732,7 +746,13 @@ def location_yawning_3(maps:
     :return: dictionary, dictionary, boolean
     """
     location_callers.mark_location(maps, player_character, location_yawning_3, "Y")
-    print("yawn_3")
+    print("As you walk through the tavern you notice a large well sitting INSIDE the tavern. As you go to investigate"
+          " the bartender - a talk half-orc with a finely groomed mustache and goatee - call out to you."
+          " 'Oy there, that there is the Yawning Portal. Leads to the most dangerous dungeon this side of the coast"
+          " it does. Best not go pocking around it unless you want to fall in. "
+          " If you are looking for Volo I know he is somewhere around here.'"
+          " You decide its probably best for you to leave it for now and look around."
+          " There does not seem to be anyone to play around here.")
 
     if done:
         location_callers.dont_use_location("found")
