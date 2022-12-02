@@ -28,15 +28,18 @@ def battle_starter(maps: dict[str: list, str: list, str: dict[str: list, str: li
     if roll_to_beat < roll < 22:
         location_callers.mark_location(maps, player_character, location, "!")
         print("You rolled over 21. Your lose")
+        print("Your opponent cracks a smile as you walk away from the table defeated")
         return -1, True
     elif roll_to_beat > roll:
         location_callers.mark_location(maps, player_character, location, "!")
         print(f"the other player rolled {roll_to_beat}. Your lose")
+        print("Your opponent cracks a smile as you walk away from the table defeated")
         return -1, True
 
     else:
         location_callers.mark_location(maps, player_character, location, "@")
         print(f"You rolled {roll}, the other player rolled {roll_to_beat}. You win.")
+        print("Your opponent slams their fist on the table and stalks away from the table muttering to themself")
         return 1, True
 
 
