@@ -104,7 +104,9 @@ def location_easy_1(maps:
                     call combat if necessary and return the outcome of the location
     :return: dictionary, dictionary, boolean
     """
-    print("easy_1")
+    print("As you enter a dingy bar you see a number of sea worn sailors looking for an escape while they are docked."
+          " Amongst them you see a game of Baldur's bones is in full swing. You may either approach the table and begin"
+          " playing or continue your search elsewhere.")
 
     stop = location_callers.location_check_easy(maps, player_character, done, location_easy_1)
 
@@ -138,7 +140,11 @@ def location_easy_2(maps:
                     call combat if necessary and return the outcome of the location
     :return: dictionary, dictionary, boolean
     """
-    print("easy_2")
+    print("You walk into the must disgusting and run-down tavern you have ever seen. A mix of tired folk without much"
+          " money and those with nowhere else to go make up the patronage. A group of me in cloaks seem to be playing "
+          " dice and eagerly beckon you over to their table, their eyes lighting up at the prospect of a new player"
+          " to freshen up the game.  You may either approach the table and begin "
+          "playing or continue your search elsewhere.")
 
     stop = location_callers.location_check_easy(maps, player_character, done, location_easy_2)
 
@@ -172,7 +178,11 @@ def location_easy_3(maps:
                     call combat if necessary and return the outcome of the location
     :return: dictionary, dictionary, boolean
     """
-    print("easy_3")
+    print("You walk into a tavern that seems to be in decent shape, the bar is clean, the fire is lit, and the smell of"
+          " fresh food wafts out from the kitchen. The average folk of the docks seem to come here after a long"
+          " day seem to relax. You see a group of dock workers playing a game of Baldur's Bones. Recognizing you as"
+          " one of their own, they gesture for you to join.  You may either approach the table and begin"
+          " playing or continue your search elsewhere.")
 
     stop = location_callers.location_check_easy(maps, player_character, done, location_easy_3)
 
@@ -205,7 +215,11 @@ def location_easy_4(maps:
                     call combat if necessary and return the outcome of the location
     :return: dictionary, dictionary, boolean
     """
-    print("easy_4")
+    print("You enter one of the more upscale taverns along the docks, where adventuters who are hard up on cash go when"
+          " they arrive in port. The clientelle is a mix of these adventurers and the more well to do of the docks,"
+          " ships captains, warehouse manages, shopkeepers and the ilk. A group of rowdy adventures who seem to have"
+          " had a bit too much to drink welcome you to their table to join their game of dice."
+          " You may either approach the table and begin playing or continue your search elsewhere.")
 
     stop = location_callers.location_check_easy(maps, player_character, done, location_easy_4)
 
@@ -239,7 +253,11 @@ def location_easy_5(maps:
                     call combat if necessary and return the outcome of the location
     :return: dictionary, dictionary, boolean
     """
-    print("easy_5")
+    print("As you walk along the boardwalk you can't help but notice a few deckhands playing dice on one of the crates"
+          " that litter the piers. From the outside they look like a bunch of ruffians or perhaps those who are down"
+          " on their luck, but you recognise the rough and stained cloaks they wear as a fine way to keep the cold and"
+          " damp of the sea from infecting the soul. Recognising your kinship with these kind you nod to them "
+          " as you walk.  You may either approach the table and begin playing or continue your search elsewhere.")
 
     maps, player_character, stop = location_callers.location_check_easy(maps, player_character, done, location_easy_5)
 
@@ -270,7 +288,10 @@ def location_city_1(maps:
     :return: dictionary, dictionary, boolean
     """
     location_callers.mark_location(maps, player_character, location_city_1, "C")
-    print("city_1")
+    print("You enter a town square, the smell of freshly baked pies and roasting meats enters your nostrils"
+          " As you top to admire the beautiful fountain you take a moment to relax and close your eyes."
+          " Feeling refreshed and determined you decide to move onwards."
+          " There does not seem to be anyone to play around here.")
 
     if done:
         location_callers.dont_use_location("found")
@@ -298,7 +319,11 @@ def location_city_2(maps:
     :return: dictionary, dictionary, boolean
     """
     location_callers.mark_location(maps, player_character, location_city_2, "C")
-    print("city_2")
+    print("You walk down a  narrow alleyway, the sun above blocked by the buildings that begin to squeeze inwards"
+          " by your sides. Small rodents scurry between broken furniture and other refuse that litters the street."
+          " As you walk you swear that you saw someone look at you from behind the curtain of one of the windows that"
+          " line the street. You get a feeling it is probably a good idea to move along."
+          " There does not seem to be anyone to play around here.")
 
     if done:
         location_callers.dont_use_location("found")
@@ -326,7 +351,11 @@ def location_city_3(maps:
     :return: dictionary, dictionary, boolean
     """
     location_callers.mark_location(maps, player_character, location_city_3, "C")
-    print("city_3")
+    print("As you walk down one of the main commercial ways of the city, you admire the wealth that is on display in a"
+          " port city like Waterdeep. Fine cafes and restaurants line the street, the smell of delicious masterpieces "
+          " would cost a weeks work on your ship fills wafts around you. You look at brilliant sculpted cakes,"
+          " masterfully decorated pastries, and perfectly roasted meat on spits as you admire the scenery."
+          " There does not seem to be anyone to play around here.")
 
     if done:
         location_callers.dont_use_location("found")
@@ -354,7 +383,12 @@ def location_city_4(maps:
     :return: dictionary, dictionary, boolean
     """
     location_callers.mark_location(maps, player_character, location_city_4, "C")
-    print("city_4")
+    print("Entering one of the finer shopping districts within the city, you are taken by the extravagance around"
+          " each corner. You pass beautiful fine clothing, perfectly tailored to manicures, weapons honed to the finest"
+          " of edges and perfectly crafted tools with handles that fit you palm perfectly. Incredible magical phenomena"
+          " of the natural world dazzles you senses and you are amazed and puzzled my items enchanted by magic that do"
+          " the impossible. You could spend a lifetime here but alas you have work to do."
+          " There does not seem to be anyone to play around here.")
 
     if done:
         location_callers.dont_use_location("found")
@@ -382,7 +416,11 @@ def location_city_5(maps:
     :return: dictionary, dictionary, boolean
     """
     location_callers.mark_location(maps, player_character, location_city_5, "C")
-    print("city_5")
+    print("As you walk the uneven cobbled streets you can't help but overhear the cheerful din of music and laughter."
+          " Somewhere nearby a tavern is in full swing of celebration. A little early for your tastes but the chance to"
+          " prove yourself is all the intoxication you need. Now if only you could find where they were, but alas the"
+          " maze of packed buildings makes it hard to pin-point the noise."
+          " There does not seem to be anyone to play around here.")
 
     if done:
         location_callers.dont_use_location("found")
