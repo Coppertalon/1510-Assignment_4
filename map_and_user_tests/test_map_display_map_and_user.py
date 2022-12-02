@@ -23,7 +23,8 @@ class Test(TestCase):
                                ["*", "*", "*", "*", "*"]]}
         map_display(maps, player)
         output = get_output.getvalue()
-        expected_outputs = ["*****\n*****\n*****\n*****\n#****",
+        expected_outputs = ["\n| * | * | * | * | * | \n| * | * | * | * | * | \n| * | * | * | * | * | "
+                            "\n| * | * | * | * | * | \n| # |* | * | * | * |",
                             "Legend:  * = Unexplored,    # = Player,    ! = Found Bar,   @ = Beaten Bar,\n",
                             "Legend:  O = Your Ship,    X = Yawning Portal,    P = Found Port,   C = Found City,\n"]
         self.assertIn(expected_outputs[0], output)

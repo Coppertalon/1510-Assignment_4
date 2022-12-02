@@ -31,7 +31,7 @@ def move_decider(player_character:
             player_character, movement = player_mover(player_character, movement)
 
         else:
-            print(f'{movement} is an invalid movement. Please try again.')
+            print(f' " {movement} " is an invalid movement. Please try again.')
 
     return True
 
@@ -62,7 +62,7 @@ def player_mover(player_character:
         player_character["player_position"][1] += 1
 
     else:
-        print(f'{movement} is an invalid movement. Please try again.')
+        print(f' " {movement} " is an invalid movement. Please try again.')
         movement = "false"
 
     return movement
@@ -144,7 +144,7 @@ def level_up(player_character: dict[str: str, str: tuple, str: int, str: int, st
         print("Congratulations, you are now renown 2, by beating 3 players you increased your renown."
               " You have gained an addition point of credibility, which means you can lose another battle and still"
               " have the respect of others. In addition you regain a re-roll and"
-              " the talisman now lets you add 1 to your total remove 1 from your total once (per ability)."
+              " the talisman now lets you add 1 to your total and remove 1 from your total once (per ability)."
               " As you now have a higher reputation, battles in the bars"
               " near the docks are now below you and are unavailable.")
 
@@ -182,17 +182,17 @@ def map_display(maps: dict[str: list, str: list, str: dict[str: list, str: list,
     :postcondition: display the map as well as the players location and stats
     :return: none
     """
-    print("\n \n \n")
+    print("\n \n \n ")
 
     for height in range(len(maps["map_visual"])):
-        print("|")
+        print("| ", end="")
         for width in range(len(maps["map_visual"])):
 
             if height == player_character["player_position"][0] and width == player_character["player_position"][1]:
                 print("# |", end="")
 
             else:
-                print(maps["map_visual"][height][width], " |", end="")
+                print(maps["map_visual"][height][width], "| ", end="")
         print("")
 
     print("")

@@ -16,5 +16,5 @@ class Test(TestCase):
     def test_move_decider_invalid(self, get_output, mock_input):
         move_decider({})
         output = get_output.getvalue()
-        expected_output = '" 6 "  is an invalid movement. Please try again'
+        expected_output = '" 6 " is an invalid movement. Please try again.\n'
         self.assertIn(expected_output, output)
