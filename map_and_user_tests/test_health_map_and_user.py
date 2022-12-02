@@ -1,6 +1,7 @@
 from unittest import TestCase
 from map_and_user import health
 
+
 class Test(TestCase):
 
     def test_health_regular_loss(self):

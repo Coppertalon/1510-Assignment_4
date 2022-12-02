@@ -3,6 +3,7 @@ from unittest.mock import patch
 import io
 from map_and_user import player_mover
 
+
 class Test(TestCase):
 
     @patch('sys.stdout', new_callable=io.StringIO)

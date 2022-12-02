@@ -3,6 +3,7 @@ from unittest.mock import patch
 import io
 from map_and_user import move_decider
 
+
 class Test(TestCase):
 
     @patch('builtins.input', side_effect=['5'])
