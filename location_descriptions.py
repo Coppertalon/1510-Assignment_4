@@ -677,7 +677,7 @@ def location_yawning_1(maps:
     :postcondition: update the map of locations, get the choice of the player, state no combat happened
     :return: dictionary, dictionary, boolean
     """
-    location_callers.mark_location(maps, player_character, location_yawning_1, "X")
+    location_callers.mark_location(maps, player_character, location_yawning_1, "Y")
     print("yawn_1")
 
     if done:
@@ -705,7 +705,7 @@ def location_yawning_2(maps:
     :postcondition: update the map of locations, get the choice of the player, state no combat happened
     :return: dictionary, dictionary, boolean
     """
-    location_callers.mark_location(maps, player_character, location_yawning_2, "X")
+    location_callers.mark_location(maps, player_character, location_yawning_2, "Y")
     print("yawn_2")
 
     if done:
@@ -733,7 +733,7 @@ def location_yawning_3(maps:
     :postcondition: update the map of locations, get the choice of the player, state no combat happened
     :return: dictionary, dictionary, boolean
     """
-    location_callers.mark_location(maps, player_character, location_yawning_3, "X")
+    location_callers.mark_location(maps, player_character, location_yawning_3, "Y")
     print("yawn_3")
 
     if done:
