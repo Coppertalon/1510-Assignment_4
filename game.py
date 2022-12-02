@@ -57,7 +57,7 @@ def start(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: 
     """
     location_callers.mark_location(maps, player_character,  "1", "O")
     name = player_character["name"]
-    print(f"Greetings player, in Baldur's bones you will take control of {name}"
+    print(f"Greetings player, in Baldur's Bones you will take control of {name}"
           f" an aspiring sailor who longs to be a captain. In order to earn the respect of your fellow sailors you must"
           f" prove yourself in a popular game of gambling known as Baldur's Bones")
     print("Having just arrived ashore from a fishing trip with your mentor Karnus Stonewind, an aging hill dwarf -"
