@@ -26,14 +26,18 @@ def battle_starter(maps: dict[str: list, str: list, str: dict[str: list, str: li
     roll, player_character = game_set_up(player_character)
 
     if roll_to_beat < roll < 22:
-        location_callers.mark_location(maps, player_character, location, "@")
-        print("win")
-        return 1, True
+        location_callers.mark_location(maps, player_character, location, "!")
+        print("You rolled over 21. Your lose")
+        return -1, True
+    elif roll_to_beat > roll:
+        location_callers.mark_location(maps, player_character, location, "!")
+        print(f"the other player rolled {roll_to_beat}. Your lose")
+        return -1, True
 
     else:
-        location_callers.mark_location(maps, player_character, location, "!")
-        print("lose")
-        return -1, True
+        location_callers.mark_location(maps, player_character, location, "@")
+        print(f"You rolled {roll}, the other player rolled {roll_to_beat}. You win.")
+        return 1, True
 
 
 def game_set_up(player_character:
@@ -49,7 +53,7 @@ def game_set_up(player_character:
     :return: an int
     """
     rolls = [random.randint(1, 6) for three_rolls in range(3)]
-    print("\nYou rolled :", rolls)
+    print(f"\nYou rolled : {rolls} to begin the game.")
     total = rolls[0] + rolls[1] + rolls[2]
 
     action = "roll"
@@ -60,13 +64,15 @@ def game_set_up(player_character:
         print(total)
 
         if total > 21:
-            print("You are currently over the max roll")
+            print("You are currently over the max roll.")
+        re_roll = player_character["re_roll"]
+        print(f"Level 1 Skills:  re-rolls: {re_roll}")
 
-        print("Level 1 Skills:  re-rolls: ", player_character["re_roll"])
+        add = player_character["add"]
+        take_away = player_character["take_away"]
 
         if player_character["level"] > 1:
-            print("Level 2 Skills:  add 1 to roll:", player_character["add"],
-                  "remove 1 from roll:", player_character["take_away"])
+            print(f"Level 2 Skills:  add 1 to roll: {add} remove 1 from roll: {take_away}")
 
         total, roll, action = game_choices(player_character, total, roll)
 
@@ -97,13 +103,13 @@ def game_choices(player_character:
         print_choice = iter(moves1)
         for number, option in enumerate(range(len(moves1)), 1):
             print(number, next(print_choice))
-        choice = input("moves1 \n")
 
     else:
         print_choice = iter(moves2)
         for number, option in enumerate(range(len(moves2)), 1):
             print(number, next(print_choice))
-        choice = input("moves2 \n")
+
+    choice = input("Enter what move you will make.\n")
 
     if (choice in ["1", "2", "3"] and player_character["level"] == 1) \
             or (choice in ["1", "2", "3", "4", "5"] and player_character["level"] > 1):
@@ -112,7 +118,7 @@ def game_choices(player_character:
         return total, roll, action
 
     else:
-        print("bad choice")
+        print("That is not a valid move.")
         return total, roll, "none"
 
 
@@ -150,7 +156,7 @@ def game_actions(total: int, roll: int, player_character:
         return total, roll, action
 
     else:
-        print("you can't do that")
+        print("That is not a move you have the ability to make.")
         return total, roll, "none"
 
 
