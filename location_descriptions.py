@@ -757,8 +757,20 @@ def location_end(player_character:
     :postcondition: have a score for the battle and call the function to inform player of outcome 
     :return: dictionary, dictionary, int
     """
+    print("As you walk to the back of the tavern the noise begins to swell. Sitting at the center of attention"
+          " is a human with a well trimmed beard wearing a puffy white shirt and a small black cap."
+          " Were it not for the crowd around him who hang on his words and laugh at his every joke he would not"
+          " seem particularly notable. However as you approach, you are drawn in by his natural charisma"
+          " and pleasant demeanor.")
     if player_character["level"] > 2:
-        print("end")
+        print(" As you approach he seems to pick you out of the crowd and says: "
+              "'Well greeting there my young friend, you look like an enterprising fellow."
+              "Care for a game of Baldur's Bones?'")
+        print("Drawn in by his natural charm, you feel you cannot resist and take a seat at the table as one of his"
+              " admirers stands. He rolls up his sleeves and draws a black leather cup from a poutch at his side"
+              " and scoops up the finely carved ivory dice from the table."
+              " 'As is custom I believe that you would roll first': ")
+        print("Drawn in with no chance to refuse, the game for your chance to finally become a captain begins.")
         score = 0
         rounds = 0
 
@@ -778,5 +790,6 @@ def location_end(player_character:
         game.final_dialogue(score)
         return 0, False
 
-    print("too low")
+    print("He does not seem to notice you and continues the friendly conversation with those at his table"
+          "You are not renowned enough to play against the legendary Volo.")
     return 0, False
