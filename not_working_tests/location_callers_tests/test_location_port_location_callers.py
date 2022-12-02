@@ -4,8 +4,7 @@ from location_callers import location_port
 
 
 class Test(TestCase):
-
-    # this would work as a test but the program calls functions in another module
+    #  this program relies on calling randomized functions and is too difficult to test
     @patch('random.randint', return_value=1)
     def test_location_hard_remove_location(self, location_setter):
         locations = {"difficult": [1, 2]}
