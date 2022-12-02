@@ -216,9 +216,9 @@ def player_stats(player_character:
     level = player_character["level"]
     exp = player_character["exp"]
     player_health = player_character["health"]
-    reroll = player_character["re_roll"]
+    re_roll = player_character["re_roll"]
     print(f"Stats:  Renown: {level}  Reputation: {exp}  Credibility: {player_health}")
-    print(f"Level 1 Skills:  Re-rolls: {reroll}")
+    print(f"Level 1 Skills:  Re-rolls: {re_roll}")
 
     add = player_character["add"]
     take_away = player_character["take_away"]
