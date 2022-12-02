@@ -76,4 +76,4 @@ class Test(TestCase):
         output = combat_location(maps, player_character, "test", 2)
         output_text = get_output.getvalue()
         self.assertEqual(output, (0, False))
-        self.assertIn("Invalid choice.\n", output_text)
+        self.assertIn("That is not a valid choice.\n", output_text)

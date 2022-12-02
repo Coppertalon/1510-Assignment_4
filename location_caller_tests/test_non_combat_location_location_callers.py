@@ -5,7 +5,6 @@ import io
 
 
 class Test(TestCase):
-    # input 1 cannot be tested as it leads to a function outside the module
     @patch('builtins.input', side_effect=['1'])
     def test_combat_location_move(self, mock_input):
         output = non_combat_location()
@@ -22,4 +21,4 @@ class Test(TestCase):
         output = non_combat_location()
         output_text = get_output.getvalue()
         self.assertEqual(output, True)
-        self.assertIn("Invalid choice.\n", output_text)
+        self.assertIn("That is not a valid choice.\n", output_text)
