@@ -109,7 +109,7 @@ def game_choices(player_character:
         for number, option in enumerate(range(len(moves2)), 1):
             print(number, next(print_choice))
 
-    choice = input("Enter what move you will make.\n")
+    choice = input("Enter what move you will make or if you would like to quit.\n")
 
     if (choice in ["1", "2", "3"] and player_character["level"] == 1) \
             or (choice in ["1", "2", "3", "4", "5"] and player_character["level"] > 1):

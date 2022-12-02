@@ -22,7 +22,7 @@ def move_decider(player_character:
         print_choice = iter(valid_moves)
         for number, option in enumerate(range(len(valid_moves)), 1):
             print(number, next(print_choice))
-        movement = input("movement \n")
+        movement = input("Please enter which direction to go. (or 5 to quit_")
 
         if movement == "5":
             return False
@@ -31,7 +31,7 @@ def move_decider(player_character:
             player_character, movement = player_mover(player_character, movement)
 
         else:
-            print('"', movement, '"', " is an invalid movement. Please try again")
+            print(f'{movement} is an invalid movement. Please try again.')
 
     return True
 
@@ -62,7 +62,7 @@ def player_mover(player_character:
         player_character["player_position"][1] += 1
 
     else:
-        print('"', movement, '"', " is an invalid movement. Please try again")
+        print(f'{movement} is an invalid movement. Please try again.')
         movement = "false"
 
     return movement
@@ -82,12 +82,17 @@ def health(outcome: int, player_character:
     """
     if outcome == -1:
         player_character["health"] = player_character["health"] - 1
-        print("lose health message")
+        print("After your unfortunate loss you have lost some credibility.")
+        if player_character["health"] > 0:
+            print("If your credibility reaches 0 you will lose respect permanently and will have to leave Waterdeep.")
         return
 
     if outcome == -2:
         player_character["health"] = player_character["health"] - 2
-        print("lose to boss method")
+        print("After your unfortunate loss to the esteemed Volo you have lost some credibility."
+              " Unfortunately as a well respected figure you lost more credibility then usual.")
+        if player_character["health"] > 0:
+            print("If your credibility reaches 0 you will lose respect permanently and will have to leave Waterdeep.")
         return
 
     else:
@@ -136,10 +141,19 @@ def level_up(player_character: dict[str: str, str: tuple, str: int, str: int, st
     :return: dictionary
     """
     if player_character["level"] == 2:
-        print("level up 2 message")
+        print("Congratulations, you are now renown 2, by beating 3 players you increased your renown."
+              " You have gained an addition point of credibility, which means you can lose another battle and still"
+              " have the respect of others. In addition you regain a re-roll and"
+              " the talisman now lets you add 1 to your total remove 1 from your total once (per ability)."
+              " As you now have a higher reputation, battles in the bars"
+              " near the docks are now below you and are unavailable.")
 
     if player_character["level"] == 3:
-        print("level up 3 message")
+        print("Congratulations, you are now renown 2, by beating 3 players you increased your renown. "
+              " You gain another point of credibility as well as"
+              " another re-roll, add to roll, and take away from roll."
+              " You now have enough credibility to go against Volo in the yawning portal (Hint: go to the north east)"
+              " You can also to continue to practice but will gain nothing from it and risk credibility.")
 
     player_character["health"] = player_character["health"] + 1
 
@@ -171,13 +185,14 @@ def map_display(maps: dict[str: list, str: list, str: dict[str: list, str: list,
     print("\n \n \n")
 
     for height in range(len(maps["map_visual"])):
+        print("|")
         for width in range(len(maps["map_visual"])):
 
             if height == player_character["player_position"][0] and width == player_character["player_position"][1]:
-                print("#", end="")
+                print("# |", end="")
 
             else:
-                print(maps["map_visual"][height][width], end="")
+                print(maps["map_visual"][height][width], " |", end="")
         print("")
 
     print("")
@@ -200,12 +215,16 @@ def player_stats(player_character:
     :postcondition: display the users stats
     :return: none
     """
-    print("Stats:  Renown:", player_character["level"], "  Reputation:", player_character["exp"],
-          "  Credibility:", player_character["health"])
-    print("Level 1 Skills:  Re-rolls:", player_character["re_roll"])
+    level = player_character["level"]
+    exp = player_character["exp"]
+    player_health = player_character["health"]
+    reroll = player_character["re_roll"]
+    print(f"Stats:  Renown: {level}  Reputation: {exp}  Credibility: {player_health}")
+    print(f"Level 1 Skills:  Re-rolls: {reroll}")
 
+    add = player_character["add"]
+    take_away = player_character["take_away"]
     if player_character["level"] > 1:
-        print("Level 2 Skills:  Add 1 to roll:", player_character["add"],
-              "  Remove 1 from roll:", player_character["take_away"])
+        print(f"Level 2 Skills:  Add 1 to roll: {add} Remove 1 from roll: {take_away}")
 
     return
