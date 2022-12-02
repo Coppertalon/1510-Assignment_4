@@ -8,6 +8,7 @@ import io
 
 class Test(TestCase):
 
+    # start calls a function in an outside module and is too hard to test
     @patch('sys.stdout', new_callable=io.StringIO)
     @patch(gameplay.game_set_up, return_value=17)
     def test_start_win(self, get_output):

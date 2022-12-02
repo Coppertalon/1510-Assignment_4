@@ -6,6 +6,7 @@ import io
 
 class Test(TestCase):
 
+    # this function calls a function inside another module and is too difficult to test
     @patch('sys.stdout', new_callable=io.StringIO)
     @patch(game_set_up, return_value=(17, {"name": "test",
                                                   "player_position": [4, 0],
