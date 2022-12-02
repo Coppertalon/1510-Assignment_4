@@ -5,7 +5,7 @@ import io
 
 
 class Test(TestCase):
-
+    # input 1 cannot be tested as it leads to a function outside the module
     @patch('builtins.input', side_effect=['2'])
     def test_combat_location_move(self, mock_input):
         maps = {"map_visual": [["*", "*", "*", "*", "*"],
