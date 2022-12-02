@@ -7,27 +7,39 @@ import location_callers
 import location_descriptions
 
 
-def win() -> bool:
+def win(player_character: dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) \
+        -> bool:
     """
     Displays the winning text for when a user beats the game then returns false to stop the game loop
 
     :postcondition: display the win game message
     :return: boolean false
     """
-    print("win text")
-
+    name = player_character["name"]
+    print(f"Having defeated the famous adventurer Volo, {name} has proven themselves as a capable leader"
+          " and earned the reputation necessary to captain a vessel."
+          " Able to achieve their dream of sailing the oceans wide, you walk back into the city,"
+          " grinning as your mind fills with tales of the sea")
+    print("You Win")
     return False
 
 
-def lose() -> bool:
+def lose(player_character: dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int])\
+        -> bool:
     """
     Displays the winning text for when a user loses the game then returns false to stop the game loop
 
     :postcondition: display the lose game message
     :return: boolean false
     """
-    print("lose text")
 
+    name = player_character["name"]
+    print(f"Having faced several losses to the fickle hands of fate {name} "
+          f"has lost too much credibility in the town of Waterdeep. "
+          f"Your dreams of sailing the seas as a captain are not dissuaded"
+          f" and you being you venture to a further port in hopes that the chance to prove yourself "
+          f"is just around the corner.")
+    print("You Lose")
     return False
 
 
@@ -76,19 +88,33 @@ def final_dialogue(score: int) -> int:
     :return: int
     """
     if score == -2:
-        print("hard loss")
+        print("'Ahh an excellent set of games my good fellow, a shame about you luck, it does happen to the best of us."
+              " Still I thank you for the chance to engage in lighthearted merriment and wish all the best"
+              " in your future endeavors. Now if you will excuse me, i do believe i hear a drink calling my name.")
         return -2
 
     if score == -1:
-        print("close loss")
+        print("Good show, ahh a good show indeed, you almost had me for a second there,"
+              " but no creature can best Volo! Ah, I jest of course,"
+              " such vanities lead only to an early grave in my profession."
+              " Thank thee anyhow for a chance at such joyous games. I wish you well,"
+              " for I hear a fan to whom i must attend my attentions.")
         return -2
 
     if score == 1:
-        print("close win")
+        print("Oh, Oh my, it would seem that my good fortunes for the day are dwindling. Well then I am a man of "
+              "honor and will admit when I am beat. There are not many who can best the great Volo in a game "
+              "of fortunes so you should hold yourself in high esteem for that. I pronounce you the winner and wish "
+              "you the best in your future endeavors. For now I must go, my next literary masterpiece awaits.")
         return 2
 
     if score == 2:
-        print("solid win")
+        print("Good show, oh good show indeed! It has been far too long since someone has been able to show such a "
+              " performance against my talents, wit, and impeccable luck."
+              " Well far be it for me to deny such as skillful player their rightful reward. "
+              "I pronounce you the winner and that you have bested the mighty Volo!"
+              " Forgive me for now i must away as there are might beasts and blood pumping adventures that await me"
+              " beyond these walls. Good dayyyyy!")
         return 2
 
 
@@ -139,10 +165,10 @@ def play(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: l
             map_and_user.level_up(player_character)
 
         if player_character["health"] < 1:
-            run = lose()
+            run = lose(player_character)
 
         if outcome == 2:
-            run = win()
+            run = win(player_character)
 
     return
 
@@ -182,8 +208,7 @@ def var():
 
             "locations": locations}
 
-    name = input("player name \n")
-    print("Hello", name, ", Welcome to Baldur's Bones")
+    name = input("Please enter the Name of your character\n")
     player_character = {"name": name,
                         "player_position": [4, 0],
                         "health": 3,
