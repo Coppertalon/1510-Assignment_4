@@ -1,8 +1,7 @@
 from unittest import TestCase
-import location_callers
 from unittest.mock import patch
 from location_descriptions import location_city_4
-import io
+
 
 class Test(TestCase):
 
