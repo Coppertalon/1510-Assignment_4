@@ -68,6 +68,7 @@ def start(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: 
           f" everything you need to know to be a captain, but one thing remains. The game of Baldur's Bones'")
     print("The game is simple, you roll three 6-sided die and take that total, then one die at a time you may add to"
           " that roll. The closer you get to 21 without going over the better."
+          " that roll. The closer you get to 21 without going over the better."
           " Two players face off, with the challenger rolling first and the defender rolling second."
           " While the game is a game of luck and skill I have a secret up my sleeve."
           " Play me in a game and I will show you.")
