@@ -28,4 +28,4 @@ class Test(TestCase):
                              "take_away": 1,
                              "re_roll": 1}, "7",)
         output = get_output.getvalue()
-        self.assertEqual(output, "you can't do that\n")
+        self.assertEqual(output, "That is not a move you have the ability to make.\n")

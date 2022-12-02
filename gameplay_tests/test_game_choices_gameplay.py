@@ -90,5 +90,5 @@ class Test(TestCase):
                                                        "take_away": 1,
                                                        "re_roll": 1}, 10, 3)
         output = get_output.getvalue()
-        self.assertIn("bad choice\n", output)
+        self.assertIn("That is not a valid move.\n", output)
         self.assertEqual(total, 10)
