@@ -3,6 +3,7 @@ from unittest.mock import patch
 from map_and_user import health
 import io
 
+
 class Test(TestCase):
 
     @patch('sys.stdout', new_callable=io.StringIO)

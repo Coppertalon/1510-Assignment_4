@@ -10,7 +10,7 @@ class Test(TestCase):
     def test_player_mover_invalid(self, get_output):
         player_mover({"player_position": [0, 1]}, "1")
         output = get_output.getvalue()
-        expected_output = '" 6 " is an invalid movement. Please try again.\n'
+        expected_output = '" 1 " is an invalid movement. Please try again.\n'
         self.assertIn(expected_output, output)
 
     def test_player_mover_north(self):
