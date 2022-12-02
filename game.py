@@ -60,8 +60,9 @@ def start(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: 
     print(f"Greetings player, in Baldurs bones you will take control of {name}"
           f" an aspiring sailor who longs to be a captain. In order to earn the respect of your fellow sailors you must"
           f" prove yourself in a popular game of gambling known as Baldurs Bones")
-    print("Having just arrived ashore from a fishing trip with your mentor Karnus Stonewind, an aging hill dwarf"
-          " he decides it is time for you to learn how to continue on your own in this world")
+    print("Having just arrived ashore from a fishing trip with your mentor Karnus Stonewind, an aging hill dwarf -"
+          "a short being, just short of 4 and a half feet, with dark brown hair and rough skin wrinkled with age -"
+          " decides it is time for you to learn how to continue on your own in this world")
     print(f"'Well {name} I am regretful to say that my time has come, my bones ache and the sea wind chills me to my"
           f" core. It is time for me to return to my homeland in the hills. Before I go I have taught you almost"
           f" everything you need to know to be a captain, but one thing remains. The game of Baldurs Bones'")
