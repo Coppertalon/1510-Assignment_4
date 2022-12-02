@@ -25,7 +25,7 @@ def move_decider(player_character:
         movement = input("movement \n")
 
         if movement == "5":
-            return player_character, False
+            return False
 
         if movement in ["1", "2", "3", "4"]:
             player_character, movement = player_mover(player_character, movement)
@@ -200,9 +200,9 @@ def player_stats(player_character:
     :postcondition: display the users stats
     :return: none
     """
-    print("Stats:  Renown:", player_character["level"], "  Reputation: ", player_character["exp"],
-          "  Credibility", player_character["health"])
-    print("Level 1 Skills:  Re-rolls: ", player_character["re_roll"])
+    print("Stats:  Renown:", player_character["level"], "  Reputation:", player_character["exp"],
+          "  Credibility:", player_character["health"])
+    print("Level 1 Skills:  Re-rolls:", player_character["re_roll"])
 
     if player_character["level"] > 1:
         print("Level 2 Skills:  Add 1 to roll:", player_character["add"],
