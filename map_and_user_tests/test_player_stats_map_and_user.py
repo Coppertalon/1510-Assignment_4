@@ -17,7 +17,7 @@ class Test(TestCase):
         self.assertIn(expected_outputs[3], output)
 
     @patch('sys.stdout', new_callable=io.StringIO)
-    def test_player_stats(self, get_output):
+    def test_player_stats_level_2(self, get_output):
         player = {"level": 2, "exp": 0, "health": 3, "add": 1, "take_away": 1, "re_roll": 1}
         player_stats(player)
         output = get_output.getvalue()
