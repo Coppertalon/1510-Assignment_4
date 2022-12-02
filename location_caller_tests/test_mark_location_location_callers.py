@@ -4,7 +4,7 @@ from location_callers import mark_location
 
 class Test(TestCase):
 
-    def test_mark_location(self):
+    def test_mark_location_visual_map(self):
         maps = {"map_visual": [["*", "*", "*", "*", "*"],
                                ["*", "*", "*", "*", "*"],
                                ["*", "*", "*", "*", "*"],
@@ -31,7 +31,7 @@ class Test(TestCase):
         mark_location(maps, player_character, "test 1", "test 2")
         self.assertEqual(maps["map_visual"], expected_output)
 
-    def test_mark_location(self):
+    def test_mark_location_location_map(self):
         maps = {"map_visual": [["*", "*", "*", "*", "*"],
                                ["*", "*", "*", "*", "*"],
                                ["*", "*", "*", "*", "*"],
