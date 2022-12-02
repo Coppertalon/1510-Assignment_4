@@ -184,16 +184,16 @@ def dont_use_location(location_type: str) -> None:
     :return: none
     """
     if location_type == "easy":
-        print("too easy")
+        print("The players at this location do are not notable enough to be worth playing.")
         input("Press enter to continue")
     if location_type == "hard":
-        print("too hard")
+        print("You are not renowned enough to fight the players at this location.")
         input("Press enter to continue")
     if location_type == "explored":
-        print("explored")
+        print("You have already been here.")
         input("Press enter to continue")
     if location_type == "beat":
-        print("beaten")
+        print("You have already beat the players at this location.")
         input("Press enter to continue")
     return
 
@@ -242,7 +242,7 @@ def non_combat_location() -> bool:
             return False
 
         else:
-            print("Invalid choice.")
+            print("That is not a valid choice.")
 
 
 def combat_location(maps:
@@ -267,7 +267,7 @@ def combat_location(maps:
     while choice not in ["1", "2", "3"]:
         choice = input("1: Play \n2: Leave \n3: Quit\n")
         if choice == "1":
-            print("start")
+            print("You sit down at the table and being a game of Baldur's Bones.")
             return gameplay.battle_starter(maps, player_character, location, difficulty)
 
         if choice == "2":
@@ -278,7 +278,7 @@ def combat_location(maps:
             return 0, False
 
         else:
-            print("Invalid choice.")
+            print("That is not a valid choice.")
 
 
 def location_check_easy(maps:
