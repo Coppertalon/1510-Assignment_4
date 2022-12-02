@@ -57,15 +57,15 @@ def start(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: 
     """
     location_callers.mark_location(maps, player_character,  "1", "O")
     name = player_character["name"]
-    print(f"Greetings player, in Baldurs bones you will take control of {name}"
+    print(f"Greetings player, in Baldur's bones you will take control of {name}"
           f" an aspiring sailor who longs to be a captain. In order to earn the respect of your fellow sailors you must"
-          f" prove yourself in a popular game of gambling known as Baldurs Bones")
+          f" prove yourself in a popular game of gambling known as Baldur's Bones")
     print("Having just arrived ashore from a fishing trip with your mentor Karnus Stonewind, an aging hill dwarf -"
           "a short being, just short of 4 and a half feet, with dark brown hair and rough skin wrinkled with age -"
           " decides it is time for you to learn how to continue on your own in this world")
     print(f"'Well {name} I am regretful to say that my time has come, my bones ache and the sea wind chills me to my"
           f" core. It is time for me to return to my homeland in the hills. Before I go I have taught you almost"
-          f" everything you need to know to be a captain, but one thing remains. The game of Baldurs Bones'")
+          f" everything you need to know to be a captain, but one thing remains. The game of Baldur's Bones'")
     print("The game is simple, you roll three 6-sided die and take that total, then one die at a time you may add to"
           " that roll. The closer you get to 21 without going over the better."
           " Two players face off, with the challenger rolling first and the defender rolling second."
