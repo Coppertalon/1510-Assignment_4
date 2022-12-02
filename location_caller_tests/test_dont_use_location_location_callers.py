@@ -3,6 +3,7 @@ from unittest.mock import patch
 from location_callers import dont_use_location
 import io
 
+
 class Test(TestCase):
 
     @patch('sys.stdout', new_callable=io.StringIO)

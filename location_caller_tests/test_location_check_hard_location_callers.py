@@ -2,6 +2,7 @@ from unittest import TestCase
 from unittest.mock import patch
 from location_callers import location_check_hard
 
+
 class Test(TestCase):
 
     @patch('builtins.input', side_effect=[''])
