@@ -200,8 +200,6 @@ def map_display(maps: dict[str: list, str: list, str: dict[str: list, str: list,
     print("Legend:  O = Your Ship,    X = Yawning Portal,    P = Found Port,   C = Found City,")
 
     player_stats(player_character)
-    print("")
-
     return
 
 
@@ -226,5 +224,5 @@ def player_stats(player_character:
     take_away = player_character["take_away"]
     if player_character["level"] > 1:
         print(f"Level 2 Skills:  Add 1 to roll: {add} Remove 1 from roll: {take_away}")
-
+    print("\n")
     return
