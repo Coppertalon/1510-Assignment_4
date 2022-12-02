@@ -56,21 +56,41 @@ def start(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: 
     :return: updated map and player dictionaries
     """
     location_callers.mark_location(maps, player_character,  "1", "O")
-
-    print("Game Explanation")
-    print("Practice Battle")
-    print("Battle Explanation")
+    name = player_character["name"]
+    print(f"Greetings player, in Baldurs bones you will take control of {name}"
+          f" an aspiring sailor who longs to be a captain. In order to earn the respect of your fellow sailors you must"
+          f" prove yourself in a popular game of gambling known as Baldurs Bones")
+    print("Having just arrived ashore from a fishing trip with your mentor Karnus Stonewind, an aging hill dwarf"
+          " he decides it is time for you to learn how to continue on your own in this world")
+    print(f"'Well {name} I am regretful to say that my time has come, my bones ache and the sea wind chills me to my"
+          f" core. It is time for me to return to my homeland in the hills. Before I go I have taught you almost"
+          f" everything you need to know to be a captain, but one thing remains. The game of Baldurs Bones'")
+    print("The game is simple, you roll three 6-sided die and take that total, then one die at a time you may add to"
+          " that roll. The closer you get to 21 without going over the better."
+          " Two players face off, with the challenger rolling first and the defender rolling second."
+          " While the game is a game of luck and skill I have a secret up my sleeve."
+          " Play me in a game and I will show you.")
     input("Press enter to continue")
 
     roll = gameplay.game_set_up(player_character)
 
     if 15 < roll < 22:
-        print("\n \nwin")
+        print("\n \nAh, well done my friend. You know your stuff and are ready to begin.")
     else:
-        print("\n \nlose")
+        print("\n \nAh, a shame, but a good showing altogether, you are ready to begin")
 
-    print("Lore")
-    print("Goal")
+    print("This here is a talisman of renown, the more well known and respected you are, the more powerful it is."
+          " It will allow you to shape luck to your will and influence the dice. As a beginner it will allow you"
+          " to re-roll a die one time, removing the previous roll and adding a new one. As you become more"
+          " well known you will earn more talents with it and the ability to use it more")
+    print("To earn the respect to crew a ship you will need to beat the famous adventurer Volo."
+          " He often resides in the Yawning Portal, a tavern in the north east of the city. To play him you will need"
+          " to earn some renown. Every time you beat someone in battle you will gain reputation, earn enough and"
+          " you will gain renown. The higher your renown the more respected people you can play and the better your"
+          " talisman will become")
+    print("Be careful however, lose and you will lose credibility. lose to often and you will become too"
+          " disgraced to ever be a captain in Waterdeep. I wish you the best of luck, i have always held you as a good"
+          " friend and close companion. Farewell...'")
     input("Press enter to continue")
 
     player_character["re_roll"] = 1
@@ -90,31 +110,31 @@ def final_dialogue(score: int) -> int:
     if score == -2:
         print("'Ahh an excellent set of games my good fellow, a shame about you luck, it does happen to the best of us."
               " Still I thank you for the chance to engage in lighthearted merriment and wish all the best"
-              " in your future endeavors. Now if you will excuse me, i do believe i hear a drink calling my name.")
+              " in your future endeavors. Now if you will excuse me, i do believe i hear a drink calling my name.'")
         return -2
 
     if score == -1:
-        print("Good show, ahh a good show indeed, you almost had me for a second there,"
+        print("'Good show, ahh a good show indeed, you almost had me for a second there,"
               " but no creature can best Volo! Ah, I jest of course,"
               " such vanities lead only to an early grave in my profession."
               " Thank thee anyhow for a chance at such joyous games. I wish you well,"
-              " for I hear a fan to whom i must attend my attentions.")
+              " for I hear a fan to whom i must attend my attentions.'")
         return -2
 
     if score == 1:
-        print("Oh, Oh my, it would seem that my good fortunes for the day are dwindling. Well then I am a man of "
+        print("'Oh, Oh my, it would seem that my good fortunes for the day are dwindling. Well then I am a man of "
               "honor and will admit when I am beat. There are not many who can best the great Volo in a game "
               "of fortunes so you should hold yourself in high esteem for that. I pronounce you the winner and wish "
-              "you the best in your future endeavors. For now I must go, my next literary masterpiece awaits.")
+              "you the best in your future endeavors. For now I must go, my next literary masterpiece awaits.'")
         return 2
 
     if score == 2:
-        print("Good show, oh good show indeed! It has been far too long since someone has been able to show such a "
+        print("'Good show, oh good show indeed! It has been far too long since someone has been able to show such a "
               " performance against my talents, wit, and impeccable luck."
               " Well far be it for me to deny such as skillful player their rightful reward. "
               "I pronounce you the winner and that you have bested the mighty Volo!"
               " Forgive me for now i must away as there are might beasts and blood pumping adventures that await me"
-              " beyond these walls. Good dayyyyy!")
+              " beyond these walls. Good dayyyyy!'")
         return 2
 
 
