@@ -82,14 +82,14 @@ def start(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: 
     print("This here is a talisman of renown, the more well known and respected you are, the more powerful it is."
           " It will allow you to shape luck to your will and influence the dice. As a beginner it will allow you"
           " to re-roll a die one time, removing the previous roll and adding a new one. As you become more"
-          " well known you will earn more talents with it and the ability to use it more")
+          " well-known you will earn more talents with it and the ability to use it more")
     print("To earn the respect to crew a ship you will need to beat the famous adventurer Volo."
           " He often resides in the Yawning Portal, a tavern in the north east of the city. To play him you will need"
           " to earn some renown. Every time you beat someone in battle you will gain reputation, earn enough and"
           " you will gain renown. The higher your renown the more respected people you can play and the better your"
           " talisman will become")
     print("Be careful however, lose and you will lose credibility. lose to often and you will become too"
-          " disgraced to ever be a captain in Waterdeep. I wish you the best of luck, i have always held you as a good"
+          " disgraced to ever be a captain in Waterdeep. I wish you the best of luck, I have always held you as a good"
           " friend and close companion. Farewell...'")
     input("Press enter to continue")
 
@@ -110,7 +110,7 @@ def final_dialogue(score: int) -> int:
     if score == -2:
         print("'Ahh an excellent set of games my good fellow, a shame about you luck, it does happen to the best of us."
               " Still I thank you for the chance to engage in lighthearted merriment and wish all the best"
-              " in your future endeavors. Now if you will excuse me, i do believe i hear a drink calling my name.'")
+              " in your future endeavors. Now if you will excuse me, I do believe I hear a drink calling my name.'")
         return -2
 
     if score == -1:
@@ -133,7 +133,7 @@ def final_dialogue(score: int) -> int:
               " performance against my talents, wit, and impeccable luck."
               " Well far be it for me to deny such as skillful player their rightful reward. "
               "I pronounce you the winner and that you have bested the mighty Volo!"
-              " Forgive me for now i must away as there are might beasts and blood pumping adventures that await me"
+              " Forgive me for now I must away as there are might beasts and blood pumping adventures that await me"
               " beyond these walls. Good dayyyyy!'")
         return 2
 
