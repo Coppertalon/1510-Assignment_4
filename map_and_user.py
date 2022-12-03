@@ -199,7 +199,7 @@ def map_display(maps: dict[str: list, str: list, str: dict[str: list, str: list,
 
     print("")
     print("Legend:  * = Unexplored,    # = Player,    ! = Found Bar,   @ = Beaten Bar,")
-    print("Legend:  O = Your Ship,    X = Yawning Portal,    P = Found Port,   C = Found City,")
+    print("Legend:  O = Your Ship,    Y = Yawning Portal,    P = Found Port,   C = Found City,")
 
     player_stats(player_character)
     return

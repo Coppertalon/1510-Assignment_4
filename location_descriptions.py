@@ -852,7 +852,7 @@ def location_yawning_3(maps:
 
 def location_end(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
                  player_character:
-                 dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int], Done=None) -> \
+                 dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
                  tuple[int, bool]:
     """
     final boss battle. will return the player to movement if they are too low a level.
@@ -880,24 +880,26 @@ def location_end(maps: dict[str: list, str: list, str: dict[str: list, str: list
               " and scoops up the finely carved ivory dice from the table."
               " 'As is custom I believe that you would roll first': ")
         print("Drawn in with no chance to refuse, the game for your chance to finally become a captain begins.")
+        input("Press enter to continue\n")
         score = 0
         rounds = 0
 
-        while score < 2 and rounds < 3:
-            roll, player_character = gameplay.game_set_up(player_character)
+        while rounds < 3 and 2 > score > -2:
+            roll = gameplay.game_set_up(player_character)
 
             if (19 + score) < roll < 22:
                 score += 1
-                print("win")
+                print("Congratulations my good fellow, it appears you have won this round")
+                input("Press enter to continue\n")
 
             else:
                 score -= 1
-                print("lose")
-            print(score)
+                print("Ah, the fickle hand of fate! It appears the kind lady fortune is not on your side this round.")
+                input("Press enter to continue\n")
             rounds += 1
 
-        game.final_dialogue(score)
-        return 0, True
+        outcome = game.final_dialogue(score)
+        return outcome, True
 
     print("He does not seem to notice you and continues the friendly conversation with those at his table"
           "You are not renowned enough to play against the legendary Volo.")

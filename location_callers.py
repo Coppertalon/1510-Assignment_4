@@ -27,13 +27,19 @@ def location_finder(maps:
     location = maps["map_locations"][player_character["player_position"][0]][player_character["player_position"][1]]
 
     locations = [location_descriptions.location_start_back, location_easy, location_hard,
-                 location_descriptions.location_end, location_port, location_city, location_yawning_portal]
+                 location_port, location_city, location_yawning_portal]
 
-    location_options = ["1", "2", "3", "4", "p", "c", "y"]
+    location_options = ["1", "2", "3", "p", "c", "y"]
 
-    for i in range(0, 7):
+    for i in range(0, 6):
         if location == location_options[i]:
-            return locations[i](maps, player_character)
+            outcome, quitter = locations[i](maps, player_character)
+            return outcome, quitter
+
+    if maps["map_locations"][player_character["player_position"][0]][player_character["player_position"][1]] == "4" or \
+            maps["map_visual"][player_character["player_position"][0]][player_character["player_position"][1]] == "X":
+        outcome, quitter = location_descriptions.location_end(maps, player_character)
+        return outcome, quitter
 
     if maps["map_visual"][player_character["player_position"][0]][player_character["player_position"][1]] == "!":
         outcome, quitter = location(maps, player_character, done=False)
