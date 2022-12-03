@@ -19,7 +19,7 @@ def win(player_character: dict[str: str, str: tuple, str: int, str: int, str: in
     print(f"Having defeated the famous adventurer Volo, {name} has proven themselves as a capable leader"
           " and earned the reputation necessary to captain a vessel."
           " Able to achieve their dream of sailing the oceans wide, you walk back into the city,"
-          " grinning as your mind fills with tales of the sea")
+          " grinning as your mind fills with tales of the sea.")
     print("You Win")
     return False
 

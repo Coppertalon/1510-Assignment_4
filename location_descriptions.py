@@ -889,7 +889,7 @@ def location_end(maps: dict[str: list, str: list, str: dict[str: list, str: list
 
             if (19 + score) < roll < 22:
                 score += 1
-                print("Congratulations my good fellow, it appears you have won this round")
+                print("Congratulations my good fellow, it appears you have won this round.")
                 input("Press enter to continue\n")
 
             else:
