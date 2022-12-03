@@ -22,16 +22,16 @@ def move_decider(player_character:
         print_choice = iter(valid_moves)
         for number, option in enumerate(range(len(valid_moves)), 1):
             print(number, next(print_choice))
-        movement = input("Please enter which direction to go. (or 5 to quit_")
+        movement = input("Please enter which direction to go. (or 5 to quit)\n")
 
         if movement == "5":
             return False
 
         if movement in ["1", "2", "3", "4"]:
-            player_character, movement = player_mover(player_character, movement)
+            movement = player_mover(player_character, movement)
 
         else:
-            print(f' " {movement} " is an invalid movement. Please try again.')
+            print(f' " {movement} " is an invalid movement. Please try again.\n')
 
     return True
 
@@ -62,7 +62,7 @@ def player_mover(player_character:
         player_character["player_position"][1] += 1
 
     else:
-        print(f' " {movement} " is an invalid movement. Please try again.')
+        print(f' " {movement} " is an invalid movement. Please try again.\n')
         movement = "false"
 
     return movement
@@ -189,7 +189,7 @@ def map_display(maps: dict[str: list, str: list, str: dict[str: list, str: list,
         for width in range(len(maps["map_visual"])):
 
             if height == player_character["player_position"][0] and width == player_character["player_position"][1]:
-                print("# |", end="")
+                print("# | ", end="")
 
             else:
                 print(maps["map_visual"][height][width], "| ", end="")
@@ -217,7 +217,7 @@ def player_stats(player_character:
     exp = player_character["exp"]
     player_health = player_character["health"]
     re_roll = player_character["re_roll"]
-    print(f"Stats:  Renown: {level}  Reputation: {exp}  Credibility: {player_health}")
+    print(f"\nStats:  Renown: {level}  Reputation: {exp}  Credibility: {player_health}")
     print(f"Level 1 Skills:  Re-rolls: {re_roll}")
 
     add = player_character["add"]

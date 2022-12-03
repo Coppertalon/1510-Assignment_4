@@ -59,20 +59,19 @@ def start(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: 
     name = player_character["name"]
     print(f"Greetings player, in Baldur's Bones you will take control of {name}"
           f" an aspiring sailor who longs to be a captain. In order to earn the respect of your fellow sailors you must"
-          f" prove yourself in a popular game of gambling known as Baldur's Bones")
+          f" prove yourself in a popular game of gambling known as Baldur's Bones\n")
     print("Having just arrived ashore from a fishing trip with your mentor Karnus Stonewind, an aging hill dwarf -"
           "a short being, just short of 4 and a half feet, with dark brown hair and rough skin wrinkled with age -"
-          " decides it is time for you to learn how to continue on your own in this world")
+          " decides it is time for you to learn how to continue on your own in this world\n")
     print(f"'Well {name} I am regretful to say that my time has come, my bones ache and the sea wind chills me to my"
           f" core. It is time for me to return to my homeland in the hills. Before I go I have taught you almost"
-          f" everything you need to know to be a captain, but one thing remains. The game of Baldur's Bones'")
+          f" everything you need to know to be a captain, but one thing remains. The game of Baldur's Bones'\n")
     print("The game is simple, you roll three 6-sided die and take that total, then one die at a time you may add to"
-          " that roll. The closer you get to 21 without going over the better."
           " that roll. The closer you get to 21 without going over the better."
           " Two players face off, with the challenger rolling first and the defender rolling second."
           " While the game is a game of luck and skill I have a secret up my sleeve."
-          " Play me in a game and I will show you.")
-    input("Press enter to continue")
+          " Play me in a game and I will show you.\n")
+    input("Press enter to continue\n")
 
     roll = gameplay.game_set_up(player_character)
 
@@ -84,16 +83,16 @@ def start(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: 
     print("This here is a talisman of renown, the more well known and respected you are, the more powerful it is."
           " It will allow you to shape luck to your will and influence the dice. As a beginner it will allow you"
           " to re-roll a die one time, removing the previous roll and adding a new one. As you become more"
-          " well-known you will earn more talents with it and the ability to use it more")
+          " well-known you will earn more talents with it and the ability to use it more\n")
     print("To earn the respect to crew a ship you will need to beat the famous adventurer Volo."
           " He often resides in the Yawning Portal, a tavern in the north east of the city. To play him you will need"
           " to earn some renown. Every time you beat someone in battle you will gain reputation, earn enough and"
           " you will gain renown. The higher your renown the more respected people you can play and the better your"
-          " talisman will become")
+          " talisman will become\n")
     print("Be careful however, lose and you will lose credibility. lose to often and you will become too"
           " disgraced to ever be a captain in Waterdeep. I wish you the best of luck, I have always held you as a good"
-          " friend and close companion. Farewell...'")
-    input("Press enter to continue")
+          " friend and close companion. Farewell...'\n")
+    input("Press enter to continue\n")
 
     player_character["re_roll"] = 1
 

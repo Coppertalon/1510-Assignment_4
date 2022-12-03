@@ -19,7 +19,7 @@ def location_start_back() -> None:
     print("As you walk back to your ship you take a moment to clear your mind and relax. 'I can do this' you think to"
           " yourself. I just need to remember to focus and think about the odds."
           " There is no one for you to play against here")
-    input("press Enter to continue")
+    input("press Enter to continue\n")
     return
 
 
@@ -41,7 +41,7 @@ def location_port_1(maps:
     """
     location_callers.mark_location(maps, player_character, location_port_1, "P")
     print("As you walk towards the boardwalk you hear the sounds of partying and merriment"
-          " in the distance. As you walk along the dock several fishermen offer you the 'fresh' catch pof the day."
+          " in the distance. As you walk along the dock several fishermen offer you the 'fresh' catch of the day."
           " You know better and ignore them as you continue along."
           " There does not seem to be anyone to play around here.")
 

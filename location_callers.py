@@ -185,16 +185,16 @@ def dont_use_location(location_type: str) -> None:
     """
     if location_type == "easy":
         print("The players at this location do are not notable enough to be worth playing.")
-        input("Press enter to continue")
+        input("Press enter to continue\n")
     if location_type == "hard":
         print("You are not renowned enough to fight the players at this location.")
-        input("Press enter to continue")
+        input("Press enter to continue\n")
     if location_type == "explored":
         print("You have already been here.")
-        input("Press enter to continue")
+        input("Press enter to continue\n")
     if location_type == "beat":
         print("You have already beat the players at this location.")
-        input("Press enter to continue")
+        input("Press enter to continue\n")
     return
 
 
@@ -242,7 +242,7 @@ def non_combat_location() -> bool:
             return False
 
         else:
-            print("That is not a valid choice.")
+            print("That is not a valid choice.\n")
 
 
 def combat_location(maps:
@@ -278,7 +278,7 @@ def combat_location(maps:
             return 0, False
 
         else:
-            print("That is not a valid choice.")
+            print("That is not a valid choice.\n")
 
 
 def location_check_easy(maps:

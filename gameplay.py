@@ -23,16 +23,16 @@ def battle_starter(maps: dict[str: list, str: list, str: dict[str: list, str: li
     :return: a dictionary, a dictionary, an int, and a boolean
     """
 
-    roll, player_character = game_set_up(player_character)
+    roll = game_set_up(player_character)
 
-    if roll_to_beat < roll < 22:
+    if roll > 21:
         location_callers.mark_location(maps, player_character, location, "!")
-        print("You rolled over 21. Your lose")
+        print("You rolled over 21. You lose")
         print("Your opponent cracks a smile as you walk away from the table defeated")
         return -1, True
     elif roll_to_beat > roll:
         location_callers.mark_location(maps, player_character, location, "!")
-        print(f"the other player rolled {roll_to_beat}. Your lose")
+        print(f"the other player rolled {roll_to_beat}. You lose")
         print("Your opponent cracks a smile as you walk away from the table defeated")
         return -1, True
 
@@ -121,7 +121,7 @@ def game_choices(player_character:
         return total, roll, action
 
     else:
-        print("That is not a valid move.")
+        print("That is not a valid move.\n")
         return total, roll, "none"
 
 
