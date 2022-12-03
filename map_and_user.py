@@ -14,7 +14,7 @@ def move_decider(player_character:
     :return: dictionary, boolean
     """
 
-    valid_moves = ["north", "south", "east", "west", "quit"]
+    valid_moves = ["north", "south", "west", "east", "quit"]
     movement = ""
 
     while movement not in ["1", "2", "3", "4"]:
@@ -85,6 +85,7 @@ def health(outcome: int, player_character:
         print("After your unfortunate loss you have lost some credibility.")
         if player_character["health"] > 0:
             print("If your credibility reaches 0 you will lose respect permanently and will have to leave Waterdeep.")
+        input("Press enter to continue\n")
         return
 
     if outcome == -2:
@@ -93,6 +94,7 @@ def health(outcome: int, player_character:
               " Unfortunately as a well respected figure you lost more credibility then usual.")
         if player_character["health"] > 0:
             print("If your credibility reaches 0 you will lose respect permanently and will have to leave Waterdeep.")
+        input("Press enter to continue\n")
         return
 
     else:
@@ -165,7 +167,7 @@ def level_up(player_character: dict[str: str, str: tuple, str: int, str: int, st
 
     if player_character["add"] < player_character["level"]:
         player_character["add"] = player_character["add"] + 1
-
+    input("Press enter to continue\n")
     return
 
 

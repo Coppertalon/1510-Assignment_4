@@ -7,8 +7,10 @@ import location_callers
 import gameplay
 
 
-def location_start_back() -> None:
-
+def location_start_back(player_character=None, maps=None) -> None:
+    # the player character and maps are passed by the map system but are not used
+    # the program will crash without them so initializing them and not using them
+    # is easier than remaking the location system
     """
     print the description of the start then return the player
 
@@ -20,7 +22,7 @@ def location_start_back() -> None:
           " yourself. I just need to remember to focus and think about the odds."
           " There is no one for you to play against here")
     input("press Enter to continue\n")
-    return
+    return 0, True
 
 
 def location_port_1(maps:
@@ -113,7 +115,7 @@ def location_easy_1(maps:
     stop = location_callers.location_check_easy(maps, player_character, done, location_easy_1)
 
     if stop:
-        return 0, False
+        return 0, True
 
     map_and_user.player_stats(player_character)
 
@@ -151,7 +153,7 @@ def location_easy_2(maps:
     stop = location_callers.location_check_easy(maps, player_character, done, location_easy_2)
 
     if stop:
-        return 0, False
+        return 0, True
 
     map_and_user.player_stats(player_character)
 
@@ -189,7 +191,8 @@ def location_easy_3(maps:
     stop = location_callers.location_check_easy(maps, player_character, done, location_easy_3)
 
     if stop:
-        return 0, False
+        return 0, True
+
     map_and_user.player_stats(player_character)
 
     outcome, quitter = location_callers.combat_location(maps, player_character, location_easy_3, difficulty=16)
@@ -226,7 +229,7 @@ def location_easy_4(maps:
     stop = location_callers.location_check_easy(maps, player_character, done, location_easy_4)
 
     if stop:
-        return 0, False
+        return 0, True
 
     map_and_user.player_stats(player_character)
 
@@ -261,10 +264,10 @@ def location_easy_5(maps:
           " damp of the sea from infecting the soul. Recognising your kinship with these kind you nod to them "
           " as you walk.  You may either approach the group and begin playing or continue your search elsewhere.")
 
-    maps, player_character, stop = location_callers.location_check_easy(maps, player_character, done, location_easy_5)
+    stop = location_callers.location_check_easy(maps, player_character, done, location_easy_5)
 
     if stop:
-        return 0, False
+        return 0, True
 
     map_and_user.player_stats(player_character)
 
@@ -463,7 +466,7 @@ def location_difficult_1(maps:
     stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_1)
 
     if stop:
-        return 0, False
+        return 0, True
 
     map_and_user.player_stats(player_character)
 
@@ -502,7 +505,7 @@ def location_difficult_2(maps:
     stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_2)
 
     if stop:
-        return 0, False
+        return 0, True
 
     map_and_user.player_stats(player_character)
 
@@ -540,7 +543,7 @@ def location_difficult_3(maps:
     stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_3)
 
     if stop:
-        return 0, False
+        return 0, True
 
     map_and_user.player_stats(player_character)
 
@@ -581,7 +584,8 @@ def location_difficult_4(maps:
     stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_4)
 
     if stop:
-        return 0, False
+        return 0, True
+
     map_and_user.player_stats(player_character)
 
     outcome, quitter = location_callers.combat_location(maps, player_character, location_difficult_4, difficulty=17)
@@ -619,7 +623,7 @@ def location_difficult_5(maps:
     stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_5)
 
     if stop:
-        return 0, False
+        return 0, True
 
     map_and_user.player_stats(player_character)
 
@@ -658,7 +662,7 @@ def location_difficult_6(maps:
     stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_6)
 
     if stop:
-        return 0, False
+        return 0, True
 
     map_and_user.player_stats(player_character)
 
@@ -699,7 +703,7 @@ def location_difficult_7(maps:
     stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_7)
 
     if stop:
-        return 0, False
+        return 0, True
 
     map_and_user.player_stats(player_character)
 
@@ -739,7 +743,7 @@ def location_difficult_8(maps:
     stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_8)
 
     if stop:
-        return 0, False
+        return 0, True
 
     map_and_user.player_stats(player_character)
 
@@ -846,8 +850,9 @@ def location_yawning_3(maps:
     return outcome, quitter
 
 
-def location_end(player_character:
-                 dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int]) -> \
+def location_end(maps: dict[str: list, str: list, str: dict[str: list, str: list, str: list, str: list, str: list]],
+                 player_character:
+                 dict[str: str, str: tuple, str: int, str: int, str: int, str: int, str: int, str: int], Done=None) -> \
                  tuple[int, bool]:
     """
     final boss battle. will return the player to movement if they are too low a level.
@@ -860,6 +865,7 @@ def location_end(player_character:
     :postcondition: have a score for the battle and call the function to inform player of outcome 
     :return: dictionary, dictionary, int
     """
+    location_callers.mark_location(maps, player_character, location_end, "X")
     print("As you walk to the back of the tavern the noise begins to swell. Sitting at the center of attention"
           " is a human with a well trimmed beard wearing a puffy white shirt and a small black cap."
           " Were it not for the crowd around him who hang on his words and laugh at his every joke he would not"
@@ -891,8 +897,9 @@ def location_end(player_character:
             rounds += 1
 
         game.final_dialogue(score)
-        return 0, False
+        return 0, True
 
     print("He does not seem to notice you and continues the friendly conversation with those at his table"
           "You are not renowned enough to play against the legendary Volo.")
-    return 0, False
+    input("Press enter to continue\n")
+    return 0, True
