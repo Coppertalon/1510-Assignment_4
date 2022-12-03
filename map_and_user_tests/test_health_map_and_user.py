@@ -5,9 +5,9 @@ import io
 
 
 class Test(TestCase):
-
+    @patch('builtins.input', side_effect=[''])
     @patch('sys.stdout', new_callable=io.StringIO)
-    def test_health_regular_loss(self, get_output):
+    def test_health_regular_loss(self, get_output, mock_input):
         player_health = {"health": 3}
         health(-1, player_health)
         output = get_output.getvalue()
@@ -17,8 +17,9 @@ class Test(TestCase):
         self.assertEqual(player_health["health"], 2)
         self.assertIn(expected_output, output)
 
+    @patch('builtins.input', side_effect=[''])
     @patch('sys.stdout', new_callable=io.StringIO)
-    def test_health_boss_loss(self, get_output):
+    def test_health_boss_loss(self, get_output, mock_input):
         player_health = {"health": 3}
         health(-2, player_health)
         output = get_output.getvalue()

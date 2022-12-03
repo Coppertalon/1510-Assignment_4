@@ -5,9 +5,9 @@ import io
 
 
 class Test(TestCase):
-
+    @patch('builtins.input', side_effect=[''])
     @patch('sys.stdout', new_callable=io.StringIO)
-    def test_level_up_2(self, get_output):
+    def test_level_up_2(self, get_output, mock_input):
         player = {"level": 2, "health": 3, "add": 0, "take_away": 0, "re_roll": 1}
         level_up(player)
         output = get_output.getvalue()
@@ -25,8 +25,9 @@ class Test(TestCase):
         self.assertEqual(player["re_roll"], 2)
         self.assertIn(expected_output, output)
 
+    @patch('builtins.input', side_effect=[''])
     @patch('sys.stdout', new_callable=io.StringIO)
-    def test_level_up_3(self, get_output):
+    def test_level_up_3(self, get_output, mock_input):
         player = {"level": 3, "health": 4, "add": 1, "take_away": 1, "re_roll": 2}
         level_up(player)
         output = get_output.getvalue()
