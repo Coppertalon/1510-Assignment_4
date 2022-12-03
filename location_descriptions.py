@@ -105,8 +105,10 @@ def location_easy_1(maps:
     :return: dictionary, dictionary, boolean
     """
     print("As you enter a dingy bar you see a number of sea worn sailors looking for an escape while they are docked."
-          " Amongst them you see a game of Baldur's bones is in full swing. You may either approach the table and begin"
-          " playing or continue your search elsewhere.")
+          " Amongst them you see a game of Baldur's bones is in full swing. One of the group members"
+          " looks up and acknowledges you as one of their own before turning hist back to you and continuing to focus"
+          " on the game he is playing. He pipes up 'You can join or you can leave, just don't keep gawking.'"
+          "  You may either approach the table and begin playing or continue your search elsewhere.")
 
     stop = location_callers.location_check_easy(maps, player_character, done, location_easy_1)
 
@@ -215,8 +217,8 @@ def location_easy_4(maps:
                     call combat if necessary and return the outcome of the location
     :return: dictionary, dictionary, boolean
     """
-    print("You enter one of the more upscale taverns along the docks, where adventuters who are hard up on cash go when"
-          " they arrive in port. The clientelle is a mix of these adventurers and the more well to do of the docks,"
+    print("You enter one of the more upscale taverns along the docks, where adventurers who are hard up on cash go when"
+          " they arrive in port. The clientele is a mix of these adventurers and the more well to do of the docks,"
           " ships captains, warehouse manages, shopkeepers and the ilk. A group of rowdy adventures who seem to have"
           " had a bit too much to drink welcome you to their table to join their game of dice."
           " You may either approach the table and begin playing or continue your search elsewhere.")
@@ -257,7 +259,7 @@ def location_easy_5(maps:
           " that litter the piers. From the outside they look like a bunch of ruffians or perhaps those who are down"
           " on their luck, but you recognise the rough and stained cloaks they wear as a fine way to keep the cold and"
           " damp of the sea from infecting the soul. Recognising your kinship with these kind you nod to them "
-          " as you walk.  You may either approach the table and begin playing or continue your search elsewhere.")
+          " as you walk.  You may either approach the group and begin playing or continue your search elsewhere.")
 
     maps, player_character, stop = location_callers.location_check_easy(maps, player_character, done, location_easy_5)
 
@@ -451,7 +453,12 @@ def location_difficult_1(maps:
                     call combat if necessary and return the outcome of the location
     :return: dictionary, dictionary, boolean
     """
-    print("difficult_1")
+    print("You enter one of the finer taverns in the city and the text that reads 'open to adventurers' below two"
+          " crossed swords on the sign above the taverns door makes it clear who the tavern mostly caters to. While"
+          " the adventuring life had never appealed to you, having always preferred the open sea to cramped dungeons,"
+          " the chance to play against such a notable group of people is an excellent chance to prove yourself. Lucky "
+          " for you a group of just such adventurers look to be bored and welcome you over to their table. "
+          " You may either approach the table and begin playing or continue your search elsewhere.")
 
     stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_1)
 
@@ -485,7 +492,12 @@ def location_difficult_2(maps:
                     call combat if necessary and return the outcome of the location
     :return: dictionary, dictionary, boolean
     """
-    print("difficult_2")
+    print("As you walk along the street, a sign depicting two bright red dice mid roll catches your eye. While a house"
+          " of gambling is not normally where you would like to play, you tend to prefer a friendly game at a bar,"
+          " you do admit that beating some experienced gamblers would be an excellent chance to prove yourself."
+          " As you poke your head into the building, you are taken by the ornate decorations, velvet tables, and"
+          " beautiful music. A table of Baldur's Bones is situated enticingly close to the door. "
+          " You may either approach the table and begin playing or continue your search elsewhere.")
 
     stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_2)
 
@@ -519,7 +531,11 @@ def location_difficult_3(maps:
                     call combat if necessary and return the outcome of the location
     :return: dictionary, dictionary, boolean
     """
-    print("difficult_3")
+    print("As you walk the streets you notice a group of Kenku, raven people, playing games amount themselves. You"
+          " seem to catch their interest as one calls out 'hey human, join game, fun time, squawk.' They are not a"
+          " a group you are too familiar with as they do not tend to sail, but they seem nice enough, if a little"
+          " mischievous. Still they are only playing for coppers so it can't hurt too much. "
+          " You may either approach the group and begin playing or continue your search elsewhere.")
 
     stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_3)
 
@@ -554,7 +570,13 @@ def location_difficult_4(maps:
                     call combat if necessary and return the outcome of the location
     :return: dictionary, dictionary, boolean
     """
-    print("difficult_4")
+    print("As you continue your travels a strange tavern catches your eye, 'The Rouges Goldfish', the sign out front"
+          " is illustrated with a fish made of gold filigree and the tavern itself seems to be in good condition."
+          " As you poke your head inside you are surprised to learn it is not JUST a tavern, but also a gambling hall."
+          " Adventurers and shopkeepers, sailors and those of ill-repute, all sit together playing games of chance and"
+          " seeming to have a good time. Despite being surprised by the scale of the operation you shake your head"
+          " a chance to prove yourself here is as good as any, you suppose."
+          " You may either approach the table and begin playing or continue your search elsewhere.")
 
     stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_4)
 
@@ -587,7 +609,12 @@ def location_difficult_5(maps:
                     call combat if necessary and return the outcome of the location
     :return: dictionary, dictionary, boolean
     """
-    print("difficult_5")
+    print("As you walk through the shops of down town Waterdeep, you come across of group of teenagers who look to be"
+          " on break from their jobs in the nearby shops. The group seems to be in the midst of playing a game of dice"
+          " amongst themselves for fun when suddenly one of the group members looks up at you and says. 'hey there"
+          " we are short a player, mind filling in for us?' While this is not the kind of group you expected to play"
+          " against, any chance to improve is a good one."
+          " You may either approach the group and begin playing or continue your search elsewhere.")
 
     stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_5)
 
@@ -621,7 +648,12 @@ def location_difficult_6(maps:
                     call combat if necessary and return the outcome of the location
     :return: dictionary, dictionary, boolean
     """
-    print("difficult_6")
+    print("You are walking through the residential district, enjoying a chance to stroll through the city when"
+          " suddenly a voice calls out. 'You there, we got 15 players here and we need one more, you game?'"
+          " As you turn you see a tall half elven man poking his head out from one of the bars that line the streets."
+          " You recognise that this could be a good opportunity to sharpen your skills, but you also dont know this"
+          " group, so you are unsure."
+          " You may either approach the building and begin playing or continue your search elsewhere.")
 
     stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_6)
 
@@ -655,7 +687,14 @@ def location_difficult_7(maps:
                     call combat if necessary and return the outcome of the location
     :return: dictionary, dictionary, boolean
     """
-    print("difficult_7")
+    print("As you walk along the paved streets in the city proper a bar with a beautiful oak trim and forest green"
+          " paint catches you eye. Of the bars you have passed so far this is easily one of the nicest looking."
+          " Intrigued by the beautiful outside you decide to take a look. In side the bar is a cosy atmosphere with"
+          " soft music being sung by an elven woman in the corner. The tables are packed with those who are enjoying"
+          " drink, smoke, and other vices. Amount those tables is a group of well dressed folk, clearly the upper"
+          " crust, who appear to be playing Baldur's Bones. One of them, seeming to notice you looking, pulls out a"
+          " chair and beckons for you to join them. 'Come then, we could always use other to freshen the table.'"
+          " You may either approach the table and begin playing or continue your search elsewhere.")
 
     stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_7)
 
@@ -689,7 +728,13 @@ def location_difficult_8(maps:
                     call combat if necessary and return the outcome of the location
     :return: dictionary, dictionary, boolean
     """
-    print("difficult_8")
+    print("As you walk through the streets of the city, the familiar sound of dice catches your attention. Looking to"
+          " the side you notice a group of small figures huddled around in the ally. Upon closer inspection it appears"
+          " a group of goblins are playing a game of dice together. The goblins keen awareness of predators makes them"
+          " immediately notice you looking at them and the begin to chatter to themselves. You don't understand the"
+          " short hurried words that the say to each other but after a short time one of them, who seems to be the"
+          " the leader, turns to you and says 'well then tall one, you going to gawk all day or you going to join us."
+          "  You may either approach the group and begin playing or continue your search elsewhere.")
 
     stop = location_callers.location_check_hard(maps, player_character, done, location_difficult_8)
 
@@ -825,7 +870,7 @@ def location_end(player_character:
               "'Well greeting there my young friend, you look like an enterprising fellow."
               "Care for a game of Baldur's Bones?'")
         print("Drawn in by his natural charm, you feel you cannot resist and take a seat at the table as one of his"
-              " admirers stands. He rolls up his sleeves and draws a black leather cup from a poutch at his side"
+              " admirers stands. He rolls up his sleeves and draws a black leather cup from a pouch at his side"
               " and scoops up the finely carved ivory dice from the table."
               " 'As is custom I believe that you would roll first': ")
         print("Drawn in with no chance to refuse, the game for your chance to finally become a captain begins.")
