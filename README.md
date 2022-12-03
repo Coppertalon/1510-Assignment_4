@@ -10,18 +10,18 @@ A0133257
 coppertalon
 
 
-| Required Element   | Location: Module, Line# |
-|:-------------------|------------------------:|
-| Tuple              |             Align right |
-| List               |              cell data2 |
-| List Comprehension |              cell data2 |
-| If                 |              cell data2 |
-| While              |              cell data2 |
-| In                 |              cell data2 |
-| Range              |              cell data2 |
-| IterTools          |              cell data2 |
-| Enumerate          |              cell data2 |
-| Map                |              cell data2 |
-| Random             |              cell data2 |
+| Required Element   |              Location: Module, Line# |
+|:-------------------|-------------------------------------:|
+| Tuple              |          Game: 235, Map_and_User 191 |
+| List               |          Game: 225, Map_and_user 195 |
+| List Comprehension |                          Gameplay 58 |
+| If                 |              Map_and_user 83, 90, 94 |
+| While              |                Game 172, Gameplay 65 |
+| In                 | Map_and_user 20&30, Gameplay 117-118 |
+| Range              |     location_callers 34, Gameplay 58 |
+| IterTools          |   Gameplay 108, 113, Map_and_user 24 |
+| Enumerate          |   Gameplay 107, 112, Map_and_user 23 |
+| Map                |                             Game 222 |
+| Random             |                Gameplay 58, 182, 189 |
 
 
