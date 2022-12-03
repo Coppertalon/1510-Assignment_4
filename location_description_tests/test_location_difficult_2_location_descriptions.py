@@ -26,4 +26,4 @@ class Test(TestCase):
                             "take_away": 0,
                             "re_roll": 0}
         output = location_difficult_2(maps, player_character, True)
-        self.assertEqual(output, (0, False))
+        self.assertEqual(output, (0, True))

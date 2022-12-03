@@ -13,7 +13,7 @@ class Test(TestCase):
         expected_output = "Having defeated the famous adventurer Volo, test has proven themselves as a capable leader" \
                           " and earned the reputation necessary to captain a vessel." \
                           " Able to achieve their dream of sailing the oceans wide, you walk back into the city," \
-                          " grinning as your mind fills with tales of the sea\nYou Win\n"
+                          " grinning as your mind fills with tales of the sea.\nYou Win\n"
         self.assertIn(expected_output, output)
 
     def test_win_return(self):
